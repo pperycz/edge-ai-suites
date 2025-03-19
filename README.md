@@ -27,7 +27,7 @@ To learn how to contribute to the project, see [CONTRIBUTING.md](CONTRIBUTING.md
 
 ## Community and Support
 
-For support, please submit your bug report and feature request to [Github Issues](Issues). 
+For support, please submit your bug report and feature request to [Github Issues](https://github.com/open-edge-platform/edge-ai-suites/issues). 
 
 ## License
 
