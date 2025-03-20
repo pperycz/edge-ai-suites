@@ -7,9 +7,9 @@ The **Edge-AI-Suites** project hosts a collection of sample applications for Edg
 
 | Suite | Sample Application |
 |:------|:-------------------|
+| Metro AI Suite | [Loitering Detection](metro-ai-suite/loitering-detection) |
 | Metro AI Suite | [Search Image by Image](metro-ai-suite/search-image-by-image) |
 | Metro AI Suite | [Smart Parking](metro-ai-suite/smart-parking) |
-| Metro AI Suite | [Smart Tolling](metro-ai-suite/smart-polling) |
 | Manufacturing AI Suite | [Pallet Defect Detection](manufacturing-ai-suite/pallet-defect-detection) |
 | Manufacturing AI Suite | [Weld Porosity](manufacturing-ai-suite/weld-porosity) |
 
