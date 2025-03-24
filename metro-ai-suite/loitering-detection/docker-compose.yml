@@ -14,7 +14,7 @@ services:
       - app_network
 
   edge_video_analytics_microservice:
-    image: intel/edge-video-analytics-microservice-staging:2.3.0
+    image: intel/edge-video-analytics-microservice:2.3.0
     container_name: edge_video_analytics_microservice
     entrypoint: ["./run.sh"]
     ports:
@@ -41,6 +41,7 @@ services:
     group_add:
       - "109"
       - "110"
+      - "992"
     device_cgroup_rules:
       - 'c 189:* rmw'
       - 'c 209:* rmw'
