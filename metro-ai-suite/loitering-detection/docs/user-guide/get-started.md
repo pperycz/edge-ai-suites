@@ -71,12 +71,20 @@ By following this guide, you will learn how to:
         - **Password:** `admin`
     - Check under the Dashboards section for the default dashboard named "Video Analytics Dashboard".
     
-
 9. **Run a Predefined Pipeline**:
     - Run the following commands to start the pipeline
         ```bash
-        ./run_sample.sh
+        ./sample_start.sh
         ```
+    - To check the status
+         ```bash
+        ./sample_status.sh
+        ```
+    - To stop the sample pipeline:
+        ```bash
+        ./sample_stop.sh
+        ```
+        
     - **Expected Results**:
     - The dashboard displays detected cars.
     - ![Dashboard Example](_images/grafana.png)
@@ -127,4 +135,4 @@ By following this guide, you will learn how to:
 
 ## Supporting Resources
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
-- [Edge Video Analytics Microservice](https://docs.edgeplatform.intel.com/edge-video-analytics-microservice/2.3.0/user-guide/Overview.html)
+- [DL Streamer Pipeline Server](https://docs.edgeplatform.intel.com/edge-video-analytics-microservice/2.3.0/user-guide/Overview.html)
