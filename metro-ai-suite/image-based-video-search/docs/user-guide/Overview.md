@@ -36,7 +36,8 @@ The application includes a demonstration video for testing. The video loops cont
 
 ### Deployment with Edge Orchestrator
 
-- [This sample application is ready for deployment with Edge Orchestrator. Download the deployment package and follow the instructions](how-to-deploy-edge-orchestrator.md).
+- [This sample application is ready for deployment with Edge Orchestrator. Download the deployment package and follow the instructions](https://docs.openedgeplatform.intel.com/edge-ai-suites/image-based-video-search/main/user-guide/how-to-deploy-edge-orchestrator.html).
+
 
 ### Learn More
 - [System Requirements](system-requirements.md)
