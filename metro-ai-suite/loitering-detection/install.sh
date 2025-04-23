@@ -32,22 +32,91 @@ fi
 ##############################################################################
 if [ -z "$1" ]; then
     HOST_IP=$(hostname -I | cut -f 1 -d " ")
-    echo "No HOST_IP provided. Using detected IP: $HOST_IP"
 else
     HOST_IP="$1"
-    echo "Using provided HOST_IP: $HOST_IP"
 fi
-
 echo "Configuring application to use $HOST_IP"
-echo "HOST_IP=$HOST_IP" > .env 
 
-if [ ! -f ".env" ]; then
-    echo "Error: .env file not found in current directory!"
-    exit 1
+#############################################
+# Update dashboard JSON files IP address    #
+#############################################
+
+# Prefer the new folder, then legacy grafana folder
+if [ -d "./grafana/dashboards" ]; then
+  DASH_DIR="./grafana/dashboards"
+  echo "Found dashboards folder: $DASH_DIR"
+elif [ -d "./grafana/dashboards" ]; then
+  DASH_DIR="./grafana/dashboards"
+  echo "Using legacy grafana dashboards folder: $DASH_DIR"
+else
+  echo "Warning: No dashboards folder found."
+  DASH_DIR=""
 fi
-# shellcheck disable=SC1091
-source .env
-source ./update_dashboard.sh
+
+if [ -n "$DASH_DIR" ]; then
+  for file in "$DASH_DIR"/*.json; do
+    [ -f "$file" ] && sed -i "s|\"url\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"url\": \"http://$HOST_IP:|g" "$file"
+    sed -i "s|\"mqttLink\": *\"ws://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"mqttLink\": \"ws://$HOST_IP:|g" "$file"
+    sed -i "s|\"webrtcUrl\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"webrtcUrl\": \"http://$HOST_IP:|g" "$file"
+  done
+fi
+
+#############################################
+# Update datasources.yml file IP address    #
+#############################################
+
+# Check for the new location first, then legacy location
+if [ -f "./grafana/datasources.yml" ]; then
+  DS_FILE="./grafana/datasources.yml"
+  echo "Found datasources file: $DS_FILE"
+elif [ -f "./grafana/datasources.yml" ]; then
+  DS_FILE="./grafana/datasources.yml"
+  echo "Using legacy grafana datasources file: $DS_FILE"
+else
+  DS_FILE=""
+  echo "Warning: No datasources.yml file found."
+fi
+
+if [ -n "$DS_FILE" ]; then
+  sed -i "s|tcp://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:1883|tcp://$HOST_IP:1883|g" "$DS_FILE"
+fi
+
+#############################################
+# Update Node-RED flows IP address          #
+#############################################
+
+# Check for the new location first, then legacy location
+if [ -f "./node-red/flows.json" ]; then
+  NR_FILE="./node-red/flows.json"
+  echo "Found node-red flows file: $NR_FILE"
+elif [ -f "./node-red/flows.json" ]; then
+  NR_FILE="./node-red/flows.json"
+  echo "Using legacy node-red flows file: $NR_FILE"
+else
+  NR_FILE=""
+  echo "Warning: No node-red flows file found."
+fi
+
+if [ -n "$NR_FILE" ]; then
+  sed -i "s|http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}|http://$HOST_IP|g" "$NR_FILE"
+  sed -i "s|\"broker\": *\"[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}\",|\"broker\": \"$HOST_IP\",|" "$NR_FILE"
+fi
+
+##############################################
+# Update sample_start.sh for video paths and #
+# MQTT host IP                               #
+##############################################
+
+# Check if the sample_start.sh exists in the folder for the current case
+if [ -f "./sample_start.sh" ]; then
+  # Update the video source path to point to the folder
+  sed -i "s|file:///home/pipeline-server/videos/|file:///home/pipeline-server/videos/|g" ./sample_start.sh
+
+  # Update the MQTT host IP in the file
+  sed -i "s|\"host\": *\"[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"host\": \"$HOST_IP:|g" ./sample_start.sh
+else
+  echo "Warning: sample_start.sh not found in folder"
+fi
 
 ##############################################################################
 # 2. Create/Activate a Python virtual environment to avoid pip system issues
@@ -71,31 +140,10 @@ source "$VENV_DIR/bin/activate"
 pip install --upgrade pip
 
 ##############################################################################
-# 3. Locate and parse the model.txt
+# 3. Setup models to download
 ##############################################################################
-MODEL_TXT="model.txt"
-cat "$MODEL_TXT"
-
-if [ ! -f "$MODEL_TXT" ]; then
-    echo "Error: $MODEL_TXT not found!"
-    deactivate
-    exit 1
-fi
-
 YOLO_MODEL=""
-OMZ_MODELS=()
-
-while read -r model_name model_type; do
-    # Skip empty lines or those starting with '#'
-    [[ -z "$model_name" || "$model_name" == \#* ]] && continue
-
-    if [ "$model_type" = "yolo" ]; then
-        YOLO_MODEL="$model_name"
-    elif [ "$model_type" = "omz" ]; then
-        OMZ_MODELS+=("$model_name")
-    fi
-done < "$MODEL_TXT"
-
+OMZ_MODELS=("pedestrian-and-vehicle-detector-adas-0001")
 
 echo "Found YOLO model: $YOLO_MODEL"
 echo "Found OMZ models: ${OMZ_MODELS[@]}"
