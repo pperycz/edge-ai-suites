@@ -36,6 +36,7 @@ else
     HOST_IP="$1"
 fi
 echo "Configuring application to use $HOST_IP"
+echo "HOST_IP=$HOST_IP" > .env 
 
 #############################################
 # Update dashboard JSON files IP address    #
