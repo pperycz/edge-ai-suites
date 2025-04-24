@@ -231,7 +231,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 1. Get all the registered models in the model registry
     ```shell
-    curl -X GET 'http://<HOST_IP>:32002/models'
+    curl -X GET 'http://<HOST_IP>:32102/models'
     ```
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
@@ -243,7 +243,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 3. Upload a model file to Model Registry
    ```shell
-   curl -L -X POST "http://<HOST_IP>:32002/models" \
+   curl -L -X POST "http://<HOST_IP>:32102/models" \
    -H 'Content-Type: multipart/form-data' \
    -F 'name="YOLO_Test_Model"' \
    -F 'precision="fp32"' \
