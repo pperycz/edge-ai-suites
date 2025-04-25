@@ -45,7 +45,7 @@ jobs:
 
   build_image-based-video-search:
     needs: filter
-    if: ${{ (github.event.inputs.target == 'image-based-video-search') || (github.event.inputs.target == 'all-documentation') }}
+    if: ${{ (github.event.inputs.target == 'image-based-video-search') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
@@ -56,7 +56,7 @@ jobs:
 
   build_smart-parking:
     needs: filter
-    if: ${{ (github.event.inputs.target == 'smart-parking') || (github.event.inputs.target == 'all-documentation') }}
+    if: ${{ (github.event.inputs.target == 'smart-parking') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
@@ -67,7 +67,7 @@ jobs:
 
   build_loitering-detection:
     needs: filter
-    if: ${{ (github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'loitering-detection' || github.event.inputs.target == 'all-documentation')) || (github.event_name != 'workflow_dispatch' && needs.filter.outputs.loitering-detection_changed == 'true') }}
+    if: ${{ (github.event_name == 'workflow_dispatch') || (github.event_name != 'workflow_dispatch' && needs.filter.outputs.loitering-detection_changed == 'true') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
@@ -78,7 +78,7 @@ jobs:
 
   build_pallet-defect-detection:
     needs: filter
-    if: ${{ (github.event.inputs.target == 'pallet-defect-detection') || (github.event.inputs.target == 'all-documentation') }}
+    if: ${{ (github.event.inputs.target == 'pallet-defect-detection') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
@@ -89,7 +89,7 @@ jobs:
 
   build_weld-porosity:
     needs: filter
-    if: ${{ (github.event.inputs.target == 'weld-porosity') || (github.event.inputs.target == 'all-documentation') }}
+    if: ${{ (github.event.inputs.target == 'weld-porosity') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
