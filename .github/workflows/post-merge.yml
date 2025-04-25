@@ -42,50 +42,55 @@ jobs:
               - 'manufacturing-ai-suite/pallet-defect-detection/docs/**'
             weld-porosity:
               - 'manufacturing-ai-suite/weld-porosity/docs/**'
+
   build_image-based-video-search:
     needs: filter
     if: ${{ (github.event.inputs.target == 'image-based-video-search') || (github.event.inputs.target == 'all-documentation') }}
-    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@main
+    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
       DOC_AWS_ACCESS_KEY_ID: ${{ secrets.DOC_AWS_ACCESS_KEY_ID }}
       DOC_AWS_SECRET_ACCESS_KEY: ${{ secrets.DOC_AWS_SECRET_ACCESS_KEY }}
     with:
       docs_directory: metro-ai-suite/image-based-video-search
+
   build_smart-parking:
     needs: filter
     if: ${{ (github.event.inputs.target == 'smart-parking') || (github.event.inputs.target == 'all-documentation') }}
-    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@main
+    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
       DOC_AWS_ACCESS_KEY_ID: ${{ secrets.DOC_AWS_ACCESS_KEY_ID }}
       DOC_AWS_SECRET_ACCESS_KEY: ${{ secrets.DOC_AWS_SECRET_ACCESS_KEY }}
     with:
       docs_directory: metro-ai-suite/smart-parking
+
   build_loitering-detection:
     needs: filter
     if: ${{ (github.event.inputs.target == 'loitering-detection') || (github.event.inputs.target == 'all-documentation') }}
-    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@main
+    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
       DOC_AWS_ACCESS_KEY_ID: ${{ secrets.DOC_AWS_ACCESS_KEY_ID }}
       DOC_AWS_SECRET_ACCESS_KEY: ${{ secrets.DOC_AWS_SECRET_ACCESS_KEY }}
     with:
       docs_directory: metro-ai-suite/loitering-detection
+
   build_pallet-defect-detection:
     needs: filter
     if: ${{ (github.event.inputs.target == 'pallet-defect-detection') || (github.event.inputs.target == 'all-documentation') }}
-    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@main
+    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
       DOC_AWS_ACCESS_KEY_ID: ${{ secrets.DOC_AWS_ACCESS_KEY_ID }}
       DOC_AWS_SECRET_ACCESS_KEY: ${{ secrets.DOC_AWS_SECRET_ACCESS_KEY }}
     with:
       docs_directory: manufacturing-ai-suite/pallet-defect-detection
+
   build_weld-porosity:
     needs: filter
     if: ${{ (github.event.inputs.target == 'weld-porosity') || (github.event.inputs.target == 'all-documentation') }}
-    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@main
+    uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
       DOC_AWS_ACCESS_KEY_ID: ${{ secrets.DOC_AWS_ACCESS_KEY_ID }}
