@@ -67,7 +67,7 @@ jobs:
 
   build_loitering-detection:
     needs: filter
-    if: ${{ (github.event.inputs.target == 'loitering-detection') || (github.event.inputs.target == 'all-documentation') }}
+    if: ${{ (github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'loitering-detection' || github.event.inputs.target == 'all-documentation')) || (github.event_name != 'workflow_dispatch' && needs.filter.outputs.loitering-detection_changed == 'true') }}
     uses: open-edge-platform/orch-ci/.github/workflows/publish-documentation.yml@734970a73e3d6e8d7cd160e2cad6366770f52403
     secrets:
       SYS_ORCH_GITHUB: ${{ secrets.SYS_ORCH_GITHUB }}
