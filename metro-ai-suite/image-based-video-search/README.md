@@ -3,6 +3,7 @@
 Performs near real-time analysis and image-based search to detect and retrieve objects of interest in large video datasets.
 
 ## Overview
+
 The **Image-Based Video Search** sample application lets users search live or recorded camera feeds by providing an image and view matching objects with location, timestamp, and confidence score details.
 
 This sample provides a working example of how to combine edge AI microservices for video ingestion, object detection, feature extraction, and vector-based search.
