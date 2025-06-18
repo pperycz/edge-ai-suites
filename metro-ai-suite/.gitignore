@@ -1,0 +1,12 @@
+# Directories to ignore
+docconf/
+venv_edge-manage-docs/
+out/
+docs/_static
+
+# Files in this directory to ignore
+/dict.txt
+/Makefile
+/requirements.txt
+/docs/conf.py
+/docs/substitutions.txt
