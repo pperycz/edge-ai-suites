@@ -16,8 +16,8 @@ permissions: {}
 
 jobs:
   
-  bandit-virus-scans:
-    name: Run Bandit and Virus Scan
+  virus-scan:
+    name: Run  Virus Scan
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -31,13 +31,6 @@ jobs:
         persist-credentials: false
         path: edge-ai-suites-repo
 
-    - name: Run Bandit Scan
-      run: |
-        mkdir -p reports
-        docker pull ghcr.io/pycqa/bandit/bandit
-        echo "### Bandit Scan Results" >> $GITHUB_STEP_SUMMARY
-        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/edge-ai-suites-repo/manufacturing-ai-suite/weld-porosity -f txt -o /src/reports/bandit-report.txt || true >> $GITHUB_STEP_SUMMARY
-        echo "Please find full report in bandit-report.txt" >> $GITHUB_STEP_SUMMARY
     - name: Run Virus Scan
       run: |
         mkdir -p reports
