@@ -1,0 +1,59 @@
+name: "[PDD] PR workflow"
+run-name: "[PDD] PR  workflow (by @${{ github.actor }} via ${{ github.event_name }})"
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'manufacturing-ai-suite/pallet-defect-detection/**'
+      
+  pull_request:
+    paths:
+      - '/manufacturing-ai-suite/pallet-defect-detection/**'
+      
+  workflow_call:
+permissions: {}
+
+jobs:
+  
+  bandit-virus-scans:
+    name: Run Bandit and Virus Scan
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ubuntu_version: ubuntu22
+    steps:
+    - name: Check out edge-ai-suites repository
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
+      with:
+        persist-credentials: false
+        path: edge-ai-suites-repo
+
+    - name: Run Bandit Scan
+      run: |
+        mkdir -p reports
+        docker pull ghcr.io/pycqa/bandit/bandit
+        echo "### Bandit Scan Results" >> $GITHUB_STEP_SUMMARY
+        docker run --rm -v "${{ github.workspace }}:/src" ghcr.io/pycqa/bandit/bandit -r /src/edge-ai-suites-repo/manufacturing-ai-suite/pallet-defect-detection -f txt -o /src/reports/bandit-report.txt || true >> $GITHUB_STEP_SUMMARY
+        echo "Please find full report in bandit-report.txt" >> $GITHUB_STEP_SUMMARY
+    - name: Run Virus Scan
+      run: |
+        mkdir -p reports
+        docker pull clamav/clamav
+        echo "### Virus Scan Results" >> $GITHUB_STEP_SUMMARY
+        docker run --rm -v "${{ github.workspace }}:/src" clamav/clamav clamscan -r  /src/edge-ai-suites-repo/manufacturing-ai-suite/pallet-defect-detection/ > ./reports/clamav-report.txt || true
+        echo "Please find full report in clamav-report.txt" >> $GITHUB_STEP_SUMMARY
+    - name: Upload Scan Reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: bandit-virus-reports
+        path: reports/
+    - name: Clean up
+      if: always()
+      run: |
+        rm -rf edge-ai-suites-repo
+        if [ -n "$(docker images -aq)" ]; then
+               docker rmi -f $(docker images -aq) || true
+        fi
