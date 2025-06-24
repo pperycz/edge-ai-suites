@@ -20,11 +20,11 @@ fi
 #############################################
 
 # Prefer the new folder, then legacy grafana folder
-if [ -d "./grafana/dashboards" ]; then
-  DASH_DIR="./grafana/dashboards"
+if [ -d "./src/grafana/dashboards" ]; then
+  DASH_DIR="./src/grafana/dashboards"
   echo "Found dashboards folder: $DASH_DIR"
-elif [ -d "./grafana/dashboards" ]; then
-  DASH_DIR="./grafana/dashboards"
+elif [ -d "./src/grafana/dashboards" ]; then
+  DASH_DIR="./src/grafana/dashboards"
   echo "Using legacy grafana dashboards folder: $DASH_DIR"
 else
   echo "Warning: No dashboards folder found."

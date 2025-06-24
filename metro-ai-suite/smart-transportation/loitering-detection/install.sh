@@ -15,22 +15,22 @@ echo "Configuring application to use \$HOST_IP"
 ##############################################################################
 # Process OMZ models
 ##############################################################################
-mkdir -p dlsps/models/intel
+mkdir -p src/dlstreamer-pipeline-server/models/intel
 OMZ_MODELS=(pedestrian-and-vehicle-detector-adas-0001)
 for model in "\${OMZ_MODELS[@]}"; do
-  if [ ! -e "dlsps/models/intel/\$model/\$model.json" ]; then
+  if [ ! -e "src/dlstreamer-pipeline-server/models/intel/\$model/\$model.json" ]; then
     echo "Download \$model..." && \
-    omz_downloader --name "\$model" --output_dir dlsps/models && \
+    omz_downloader --name "\$model" --output_dir src/dlstreamer-pipeline-server/models && \
 
     echo "Download \$model proc file..." && \
-    curl -L -o "dlsps/models/intel/\${model}/\${model}.json" "https://github.com/dlstreamer/dlstreamer/blob/master/samples/gstreamer/model_proc/intel/\${model}.json?raw=true"
+    curl -L -o "src/dlstreamer-pipeline-server/models/intel/\${model}/\${model}.json" "https://github.com/dlstreamer/dlstreamer/blob/master/samples/gstreamer/model_proc/intel/\${model}.json?raw=true"
   fi
 done
 
 ##############################################################################
 # Download and setup videos
 ##############################################################################
-mkdir -p dlsps/videos
+mkdir -p src/dlstreamer-pipeline-server/videos
 declare -A video_urls=(
     ["VIRAT_S_000101.mp4"]="https://github.com/intel/metro-ai-suite/raw/refs/heads/videos/videos/VIRAT_S_000101.mp4"
     ["VIRAT_S_000102.mp4"]="https://github.com/intel/metro-ai-suite/raw/refs/heads/videos/videos/VIRAT_S_000102.mp4"
@@ -38,14 +38,14 @@ declare -A video_urls=(
     ["VIRAT_S_000104.mp4"]="https://github.com/intel/metro-ai-suite/raw/refs/heads/videos/videos/VIRAT_S_000104.mp4"
 )
 for video_name in "\${!video_urls[@]}"; do
-    if [ ! -f dlsps/videos/\${video_name} ]; then
+    if [ ! -f src/dlstreamer-pipeline-server/videos/\${video_name} ]; then
         echo "Download \${video_name}..."
-        curl -L "\${video_urls[\$video_name]}" -o "dlsps/videos/\${video_name}"
+        curl -L "\${video_urls[\$video_name]}" -o "src/dlstreamer-pipeline-server/videos/\${video_name}"
     fi
 done
 
 echo "Fix ownership..."
-chown -R "$(id -u):$(id -g)" dlsps/models dlsps/videos 2>/dev/null || true
+chown -R "$(id -u):$(id -g)" src/dlstreamer-pipeline-server/models src/dlstreamer-pipeline-server/videos 2>/dev/null || true
 EOF
 
 )"
