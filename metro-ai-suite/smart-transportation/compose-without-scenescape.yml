@@ -1,18 +1,32 @@
 services:
-  broker:
-    image: docker.io/library/eclipse-mosquitto:2.0.21
-    volumes:
-      - ./${SAMPLE_APP}/src/mosquitto/config:/mosquitto/config:ro
+  ntpserver:
+    image: docker.io/dockurr/chrony:4.6.1
     environment:
       - http_proxy=${http_proxy}
       - https_proxy=${https_proxy}
       - no_proxy=${no_proxy},${HOST_IP}
       - NO_PROXY=${no_proxy},${HOST_IP}
+    networks:
+      app_network:
+        aliases:
+         - ntpserv
+    restart: on-failure:5
+
+  broker:
+    image: docker.io/library/eclipse-mosquitto:2.0.21
     ports:
       - "1883:1883"
       - "9001:9001"
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+      - no_proxy=${no_proxy},${HOST_IP}
+      - NO_PROXY=${no_proxy},${HOST_IP}
+    volumes:
+      - ./${SAMPLE_APP}/src/mosquitto/config:/mosquitto/config:ro
     networks:
       - app_network
+    restart: on-failure:5
 
   dlstreamer-pipeline-server:
     image: intel/dlstreamer-pipeline-server:3.0.0
@@ -33,7 +47,7 @@ services:
       - REST_SERVER_PORT=8080
       - SERVICE_NAME=dlstreamer-pipeline-server
     volumes:
-      - vol_dlsps_pipeline_root:/var/cache/pipeline_root:uid=1999,gid=1999
+      - dlstreamer-pipeline-server-pipeline-root:/var/cache/pipeline_root:uid=1999,gid=1999
       - "./${SAMPLE_APP}/src/dlstreamer-pipeline-server/models:/home/pipeline-server/models"
       - "./${SAMPLE_APP}/src/dlstreamer-pipeline-server/videos:/home/pipeline-server/videos"
       - "./${SAMPLE_APP}/src/dlstreamer-pipeline-server/config.json:/home/pipeline-server/config.json"
@@ -132,7 +146,7 @@ networks:
     driver: "bridge"
 
 volumes:
-  vol_dlsps_pipeline_root:
+  dlstreamer-pipeline-server-pipeline-root:
     driver: local
     driver_opts:
       type: tmpfs

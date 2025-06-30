@@ -1,62 +1,13 @@
-networks:
-  scenescape:
-
-secrets:
-  root-cert:
-    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-ca.pem
-  broker-cert:
-    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-broker.crt
-  broker-key:
-    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-broker.key
-  web-cert:
-    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-web.crt
-  web-key:
-    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-web.key
-  influxdb2-admin-username:
-    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-username
-  influxdb2-admin-password:
-    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-password
-  influxdb2-admin-token:
-    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-token
-  django:
-    file: ./${SAMPLE_APP}/src/secrets/django
-  browser.auth:
-    file: ./${SAMPLE_APP}/src/secrets/browser.auth
-  controller.auth:
-    file: ./${SAMPLE_APP}/src/secrets/controller.auth
-  supass:
-    file: ./${SAMPLE_APP}/src/secrets/supass
-
-volumes:
-  dlstreamer-pipeline-server-pipeline-root:
-    driver: local
-    driver_opts:
-      type: tmpfs
-      device: tmpfs
-  dlstreamer-pipeline-server-tmp:
-    driver: local
-    driver_opts:
-      type: tmpfs
-      device: tmpfs
-  influxdb2-data:
-  influxdb2-config:
-  grafana-storage:
-  pgserver-db:
-  pgserver-migrations:
-  pgserver-media:
-
 services:
   ntpserver:
     image: docker.io/dockurr/chrony:4.6.1
     environment:
-      http_proxy: ""
-      https_proxy: ""
-      no_proxy: ""
-      HTTP_PROXY: ""
-      HTTPS_PROXY: ""
-      NO_PROXY: ""
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+      - no_proxy=${no_proxy},${HOST_IP}
+      - NO_PROXY=${no_proxy},${HOST_IP}
     networks:
-      scenescape:
+      app_network:
         aliases:
          - ntpserv
     restart: on-failure:5
@@ -86,7 +37,7 @@ services:
       /docker-entrypoint.sh /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf"
     ]
     networks:
-      scenescape:
+      app_network:
         aliases:
          - broker.scenescape.intel.com
     user: "${UID}:${GID}"
@@ -272,7 +223,7 @@ services:
       "-c",
       "cp /tmp/user_access_config.json /home/scenescape/SceneScape/user_access_config.json && \
       cp /tmp/smart-intersection-ri.tar.bz2 /home/scenescape/SceneScape/smart-intersection-ri.tar.bz2 && \
-      chown -R scenescape:scenescape /workspace && \
+      chown -R app_network:scenescape /workspace && \
       SUPASS=$(cat /run/secrets/supass) /usr/local/bin/scenescape-init database --preloadexample"
     ]
     cap_add:
@@ -298,7 +249,7 @@ services:
     image: docker.io/intel/scenescape-manager:v1.3.0
     init: true
     networks:
-      scenescape:
+      app_network:
         aliases:
          - web.scenescape.intel.com
     depends_on:
@@ -356,7 +307,7 @@ services:
      - HTTP_PROXY=
      - HTTPS_PROXY=
     networks:
-      scenescape:
+      app_network:
     depends_on:
       web:
         condition: service_healthy
@@ -374,3 +325,50 @@ services:
      - django
      - controller.auth
     restart: on-failure:5
+
+networks:
+  app_network:
+
+secrets:
+  root-cert:
+    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-ca.pem
+  broker-cert:
+    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-broker.crt
+  broker-key:
+    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-broker.key
+  web-cert:
+    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-web.crt
+  web-key:
+    file: ./${SAMPLE_APP}/src/secrets/certs/scenescape-web.key
+  influxdb2-admin-username:
+    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-username
+  influxdb2-admin-password:
+    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-password
+  influxdb2-admin-token:
+    file: ./${SAMPLE_APP}/src/secrets/influxdb2/influxdb2-admin-token
+  django:
+    file: ./${SAMPLE_APP}/src/secrets/django
+  browser.auth:
+    file: ./${SAMPLE_APP}/src/secrets/browser.auth
+  controller.auth:
+    file: ./${SAMPLE_APP}/src/secrets/controller.auth
+  supass:
+    file: ./${SAMPLE_APP}/src/secrets/supass
+
+volumes:
+  dlstreamer-pipeline-server-pipeline-root:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  dlstreamer-pipeline-server-tmp:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  influxdb2-data:
+  influxdb2-config:
+  grafana-storage:
+  pgserver-db:
+  pgserver-migrations:
+  pgserver-media:

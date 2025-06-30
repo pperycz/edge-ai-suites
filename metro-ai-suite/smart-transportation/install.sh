@@ -33,7 +33,20 @@ case "$SAMPLE_APP_ARG" in
 esac
 
 # Update the HOST_IP in .env file
-export HOST_IP="${2:-$(hostname -I | cut -f1 -d' ')}"
+# Check if HOST_IP is provided as second argument, otherwise use hostname -I
+HOST_IP_ARG="$2"
+if [ -z "$HOST_IP_ARG" ]; then
+    HOST_IP=$(hostname -I | cut -f1 -d' ')
+else
+    # Validate IP format (basic validation for IPv4)
+    if [[ ! $HOST_IP_ARG =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "Warning: Invalid IP format. Using hostname -I instead."
+        HOST_IP=$(hostname -I | cut -f1 -d' ')
+    else
+        HOST_IP=$HOST_IP_ARG
+    fi
+fi
+
 echo "Configuring application to use $HOST_IP"
 if grep -q "^HOST_IP=" "$ENV_FILE"; then
     # Replace existing HOST_IP line
