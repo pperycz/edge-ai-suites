@@ -3,13 +3,30 @@
 # Download artifacts for a specific sample application
 #   by calling respective app's install.sh script
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
-MODEL_XML_URL="https://raw.githubusercontent.com/open-edge-platform/edge-ai-suites/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/weld-porosity/resources/models/weld_porosity/weld_porosity_classification/deployment/Classification/model/model.xml"
-MODEL_BIN_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/weld-porosity/resources/models/weld_porosity/weld_porosity_classification/deployment/Classification/model/model.bin"
+MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/weld_porosity_classification.zip"
 VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/weld-porosity/resources/videos/welding.avi"
-VIDEO_FILENAME="welding.avi"
 
 err() {
     echo "ERROR: $1" >&2
+}
+
+unzip_compressed_file() {
+    local zip_file=$1
+    local target_dir=$2
+    if [ ! -f "$zip_file" ]; then
+        err "Zip file '$zip_file' does not exist."
+        return 1
+    fi
+    if [ ! -d "$target_dir" ]; then
+        mkdir -p "$target_dir"
+    fi
+    echo "Unzipping $zip_file to $target_dir..."
+    if unzip -q "$zip_file" -d "$target_dir"; then
+        echo "Unzipped successfully."
+    else
+        err "Failed to unzip $zip_file."
+        return 1
+    fi
 }
 
 download_artifacts() {
@@ -23,25 +40,25 @@ download_artifacts() {
     LOCAL_MODEL_DIR="$SCRIPT_DIR/../../../resources/$app_name/models"
     if [ ! -d $LOCAL_MODEL_DIR ]; then
         # create the models directory if it does not exist
-        
+
         if ! mkdir -p $LOCAL_MODEL_DIR; then
             err "Failed to create models directory for $app_name."
             return 1
         fi
         echo "Downloading model artifacts for $app_name..."
-        echo "Model XML: $MODEL_XML_URL"
-        echo "Model BIN: $MODEL_BIN_URL"
+        # echo "Model XML: $MODEL_XML_URL"
+        echo "Model URL: $MODEL_URL"
         # Download model XML and BIN files
-        if curl -L "$MODEL_XML_URL" -o "$LOCAL_MODEL_DIR/model.xml" ; then
-            echo "Model XML for $app_name downloaded successfully."
+        if curl -L "$MODEL_URL" -o "$LOCAL_MODEL_DIR/$(basename $MODEL_URL)"; then
+            echo "Model zip for $app_name downloaded successfully."
+            # Unzip the downloaded model file
+            if unzip_compressed_file "$LOCAL_MODEL_DIR/$(basename $MODEL_URL)" "$LOCAL_MODEL_DIR"; then
+                echo "Model artifacts for $app_name unzipped successfully."
+                # remove the zip file after unzipping
+                rm -f "$LOCAL_MODEL_DIR/$(basename $MODEL_URL)"
+            fi
         else
-            err "Failed to download model XML for $app_name."
-            return 1
-        fi
-        if curl -L "$MODEL_BIN_URL" -o "$LOCAL_MODEL_DIR/model.bin" ; then
-            echo "Model BIN for $app_name downloaded successfully."
-        else
-            err "Failed to download model BIN for $app_name."
+            err "Failed to download model for $app_name."
             return 1
         fi
     else
@@ -57,7 +74,7 @@ download_artifacts() {
             return 1
         fi
         echo "Downloading video artifacts for $app_name..."
-        if ! wget -q -O "$LOCAL_VIDEO_DIR/$VIDEO_FILENAME" "$VIDEO_URL"; then
+        if ! curl -L "$VIDEO_URL" -o "$LOCAL_VIDEO_DIR/$(basename $VIDEO_URL)"; then
             err "Failed to download video for $app_name."
             return 1
         fi
