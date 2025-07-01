@@ -57,7 +57,7 @@ services:
     ports:
       - "1880:1880"
     networks:
-      - scenescape
+      - app_network
     volumes:
       - ./${SAMPLE_APP}/src/node-red/flows.json:/tmp/flows.json
       - ./${SAMPLE_APP}/src/node-red/flows_cred.json:/tmp/flows_cred.json
@@ -117,7 +117,7 @@ services:
         target: /etc/influxdb2
     restart: on-failure:5
     networks:
-      - scenescape
+      - app_network
 
   grafana:
     image: docker.io/grafana/grafana:11.6.0
@@ -138,7 +138,7 @@ services:
       - "3000:3000"
     restart: on-failure:5
     networks:
-      - scenescape
+      - app_network
     secrets:
       - influxdb2-admin-token
     depends_on:
@@ -161,7 +161,7 @@ services:
   dlstreamer-pipeline-server:
     image: docker.io/intel/dlstreamer-pipeline-server:3.0.0
     networks:
-      - scenescape
+      - app_network
     privileged: true
     entrypoint: ["./run.sh"]
     ports:
@@ -207,7 +207,7 @@ services:
     image: docker.io/intel/scenescape-manager:v1.3.0
     init: true
     networks:
-      - scenescape
+      - app_network
     environment:
       - "DBROOT=/workspace"
       - "EXAMPLEDB=smart-intersection-ri.tar.bz2"
@@ -223,7 +223,7 @@ services:
       "-c",
       "cp /tmp/user_access_config.json /home/scenescape/SceneScape/user_access_config.json && \
       cp /tmp/smart-intersection-ri.tar.bz2 /home/scenescape/SceneScape/smart-intersection-ri.tar.bz2 && \
-      chown -R app_network:scenescape /workspace && \
+      chown -R scenescape:scenescape /workspace && \
       SUPASS=$(cat /run/secrets/supass) /usr/local/bin/scenescape-init database --preloadexample"
     ]
     cap_add:
