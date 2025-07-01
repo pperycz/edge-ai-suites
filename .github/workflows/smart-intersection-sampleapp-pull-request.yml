@@ -1,0 +1,25 @@
+---
+# SPDX-FileCopyrightText: (C) 2025 Intel Corporation
+# SPDX-License-Identifier: LicenseRef-Intel-Edge-Software
+# This file is licensed under the Limited Edge Software Distribution License Agreement.
+
+name: "[Smart Intersection Sample App] PR workflow"
+run-name: "[Smart Intersection Sample App] PR  workflow (by @${{ github.actor }} via ${{ github.event_name }})"
+on:
+  pull_request:
+    paths:
+      - 'metro-ai-suite/smart-intersection/*'
+  workflow_call:
+  workflow_dispatch:
+permissions: {}
+
+jobs:
+  windturbine-sample-app-pre-merge-build:
+    permissions:
+      contents: read
+      packages: read
+    runs-on: ubuntu-latest
+    steps:
+    - name: Runner workspace path
+      run: |
+        echo "Initiall test echo"
