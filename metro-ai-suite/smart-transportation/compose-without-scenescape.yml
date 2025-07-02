@@ -110,12 +110,10 @@ services:
       - "./${SAMPLE_APP}/src/grafana/dashboards:/var/lib/grafana/dashboards"
       - "./${SAMPLE_APP}/src/grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml"
       - "./${SAMPLE_APP}/src/grafana/grafana.ini:/etc/grafana/grafana.ini"
-      - "./${SAMPLE_APP}/src/grafana/test_plugin:/var/lib/grafana/plugins/intel-custom-panel"
     networks:
       - app_network
     environment:
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource,ryantxu-ajax-panel,grafana-mqtt-datasource
-      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=intel-custom-panel
       - WEBRTC_URL=http://${HOST_IP}:8889
       - http_proxy=${http_proxy}
       - https_proxy=${https_proxy}
