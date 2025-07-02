@@ -33,9 +33,8 @@ fi
 
 if [ -n "$DASH_DIR" ]; then
   for file in "$DASH_DIR"/*.json; do
-    [ -f "$file" ] && sed -i "s|\"url\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"url\": \"http://$HOST_IP:|g" "$file" 
-     sed -i "s|\"mqttLink\": *\"ws://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"mqttLink\": \"ws://$HOST_IP:|g" "$file"
-    sed -i "s|\"webrtcUrl\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"webrtcUrl\": \"http://$HOST_IP:|g" "$file"
-
+    [ -f "$file" ] && sed -i "s|\"text\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"text\": \"http://$HOST_IP:|g" "$file" 
+  sed -i "s|\"value\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"value\": \"http://$HOST_IP:|g" "$file"
+  sed -i "s|\"query\": *\"http://[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:|\"query\": \"http://$HOST_IP:|g" "$file"
   done
 fi
