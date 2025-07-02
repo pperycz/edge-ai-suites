@@ -2,7 +2,7 @@
 
 -   **Time to Complete:** 30 minutes
 -   **Programming Language:**  Python 3
-<Do we need this??>>
+
 
 ### Configure Docker
 
