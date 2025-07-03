@@ -138,12 +138,12 @@ By following this guide, you will learn how to:
 
 ### How to Use Applications
 
-To learn more about working with each specific application:
+To learn more about working with each specific application dashboard and visualization:
 
-- **Smart Intersection**: Learn how to [Customize Application](smart-intersection/how-to-use-application.md).
-- **Loitering Detection**: Learn how to [Customize Application](loitering-detection/how-to-use-application.md).
-- **Smart Parking**: Learn how to [Customize Application](smart-parking/how-to-use-application.md).
-- **Smart Tolling**: Learn how to [Customize Application](smart-tolling/how-to-use-application.md).
+- [**Smart Intersection**](smart-intersection/how-to-use-application.md).
+- [**Loitering Detection**](loitering-detection/how-to-use-application.md).
+- [**Smart Parking**](smart-parking/how-to-use-application.md).
+- [**Smart Tolling**](smart-tolling/how-to-use-application.md).
 
 ## Troubleshooting
 
