@@ -13,7 +13,7 @@ It consists of the following microservices: DL Streamer Pipeline Server, Model R
 
 
 <div style="text-align: center;">
-    <img src=defect-detection-arch-diagram.png width=800>
+    <img src=docs/user-guide/images/defect-detection-arch-diagram.png width=800>
 </div>
 More details to be added..
 
