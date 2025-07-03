@@ -4,7 +4,7 @@
 -   **Programming Language:**  Python 3
 
 
-### Configure Docker
+## Configure Docker
 
 To configure Docker:
 
@@ -228,7 +228,7 @@ make status
   make down
   ```
 
-## Check logs
+## Check logs - troubleshooting
 
 - Check container logs to catch any failures:
 
