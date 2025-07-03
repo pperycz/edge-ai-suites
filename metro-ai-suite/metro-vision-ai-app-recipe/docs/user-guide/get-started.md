@@ -39,7 +39,7 @@ By following this guide, you will learn how to:
    - Run:
      ```bash
      git clone https://github.com/open-edge-platform/edge-ai-suites.git
-     cd edge-ai-suites/metro-ai-suite/smart-transportation/
+     cd edge-ai-suites/metro-ai-suite/metro-vision-ai-app-recipe/
      ```
 
 2. **Setup Application and Download Assets**:
