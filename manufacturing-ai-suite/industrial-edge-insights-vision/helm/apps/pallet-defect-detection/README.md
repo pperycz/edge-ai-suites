@@ -6,18 +6,6 @@
 - K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`. Additionally, helm package manager must also be installed.
 
 ## Setup the application
-```
-General instructions for helm based deployment is as follows. This assumes you have the Kubernetes cluster already setup and running.
-
-1. Prepare `values.yaml` file to configure the helm chart for your application
-2. Run `./install.sh helm` to set env file for scripts to source and identify application specific data such as `HOST_IP`, `REST_SERVER_PORT` and `SAMPLE_APP` directory.
-3. Install the helm chart to deploy the app to Kubernetes
-4. Copy the resources to container volumes. This is done so that deployments such as ITEP can run where volumes mounts are not feasible.
-5. Run `sample_start.sh` to start pipeline. This sends curl request with pre-defined payload to the running DLStreamer Pipeline Server.
-6. Run `sample_status.sh` or `sample_list.sh` to monitor pipeline status or list available pipelines.
-7. Run `sample_stop.sh` to abort any running pipeline(s).
-8. Uninstall the helm chart.
-```
 
 > Note that the following instructions assume Kubernetes is already running in the host system with helm package manager installed.
 1. Set app specific values.yaml file.
