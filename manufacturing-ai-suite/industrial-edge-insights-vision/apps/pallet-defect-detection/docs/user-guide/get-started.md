@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-- [System Requirements](system-requirements.md)
+- [System Requirements](manufacturing-ai-suite/industrial-edge-insights-vision/apps/pallet-defect-detection/docs/user-guide/system-requirements.md)
 
 ## Setup the application
 > Note that the following instructions assume Docker engine is setup in the host system.
