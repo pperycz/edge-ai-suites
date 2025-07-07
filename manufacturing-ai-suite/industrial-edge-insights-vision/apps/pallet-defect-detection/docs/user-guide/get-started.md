@@ -162,8 +162,7 @@
 ## Further Reading
 - [Helm based deployment](how-to-deploy-using-helm-charts.md)
 - [MLOps using Model Registry](how-to-enable-mlops.md)
-- [Publish metadata to MQTT broker]()
-- [Publish frames to S3 storage]()
+- [Publish metadata to OPCUA](how-to-use-opcua-publisher.md)
 
 ## Troubleshooting
 - [Troubleshooting Guide]()
