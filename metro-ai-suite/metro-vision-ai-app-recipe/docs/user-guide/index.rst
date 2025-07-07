@@ -14,24 +14,6 @@ This documentation serves as a guide for users to understand the features, insta
    release-notes
 
 .. toctree::
-   :caption: Smart Parking
-   :maxdepth: 1
-
-   smart-parking/index
-
-.. toctree::
-   :caption: Smart Intersection
-   :maxdepth: 1
-
-   smart-intersection/index
-
-.. toctree::
-   :caption: Loitering Detection
-   :maxdepth: 1
-
-   loitering-detection/index
-
-.. toctree::
    :caption: Source Code
 
    GitHub <https://github.com/open-edge-platform/edge-ai-suites/tree/main/metro-ai-suite>

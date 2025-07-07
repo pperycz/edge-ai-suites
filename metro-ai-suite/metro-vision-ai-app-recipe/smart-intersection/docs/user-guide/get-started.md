@@ -94,13 +94,10 @@ By following this guide, you will learn how to:
 
 ### How to Use Applications
 
-- [Smart Intersection](smart-intersection/how-to-use-application.md)
+- [Smart Intersection](how-to-use-application.md)
 
 ## Other Deployment Option
 
 Choose one of the following methods to deploy the Smart Intersection Sample Application:
 
 - **[Deploy Using Helm](./how-to-deploy-helm.md)**: Use Helm to deploy the application to a Kubernetes cluster for scalable and production-ready deployments.
-
-## Supporting Resources
-- [Docker Compose Documentation](https://docs.docker.com/compose/)

@@ -105,7 +105,7 @@ When deployed with the optional Scenescape components, the system provides enhan
 - Integration with existing tolling infrastructure
 
 ## To Get Started
-[Smart Intersection](smart-intersection/docs/user-guide/Overview.md)
-[Smart Tolling](smart-intersection/docs/user-guide/Overview.md)
-[Smart Parking](smart-parking/docs/user-guide/Overview.md)
-[Loitering Detection](loitering-detection/docs/user-guide/Overview.md)
+- [Smart Intersection](smart-intersection/docs/user-guide/Overview.md)
+- [Smart Tolling](smart-intersection/docs/user-guide/Overview.md)
+- [Smart Parking](smart-parking/docs/user-guide/Overview.md)
+- [Loitering Detection](loitering-detection/docs/user-guide/Overview.md)
