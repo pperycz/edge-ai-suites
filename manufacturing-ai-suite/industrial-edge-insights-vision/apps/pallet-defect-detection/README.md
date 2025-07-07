@@ -1,1 +1,0 @@
-{% include docs/user-guide/get-started.md %}
