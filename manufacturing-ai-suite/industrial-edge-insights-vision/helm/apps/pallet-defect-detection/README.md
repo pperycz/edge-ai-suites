@@ -2,9 +2,8 @@
 
 ## Prerequisites
 
-- [System Requirements](system-requirements.md)
-- K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`. Additionally, helm package manager must also be installed. If you would like a local single node setup to try out locally, follow the instructions [here](how-to-setup-helm-locally.md).
-
+- Ensure you have the **minimum system requirements** for this application.
+- K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`. Additionally, helm package manager must also be installed.
 
 ## Setup the application
 ```
