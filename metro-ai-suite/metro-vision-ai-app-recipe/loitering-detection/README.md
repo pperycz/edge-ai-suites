@@ -17,7 +17,7 @@ By utilizing cutting-edge technologies and pre-trained deep learning models, thi
 
 The architecture is designed to facilitate seamless integration and operation of various components involved in AI-driven video analytics.
 
-![Architecture Diagram](../docs/user-guide/_images/metro_app_arch.png)
+![Architecture Diagram](./docs/user-guide/_images/arch.png)
 
 ### Components
 
@@ -33,4 +33,4 @@ The DL Streamer Pipeline Server is a core component, designed to handle video an
 It integrates various components such as MQTT, Node-RED, and Grafana to provide a robust and flexible solution for real-time video inference pipelines. The tool is built to be user-friendly, allowing customization without the need for extensive coding knowledge. Validate your ideas by developing an end-to-end solution faster.
 
 ## Learn More
-- [Get Started](../docs/user-guide/get-started.md)
+- [Get Started](./docs/user-guide/get-started.md)

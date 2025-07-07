@@ -9,7 +9,6 @@ This documentation serves as a guide for users to understand the features, insta
    :caption: Get Started
 
    Overview
-   system-requirements
    get-started
    release-notes
 
