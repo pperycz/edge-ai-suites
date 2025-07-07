@@ -104,7 +104,8 @@ When deployed with the optional Scenescape components, the system provides enhan
 - Traffic flow optimization at toll plazas
 - Integration with existing tolling infrastructure
 
-## Learn More
-- [System Requirements](docs/user-guide/system-requirements.md) - Hardware and software requirements for deployment
-- [Get Started](docs/user-guide/get-started.md) - Step-by-step installation and setup guide
-- [Release Notes](docs/user-guide/release-notes.md) - Latest updates and version history
+## To Get Started
+[Smart Intersection](smart-intersection/docs/user-guide/Overview.md)
+[Smart Tolling](smart-intersection/docs/user-guide/Overview.md)
+[Smart Parking](smart-parking/docs/user-guide/Overview.md)
+[Loitering Detection](loitering-detection/docs/user-guide/Overview.md)

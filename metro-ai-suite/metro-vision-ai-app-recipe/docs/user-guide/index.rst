@@ -1,10 +1,9 @@
-Loitering Detection
+Metro Vision AI App Recipe
 ============================================
 
-Loitering Detection leverages advanced AI algorithms to monitor and analyze real-time video feeds, identifying individuals lingering in designated areas. By proactively detecting suspicious behavior, this system helps to address potential security threats effectively.
+The Metro Vision AI App Recipe suite provides an integrated AI-powered solution for modern urban traffic management and monitoring. This comprehensive platform combines multiple transportation-focused applications built on a unified architecture, enabling cities and organizations to deploy intelligent transportation systems efficiently.
 
-By utilizing cutting-edge technologies and pre-trained deep learning models, this application enables real-time processing and analysis of video streams, making it an ideal solution. Its modular architecture and integration capabilities ensure that users can easily customize and extend its functionalities to meet their specific needs.
-
+This documentation serves as a guide for users to understand the features, installation, and usage of the Metro Vision AI App Recipe suite. It includes detailed instructions on how to set up the applications, system requirements, and best practices for deployment.
 
 .. toctree::
    :caption: Get Started

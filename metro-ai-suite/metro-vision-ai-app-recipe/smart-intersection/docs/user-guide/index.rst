@@ -10,10 +10,17 @@ This guide is designed to help developers understand the architecture, setup, an
    :caption: Get Started
 
    Overview
-   how-to-use-application
-   how-to-deploy-helm
+   system-requirements
+   get-started
 
 .. toctree::
-   :caption: Troubleshooting
+   :caption: How to
 
-   troubleshooting
+   how-to-deploy-docker
+   how-to-deploy-helm
+   how-to-use-application
+
+.. toctree::
+   :caption: Support and Community
+
+   support

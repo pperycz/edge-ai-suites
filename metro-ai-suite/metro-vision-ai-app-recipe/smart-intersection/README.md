@@ -20,7 +20,7 @@ The **Smart Intersection Sample Application** demonstrates how edge AI technolog
 ## How it Works
 This section provides a high-level view of how the application integrates with a typical system architecture.
 
-![Architecture Diagram](../docs/user-guide/_images/metro_app_arch.png)
+![High-Level System Diagram](./docs/user-guide/_images/architecture.png)
 
 ### Example Content for Diagram Description
 - **Inputs**:
@@ -43,6 +43,13 @@ This section provides a high-level view of how the application integrates with a
 
 ## Learn More
 
-- [Get Started](../docs/user-guide/get-started.md)
+- [System Requirements](./docs/user-guide/system-requirements.md): Check the hardware and software requirements for deploying the application.
+- [Get Started](./docs/user-guide/get-started.md): Follow step-by-step instructions to set up the application.
+- [How to Deploy with Helm](./docs/user-guide/how-to-deploy-helm.md): How to deploy the application using Helm on a Kubernetes cluster.
+- [How to Deploy with Docker Compose](./docs/user-guide/how-to-deploy-docker.md): How to deploy the application using Docker Compose.
+- [How to Use the Application](./docs/user-guide/how-to-use-application.md): Explore the application's features and verify its functionality.
+- [Support and Troubleshooting](./docs/user-guide/support.md): Find solutions to common issues and troubleshooting steps.
 
+## License
 
+The application is licensed under the [LIMITED EDGE SOFTWARE DISTRIBUTION LICENSE AGREEMENT](LICENSE.txt).
