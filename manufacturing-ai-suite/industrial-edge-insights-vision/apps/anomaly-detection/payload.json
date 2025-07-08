@@ -1,0 +1,25 @@
+[
+    {
+        "pipeline": "anomaly_detection",
+        "payload":{
+            "source": {
+                "uri": "file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi",
+                "type": "uri"
+            },
+            "destination": {
+            "frame": {
+                "type": "webrtc",
+                "peer-id": "ad"
+            }
+            },
+            "parameters": {
+                "detection-properties": {
+                    "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
+                    "inference-region": "full-frame",
+                    "pre-process-backend": "opencv",
+                    "device": "CPU"
+                }
+            }
+        }
+    }
+]
