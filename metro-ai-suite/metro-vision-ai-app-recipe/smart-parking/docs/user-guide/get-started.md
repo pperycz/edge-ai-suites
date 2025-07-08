@@ -1,24 +1,15 @@
 
 # Get Started
 
-<!--
-**Sample Description**: Provide a brief overview of the application and its purpose.
--->
-The Smart Transportation Applications suite is a modular sample application designed to help developers create intelligent transportation monitoring solutions. By leveraging AI and real-time video analytics, this sample application demonstrates how to achieve accurate traffic detection, behavior analysis, and automated monitoring across various transportation scenarios.
+The Smart Parking application uses AI-driven video analytics to optimize parking management. It provides a modular architecture that integrates seamlessly with various input sources and leverages AI models to deliver accurate and actionable insights.
 
-<!--
-**What You Can Do**: Highlight the developer workflows supported by the guide.
--->
 By following this guide, you will learn how to:
 - **Set up the sample application**: Use Docker Compose to quickly deploy the application in your environment.
-- **Run a predefined pipeline**: Execute a sample pipeline to see real-time transportation monitoring and object detection in action.
-- **Modify application parameters**: Customize settings like input sources, detection thresholds, and regions of interest to adapt the application to your specific requirements.
+- **Run a predefined pipeline**: Execute a pipeline to see smart parking application in action.
 
 ## Prerequisites
 - Verify that your system meets the [minimum requirements](./system-requirements.md).
 - Install Docker: [Installation Guide](https://docs.docker.com/get-docker/).
-- Enable running docker without "sudo": [Post Install](https://docs.docker.com/engine/install/linux-postinstall/)
-- Install Git: [Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 <!--
 **Setup and First Use**: Include installation instructions, basic operation, and initial validation.
@@ -45,23 +36,8 @@ By following this guide, you will learn how to:
 2. **Setup Application and Download Assets**:
    - Use the installation script to configure the application and download required models:
      ```bash
-     ./install.sh <smart-parking|loitering-detection|smart-intersection|smart-tolling>
+     ./install.sh smart-parking
      ```
-
-   **Available Applications:**
-   
-   | **Application** | **Command** | **Description** | **Models** | **Scenescape Components** |
-   |------------|---------|-------------|-------------|-------------|
-   | Smart Intersection Management | `smart-intersection` | Traffic flow optimization and intersection monitoring | Custom Intersection Model | Included |
-   | Loitering Detection | `loitering-detection` | Real-time detection of loitering behavior in transportation hubs | pedestrian-and-vehicle-detector-adas-0001 | Not included |
-   | Smart Parking | `smart-parking` | Automated parking space monitoring and management | YOLO v10s | Not included |
-   | Smart Tolling | `smart-tolling` | Intelligent toll collection and vehicle classification | YOLO v10s | Not included |
-
-   **Example**:
-   ```bash
-   # Install loitering detection with auto-detected IP
-   ./install.sh loitering-detection
-   ```
 
 ## Run the Application
 
@@ -94,7 +70,6 @@ By following this guide, you will learn how to:
 2. **Run Predefined Pipelines**:
    - Pipeline startup depends on your application type:
    
-   **For Applications WITHOUT Scenescape Components** *(Loitering Detection, Smart Parking, Smart Tolling)*:
    - Start video streams to run video inference pipelines:
      ```bash
      ./sample_start.sh
@@ -115,9 +90,6 @@ By following this guide, you will learn how to:
        ./sample_stop.sh
        ```
      </details>
-   
-   **For Applications WITH Scenescape Components** *(Smart Intersection)*:
-   - No action required! The inference pipeline starts automatically when the services launch.
 
 3. **View the Application Output**:
    - Open a browser and go to `http://localhost:3000` to access the Grafana dashboard.
@@ -138,12 +110,7 @@ By following this guide, you will learn how to:
 
 ### How to Use Applications
 
-To learn more about working with each specific application dashboard and visualization:
-
-- [Smart Intersection](../../smart-intersection/docs/user-guide/how-to-use-application.md)
-- [Loitering Detection](../../loitering-detection/docs/user-guide/how-to-use-application.md)
-- [Smart Parking](../../smart-parking/docs/user-guide/how-to-use-application.md)
-- [Smart Tolling](../../smart-tolling/docs/user-guide/how-to-use-application.md)
+- [Smart Parking](./how-to-use-application.md)
 
 ## Troubleshooting
 

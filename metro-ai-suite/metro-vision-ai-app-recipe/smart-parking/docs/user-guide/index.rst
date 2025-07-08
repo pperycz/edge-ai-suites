@@ -7,16 +7,28 @@ This solution also records the status of occupied parking spaces, enabling effic
 
 By leveraging cutting-edge technologies and pre-trained deep learning models, this application enables real-time processing and analysis of video streams, making it an ideal solution. Built on a modular architecture and integration capabilities ensure that users can easily customize and extend its functionalities to meet their specific needs.
 
+
 .. toctree::
    :caption: Get Started
 
    Overview
-   how-to-use-application
-   how-to-deploy-with-helm
-   how-to-deploy-with-edge-orchestrator
-   how-to-customize-application
+   system-requirements
+   get-started
+   release-notes
 
 .. toctree::
-   :caption: Troubleshooting
+   :caption: How to
 
-   troubleshooting
+   how-to-customize-application
+   how-to-deploy-with-helm
+   how-to-deploy-with-edge-orchestrator
+
+.. toctree::
+   :caption: Source Code
+
+   GitHub <https://github.com/intel/metro-ai-suite/tree/main/smart-parking>
+
+.. toctree::
+   :caption: Community and Support
+   
+   support

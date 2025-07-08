@@ -105,6 +105,5 @@ When deployed with the optional Scenescape components, the system provides enhan
 - Integration with existing tolling infrastructure
 
 ## Learn More
-- [System Requirements](system-requirements.md) - Hardware and software requirements for deployment
 - [Get Started](get-started.md) - Step-by-step installation and setup guide
 - [Release Notes](release-notes.md) - Latest updates and version history

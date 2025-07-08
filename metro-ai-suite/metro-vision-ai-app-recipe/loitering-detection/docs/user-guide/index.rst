@@ -10,12 +10,23 @@ By utilizing cutting-edge technologies and pre-trained deep learning models, thi
    :caption: Get Started
 
    Overview
-   how-to-use-application
-   how-to-deploy-with-helm
-   how-to-deploy-with-edge-orchestrator
-   how-to-customize-application
+   system-requirements
+   get-started
+   release-notes
 
 .. toctree::
-   :caption: Troubleshooting
+   :caption: How to
 
-   troubleshooting
+   how-to-customize-application
+   how-to-deploy-with-helm
+   how-to-deploy-with-edge-orchestrator
+
+.. toctree::
+   :caption: Source Code
+
+   GitHub <https://github.com/intel/metro-ai-suite/tree/main/loitering-detection>
+
+.. toctree::
+   :caption: Community and Support
+   
+   support
