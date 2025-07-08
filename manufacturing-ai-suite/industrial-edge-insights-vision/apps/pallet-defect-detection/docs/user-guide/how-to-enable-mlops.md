@@ -21,9 +21,9 @@ With this feature, during runtime, you can download a new model from the registr
    > NOTE- Replace the port in the curl request according to the deployment method i.e. default 8080 for compose based.
 
 3. Restart the model with a new model from Model Registry.
-    The following curl command downloads the model from Model Registry using the specs provided in the payload. Upon download, the running pipeline is restarted with replacing the older model with this new model.
+    The following curl command downloads the model from Model Registry using the specs provided in the payload. Upon download, the running pipeline is restarted with replacing the older model with this new model. Replace the `<instance_id_of_currently_running_pipeline>` in the URL below with the id of the pipeline instance currently running.
     ```sh
-    curl 'http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pallet_defect_detection_mlops/<instance_id_of_currently_running_pipeline>/models' \
+    curl 'http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pallet_defect_detection_mlops/{instance_id_of_currently_running_pipeline}/models' \
     --header 'Content-Type: application/json' \
     --data '{
     "project_name": "pallet-defect-detection",
@@ -106,7 +106,7 @@ With this feature, during runtime, you can download a new model from the registr
 
    > The following section assumes Model Registry microservice is up and running. 
 
-   > For this demonstration we will be using Geti trained pallet defect detection model. Usually, the newer model is the same as older architecture wise, but is retrained for better performance. We will using the same model and call it as a different version.
+   > For this demonstration we will be using Geti trained pallet defect detection model. Usually, the newer model is the same as older, architecture wise, but is retrained for better performance. We will using the same model and call it a different version.
 
 1.  Download and prepare the model.
     ```sh

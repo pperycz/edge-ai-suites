@@ -162,6 +162,9 @@
 ## Further Reading
 - [Helm based deployment](docs/user-guide/how-to-deploy-using-helm-charts.md)
 - [MLOps using Model Registry](docs/user-guide/how-to-enable-mlops.md)
+- [Run multiple AI pipelines](docs/user-guide/how-to-run-multiple-ai-pipelines.md)
+- [Publish frames to S3 storage pipelines](docs/user-guide/how-to-run-store-frames-in-s3.md)
+- [View telemetry data in Open Telemetry](docs/user-guide/how-to-view-telemetry-data.md)
 - [Publish metadata to OPCUA](docs/user-guide/how-to-use-opcua-publisher.md)
 
 ## Troubleshooting
