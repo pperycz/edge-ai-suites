@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 6,
   "links": [],
   "panels": [
     {
@@ -40,9 +41,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -50,7 +51,6 @@
         "x": 0,
         "y": 1
       },
-      "header_js": "{}",
       "id": 19,
       "links": [
         {
@@ -58,50 +58,24 @@
           "url": "http://0.0.0.0:3000/d/be2er9dbe8a9sd/zone-1-lane-1?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_1\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 1",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_1",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -109,7 +83,6 @@
         "x": 6,
         "y": 1
       },
-      "header_js": "{}",
       "id": 20,
       "links": [
         {
@@ -117,50 +90,24 @@
           "url": "http://0.0.0.0:3000/d/aecxdm402t1q8a/zone-1-lane-2?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_2\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 2",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_2",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -168,7 +115,6 @@
         "x": 12,
         "y": 1
       },
-      "header_js": "{}",
       "id": 21,
       "links": [
         {
@@ -176,50 +122,24 @@
           "url": "http://0.0.0.0:3000/d/cecxe4agf3caoe/zone-1-lane-3?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_3\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 3",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_3",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -227,7 +147,6 @@
         "x": 18,
         "y": 1
       },
-      "header_js": "{}",
       "id": 22,
       "links": [
         {
@@ -235,45 +154,19 @@
           "url": "http://0.0.0.0:3000/d/fecxe786edr0ge/zone-1-lane-4?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_4\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 4",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_4",
-      "withCredentials": false
+      "type": "text"
     },
     {
       "collapsed": false,
@@ -289,9 +182,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -299,7 +192,6 @@
         "x": 0,
         "y": 10
       },
-      "header_js": "{}",
       "id": 23,
       "links": [
         {
@@ -307,50 +199,24 @@
           "url": "http://0.0.0.0:3000/d/eecxe9dpexfr4d/zone-2-lane-1?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_5\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 1",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_5",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -358,7 +224,6 @@
         "x": 6,
         "y": 10
       },
-      "header_js": "{}",
       "id": 24,
       "links": [
         {
@@ -366,50 +231,24 @@
           "url": "http://0.0.0.0:3000/d/becxeb2d25xq8c/zone-2-lane-2?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_6\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 2",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_6",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -417,7 +256,6 @@
         "x": 12,
         "y": 10
       },
-      "header_js": "{}",
       "id": 25,
       "links": [
         {
@@ -425,50 +263,24 @@
           "url": "http://0.0.0.0:3000/d/fecxectr9w6wwe/zone-2-lane-3?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_7\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 3",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_7",
-      "withCredentials": false
+      "type": "text"
     },
     {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "PD0067CAD9A63E081"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -476,7 +288,6 @@
         "x": 18,
         "y": 10
       },
-      "header_js": "{}",
       "id": 26,
       "links": [
         {
@@ -484,45 +295,19 @@
           "url": "http://0.0.0.0:3000/d/decxee1kbadxcd/zone-2-lane-4?orgId=1"
         }
       ],
-      "method": "iframe",
-      "mode": "html",
-      "params_js": "{ }",
-      "pluginVersion": "7.3.4",
-      "request": "http",
-      "responseType": "text",
-      "showErrors": true,
-      "showTime": false,
-      "showTimeFormat": "LTS",
-      "showTimeValue": "request",
-      "skipSameURL": true,
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "PD0067CAD9A63E081"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "json",
-          "url": "https://jsonplaceholder.typicode.com/users",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "templateResponse": true,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<iframe \n  src=\"${WEBRTC_URL}/object_detection_8\" \n  style=\"width:100%;height:230px\" \n  allow=\"autoplay; encrypted-media\">\n</iframe>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
       "timeFrom": "now-1d",
       "title": "Lane 4",
-      "type": "ryantxu-ajax-panel",
-      "url": "http://0.0.0.0:8082/?destination_peer_id=object_detection_8",
-      "withCredentials": false
+      "type": "text"
     },
     {
       "datasource": {
@@ -579,7 +364,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "datasource": {
@@ -654,9 +439,9 @@
             "excludeByName": {},
             "includeByName": {},
             "indexByName": {
-              "License Plate": 3,
               "Entry Time": 4,
               "Lane ID": 1,
+              "License Plate": 3,
               "Type": 2,
               "Zone ID": 0
             },
@@ -688,9 +473,7 @@
               {
                 "config": {
                   "id": "equal",
-                  "options": {
-                    "value": null
-                  }
+                  "options": {}
                 },
                 "fieldName": "Type"
               }
@@ -715,8 +498,9 @@
       "type": "table"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
@@ -743,7 +527,6 @@
     "to": "now"
   },
   "timepicker": {
-    "hidden": false,
     "refresh_intervals": [
       "5s",
       "15s",
