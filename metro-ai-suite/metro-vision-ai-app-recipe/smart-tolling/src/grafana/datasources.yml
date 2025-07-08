@@ -10,6 +10,7 @@ datasources:
   - name: grafana-mqtt-datasource
     type: grafana-mqtt-datasource
     access: proxy
+    isDefault: true
     readOnly: false
     editable: true
     jsonData: { "uri": "tcp://broker:1883" }
