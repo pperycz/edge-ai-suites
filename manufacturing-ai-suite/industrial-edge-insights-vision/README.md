@@ -9,13 +9,19 @@ Both compose based as well as helm based deployments are supported by this appli
 ## Description
 
 ### Architecture
-It consists of the following microservices: DL Streamer Pipeline Server, Model Registry Microservice(MRaaS), MediaMTX server, Coturn server, Open Telemetry Collector, Prometheus, Postgres and Minio.
+It consists of the following microservices: 
+- DL Streamer Pipeline Server
+- Model Registry Microservice(MRaaS)
+- MediaMTX server, Coturn server
+- Open Telemetry Collector
+- Prometheus
+- Postgres
+- Minio.
 
 
 <div style="text-align: center;">
     <img src=defect-detection-arch-diagram.png width=800>
 </div>
-More details to be added..
 
 ### Directory structure
 
@@ -55,17 +61,16 @@ Following directory structure consisting of generic deployment code as well as p
 
  - **apps**: containing application specific pre-requisite installers, configurations and runtime data. Users can follow the same structure to create their own application. The data from here is used for docker based deployments.
 
- - **helm**: contains helm charts and application specific pre-requisite installers, configurations and runtime data. The configs and data within it are similar to **apps** but are kept here for easy packaging.
-
- - **resources**: This directory and its subdirs are created only after installation is done by running `install.sh` for that application. It contains artificacts such as models, videos etc. Users can modify their application's `install.sh` script to download artifacts as per their usecase requriements.
-
- 
     - *configs/*: 
             associated container configurations suchas DLStreamer Pipeline Server configuration, etc.
     - *install.sh*: 
             pre-requisite installer to setup envs, download artificats such as models/videos to `resources/` directory. It also sets executable permissions for scripts.
     - *payload.json*: 
-            A JSON array file containing one or more request(s) to be sent to DLStreamer Pipeline Server to launch GStreamer pipeline(s). The payload data is associated with the *configs/pipeline-server-config.json* provided for that application. Each JSON inside the array has two keys- `pipeline` and `payload` that refers to the pipeline it belongs to and the payload used to launch an instance of the pipeline. 
+            A JSON array file containing one or more request(s) to be sent to DLStreamer Pipeline Server to launch GStreamer pipeline(s). The payload data is associated with the *configs/pipeline-server-config.json* provided for that application. Each JSON inside the array has two keys- `pipeline` and `payload` that refers to the pipeline it belongs to and the payload used to launch an instance of the pipeline.
+            
+ - **helm**: contains helm charts and application specific pre-requisite installers, configurations and runtime data. The configs and data within it are similar to **apps** but are kept here for easy packaging.
+
+ - **resources**: This directory and its subdirs are created only after installation is done by running `install.sh` for that application. It contains artificacts such as models, videos etc. Users can modify their application's `install.sh` script to download artifacts as per their usecase requriements.
 
  - **.env_app_name**: Environment file containing application specific variables. Before starting the application, Users should rename it to `.env` for compose file to source it automatically.
 
