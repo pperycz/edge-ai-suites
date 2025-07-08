@@ -4,7 +4,6 @@ datasources:
   - name: Infinity
     type: yesoreyeram-infinity-datasource
     access: proxy
-    isDefault: true
     jsonData:
 
   - name: grafana-mqtt-datasource
