@@ -99,7 +99,7 @@
     Posting payload to REST server at http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pallet_defect_detection
     Payload for pipeline 'pallet_defect_detection' posted successfully. Response: "4b36b3ce52ad11f0ad60863f511204e2"
     ```
-    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/pdd/ for Pallet Defect Detection
+    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/pdd/
     
 7.  Get status of pipeline instance(s) running.
     ```sh
@@ -162,7 +162,10 @@
 ## Further Reading
 - [Helm based deployment](how-to-deploy-using-helm-charts.md)
 - [MLOps using Model Registry](how-to-enable-mlops.md)
+- [Run multiple AI pipelines](how-to-run-multiple-ai-pipelines.md)
+- [Publish frames to S3 storage pipelines](how-to-run-store-frames-in-s3.md)
+- [View telemetry data in Open Telemetry](how-to-view-telemetry-data.md)
 - [Publish metadata to OPCUA](how-to-use-opcua-publisher.md)
 
 ## Troubleshooting
-- [Troubleshooting Guide]()
+- [Troubleshooting Guide](troubleshooting-guide.md)
