@@ -248,18 +248,18 @@
     "list": [
       {
         "current": {
-          "text": "http://10.123.232.108:8889",
-          "value": "http://10.123.232.108:8889"
+          "text": "http://0.0.0.0:8889",
+          "value": "http://0.0.0.0:8889"
         },
         "name": "WEBRTC_URL",
         "options": [
           {
             "selected": true,
-            "text": "http://10.123.232.108:8889",
-            "value": "http://10.123.232.108:8889"
+            "text": "http://0.0.0.0:8889",
+            "value": "http://0.0.0.0:8889"
           }
         ],
-        "query": "http://10.123.232.108:8889",
+        "query": "http://0.0.0.0:8889",
         "type": "textbox"
       }
     ]
