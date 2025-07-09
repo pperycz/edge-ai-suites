@@ -7,16 +7,14 @@
                 "type": "uri"
             },
             "destination": {
-            "frame": {
-                "type": "webrtc",
-                "peer-id": "ad"
-            }
+                "frame": {
+                    "type": "webrtc",
+                    "peer-id": "anomaly"
+                }
             },
             "parameters": {
-                "detection-properties": {
+                "classification-properties": {
                     "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
-                    "inference-region": "full-frame",
-                    "pre-process-backend": "opencv",
                     "device": "CPU"
                 }
             }

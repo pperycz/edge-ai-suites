@@ -37,7 +37,7 @@ download_artifacts() {
         return 1
     fi
     # Download model artifacts if not already present
-    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../../resources/$app_name/models/$app_name"
+    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../resources/$app_name/models/$app_name"
     if [ ! -d $LOCAL_MODEL_DIR ]; then
         # create the models directory if it does not exist
 
@@ -66,7 +66,7 @@ download_artifacts() {
     fi
 
     # Download video artifacts if not already present
-    LOCAL_VIDEO_DIR="$SCRIPT_DIR/../../../resources/$app_name/videos"
+    LOCAL_VIDEO_DIR="$SCRIPT_DIR/../../resources/$app_name/videos"
     if [ ! -d $LOCAL_VIDEO_DIR ]; then
         # create the videos directory if it does not exist
         if ! mkdir -p $LOCAL_VIDEO_DIR; then
@@ -86,4 +86,4 @@ download_artifacts() {
 
 }
 
-download_artifacts "anomaly-detection"
+download_artifacts "pallet-defect-detection"

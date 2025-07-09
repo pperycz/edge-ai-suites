@@ -5,11 +5,11 @@
                 "name": "anomaly_detection_mlops",
                 "source": "gstreamer",
                 "queue_maxsize": 50,
-                "pipeline": "multifilesrc loop=TRUE location=/home/pipeline-server/resources/videos/anomalib_pcb_test.avi name=source ! h264parse ! decodebin ! queue max-size-buffers=10 ! videoconvert ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv  ! gvametaconvert add-empty-results=true name=metaconvert ! queue ! gvafpscounter ! appsink name=destination",
+                "pipeline": "multifilesrc loop=TRUE location=/home/pipeline-server/resources/videos/anomalib_pcb_test.avi name=source ! decodebin ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! queue ! gvawatermark ! gvafpscounter ! appsink name=destination",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "detection-properties": {
+                        "classification-properties": {
                             "element": {
                                 "name": "classification",
                                 "format": "element-properties"
@@ -23,11 +23,11 @@
                 "name": "anomaly_detection",
                 "source": "gstreamer",
                 "queue_maxsize": 50,
-                "pipeline": "{auto_source} name=source ! decodebin ! videoconvert ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! gvametaconvert add-empty-results=true name=metaconvert ! queue ! gvafpscounter ! appsink name=destination",
+                "pipeline": "{auto_source} name=source ! decodebin ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! queue ! gvawatermark ! gvafpscounter ! appsink name=destination",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "detection-properties": {
+                        "classification-properties": {
                             "element": {
                                 "name": "classification",
                                 "format": "element-properties"
@@ -41,11 +41,11 @@
                 "name": "anomaly_detection_s3write",
                 "source": "gstreamer",
                 "queue_maxsize": 50,
-                "pipeline": "{auto_source} name=source ! decodebin ! videoconvert ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! gvametaconvert add-empty-results=true name=metaconvert ! queue ! gvafpscounter ! queue ! jpegenc ! appsink name=destination",
+                "pipeline": "{auto_source} name=source ! decodebin ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! queue ! gvawatermark ! gvafpscounter ! appsink name=destination",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "detection-properties": {
+                        "classification-properties": {
                             "element": {
                                 "name": "classification",
                                 "format": "element-properties"
@@ -61,24 +61,20 @@
                 "auto_start": false
             },
             {
-                "name": "anomaly_detection_opcua",
+                "name": "anomaly_detection_mqtt",
                 "source": "gstreamer",
                 "queue_maxsize": 50,
-                "pipeline": "{auto_source} name=source ! decodebin ! videoconvert ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! gvametaconvert add-empty-results=true name=metaconvert ! queue ! gvawatermark ! queue ! gvafpscounter ! queue ! jpegenc ! appsink name=destination",
+                "pipeline": "{auto_source} name=source ! decodebin ! gvaclassify name=classification inference-region=full-frame device=CPU pre-process-backend=opencv model-instance-id=inst0 ! queue ! gvawatermark ! gvafpscounter ! appsink name=destination",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "detection-properties": {
+                        "classification-properties": {
                             "element": {
                                 "name": "classification",
                                 "format": "element-properties"
                             }
                         }
                     }
-                },
-                "opcua_publisher": {
-                    "publish_frame": true,
-                    "variable": "ns=3;s=Demo.Static.Scalar.String"
                 },
                 "auto_start": false
             }

@@ -3,8 +3,8 @@
 # Download artifacts for a specific sample application
 #   by calling respective app's install.sh script
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
-MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/worker-safety.zip"
-VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/worker-safety/resources/videos/warehouse.avi"
+MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/pallet_defect_detection.zip"
+VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/pallet-defect-detection/resources/videos/warehouse.avi"
 
 err() {
     echo "ERROR: $1" >&2
@@ -37,7 +37,7 @@ download_artifacts() {
         return 1
     fi
     # Download model artifacts if not already present
-    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../../resources/$app_name/models/$app_name"
+    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../resources/$app_name/models/$app_name"
     if [ ! -d $LOCAL_MODEL_DIR ]; then
         # create the models directory if it does not exist
 
@@ -66,7 +66,7 @@ download_artifacts() {
     fi
 
     # Download video artifacts if not already present
-    LOCAL_VIDEO_DIR="$SCRIPT_DIR/../../../resources/$app_name/videos"
+    LOCAL_VIDEO_DIR="$SCRIPT_DIR/../../resources/$app_name/videos"
     if [ ! -d $LOCAL_VIDEO_DIR ]; then
         # create the videos directory if it does not exist
         if ! mkdir -p $LOCAL_VIDEO_DIR; then
@@ -86,4 +86,4 @@ download_artifacts() {
 
 }
 
-download_artifacts "anomaly-detection"
+download_artifacts "pallet-defect-detection"
