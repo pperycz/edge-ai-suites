@@ -165,7 +165,7 @@
 - [Run multiple AI pipelines](docs/user-guide/how-to-run-multiple-ai-pipelines.md)
 - [Publish frames to S3 storage pipelines](docs/user-guide/how-to-run-store-frames-in-s3.md)
 - [View telemetry data in Open Telemetry](docs/user-guide/how-to-view-telemetry-data.md)
-- [Publish metadata to OPCUA](docs/user-guide/how-to-use-opcua-publisher.md)
+- [Publish metadata to MQTT](docs/user-guide/how-to-start-mqtt-publisher.md)
 
 ## Troubleshooting
 - [Troubleshooting Guide](docs/user-guide/troubleshooting-guide.md)
