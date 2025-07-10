@@ -34,12 +34,12 @@ Following directory structure consisting of generic deployment code as well as p
         application_name/            
             configs/                
                 pipeline-server-config.json
-            install.sh
+            setup.sh
             payload.json
     helm/
         apps/
             application_name/
-                install.sh
+                setup.sh
                 payload.json
                 pipeline-server-config.json
         templates/
@@ -53,7 +53,7 @@ Following directory structure consisting of generic deployment code as well as p
     .env_app_name
     docker-compose.yml
     
-    install.sh
+    setup.sh
     sample_list.sh
     sample_start.sh
     sample_status.sh
@@ -63,14 +63,14 @@ Following directory structure consisting of generic deployment code as well as p
 
     - *configs/*: 
             associated container configurations suchas DLStreamer Pipeline Server configuration, etc.
-    - *install.sh*: 
+    - *setup.sh*: 
             pre-requisite installer to setup envs, download artificats such as models/videos to `resources/` directory. It also sets executable permissions for scripts.
     - *payload.json*: 
             A JSON array file containing one or more request(s) to be sent to DLStreamer Pipeline Server to launch GStreamer pipeline(s). The payload data is associated with the *configs/pipeline-server-config.json* provided for that application. Each JSON inside the array has two keys- `pipeline` and `payload` that refers to the pipeline it belongs to and the payload used to launch an instance of the pipeline.
             
  - **helm**: contains helm charts and application specific pre-requisite installers, configurations and runtime data. The configs and data within it are similar to **apps** but are kept here for easy packaging.
 
- - **resources**: This directory and its subdirs are created only after installation is done by running `install.sh` for that application. It contains artificacts such as models, videos etc. Users can modify their application's `install.sh` script to download artifacts as per their usecase requriements.
+ - **resources**: This directory and its subdirs are created only after installation is done by running `setup.sh` for that application. It contains artificacts such as models, videos etc. Users can modify their application's `setup.sh` script to download artifacts as per their usecase requriements.
 
  - **.env_app_name**: Environment file containing application specific variables. Before starting the application, Users should rename it to `.env` for compose file to source it automatically.
 
@@ -80,7 +80,7 @@ Following directory structure consisting of generic deployment code as well as p
  
  | Shell Command         | Description                              | Parameters                    |
 |-----------------------|----------------------------------------|-------------------------------|
-| `./install.sh`     | Runs pre-requisites and app specific installer                   | *(none)*                      |
+| `./setup.sh`     | Runs pre-requisites and app specific installer                   | *(none)*                      |
 | `./sample_start.sh`    | Runs all or specific pipeline from the config.json. <br> Optionally, run copies of payload (default 1)| `--all` (default) <br> `--pipeline` or `-p` <br> `--payload-copies` or `-n` |
 | `./sample_stop.sh`     | Stops all/specific instance by id      | `--all` (default) <br> `--id` or `-i` |
 | `./sample_list.sh`     | List loaded pipelines                   | *(none)*                      |
@@ -99,7 +99,7 @@ Please ensure that you have the correct version of the DL Streamer Pipeline Serv
 General instructions for docker based deployment is as follows.
 
 1. Prepare the `.env` file for compose to source during deployment. This chosen env file defines the application you would be running.
-2. Run `install.sh` to setup pre-requisites, download artifacts, etc.
+2. Run `setup.sh` to setup pre-requisites, download artifacts, etc.
 3. Bring the services up with `docker compose up`.
 4. Run `sample_start.sh` to start pipeline. This sends curl request with pre-defined payload to the running DLStreamer Pipeline Server.
 5. Run `sample_status.sh` or `sample_list.sh` to monitor pipeline status or list available pipelines.

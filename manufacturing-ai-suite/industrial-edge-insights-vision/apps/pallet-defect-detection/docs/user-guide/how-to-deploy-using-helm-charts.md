@@ -28,7 +28,7 @@
     ```
 3.  Install pre-requisites. Run with sudo if needed.
     ```sh
-    ./install.sh helm
+    ./setup.sh helm
     ```
     This sets up application pre-requisites, download artifacts, sets executable permissions for scripts etc. Downloaded resource directories.
 

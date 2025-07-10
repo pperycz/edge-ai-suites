@@ -28,7 +28,7 @@
     ```
 3.  Install pre-requisites. Run with sudo if needed.
     ```sh
-    ./install.sh
+    ./setup.sh
     ```
     This sets up application pre-requisites, download artifacts, sets executable permissions for scripts etc. Downloaded resource directories are made available to the application via volume mounting in docker compose file automatically.
 

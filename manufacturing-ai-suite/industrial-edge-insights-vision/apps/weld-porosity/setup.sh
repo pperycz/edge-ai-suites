@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Download artifacts for a specific sample application
-#   by calling respective app's install.sh script
+#   by calling respective app's setup.sh script
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
-MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/pallet_defect_detection.zip"
-VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/pallet-defect-detection/resources/videos/warehouse.avi"
+MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/weld_porosity_classification.zip"
+VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/weld-porosity/resources/videos/welding.avi"
 
 err() {
     echo "ERROR: $1" >&2
@@ -86,4 +86,4 @@ download_artifacts() {
 
 }
 
-download_artifacts "pallet-defect-detection"
+download_artifacts "weld-porosity"

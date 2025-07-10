@@ -14,6 +14,8 @@ For more details on deployment, refer to the [documentation](https://docs.edgepl
 ## Supported versions
 
 ---
+2.4.0
+
 2.3.0
 
 2.2.0
