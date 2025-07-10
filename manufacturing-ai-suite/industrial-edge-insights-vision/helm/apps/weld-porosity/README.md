@@ -56,7 +56,7 @@
     ```sh
     # Example output for Weld Porosity Classification
     Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    Running sample app: weld_porosity_classification
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Loaded pipelines:
@@ -117,7 +117,7 @@
     ```sh
     # Example output for Weld Porosity Classification
     Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    Running sample app: weld_porosity_classification
     [
         {
             "avg_fps": 30.09161750097031,
