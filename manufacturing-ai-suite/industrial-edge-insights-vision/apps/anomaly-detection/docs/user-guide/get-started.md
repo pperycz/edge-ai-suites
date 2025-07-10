@@ -11,7 +11,7 @@
 > Note that the following instructions assume Docker engine is setup in the host system.
 1.  Set app specific environment variable file
     ```sh
-    cp .env_worker_safety .env
+    cp .env_anomaly_detection .env
     ```    
 
 2.  Edit the HOST_IP, proxy and other environment variables in `.env` file as follows
@@ -24,7 +24,7 @@
     MTX_WEBRTCICESERVERS2_0_PASSWORD=<password>
 
     # application directory
-    SAMPLE_APP=worker-safety
+    SAMPLE_APP=anomaly-detection
     ```
 3.  Install pre-requisites. Run with sudo if needed.
     ```sh
@@ -47,9 +47,9 @@
     Example Output:
 
     ```sh
-    # Example output for Worker Safety
-    Environment variables loaded from $PWD/.env
-    Running sample app: worker-safety
+    # Example output for Anomaly Detection
+    Environment variables loaded from <Work-Dir>/.env
+    Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Loaded pipelines:
@@ -60,46 +60,46 @@
             "name": "user_defined_pipelines",
             "parameters": {
             "properties": {
-                "detection-properties": {
+                "classification-properties": {
                     "element": {
                         "format": "element-properties",
-                        "name": "detection"
+                        "name": "classification"
                     }
                 }
             },
             "type": "object"
             },
             "type": "GStreamer",
-            "version": "worker_safety"
+            "version": "anomaly_detection"
         }
         ...
     ]
     ```
 6.  Start the sample application with a pipeline.
     ```sh
-    ./sample_start.sh -p worker_safety
+    ./sample_start.sh -p anomaly_detection
     ```
     This command would look for the payload for the pipeline specified in `-p` argument above, inside the `payload.json` file and launch the a pipeline instance in DLStreamer Pipeline Server. Refer to the table, to learn about different options available. 
     
     Output:
 
     ```sh
-    # Example output for Worker Safety
-    Environment variables loaded from $PWD/.env
-    Running sample app: worker-safety
+    # Example output for Anomaly Detection
+    Environment variables loaded from <Work-Dir>/.env
+    Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
-    Loading payload from $PWD/apps/worker-safety/payload.json
+    Loading payload from /home/intel/Desktop/codebase/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/helm/apps/anomaly-detection/payload.json
     Payload loaded successfully.
-    Starting pipeline: worker_safety
-    Launching pipeline: worker_safety
-    Extracting payload for pipeline: worker_safety
-    Found 1 payload(s) for pipeline: worker_safety
-    Payload for pipeline 'worker_safety' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/worker-safety/model.xml","device":"CPU"}}}
-    Posting payload to REST server at http://10.223.23.156:8080/pipelines/user_defined_pipelines/worker_safety
-    Payload for pipeline 'worker_safety' posted successfully. Response: "74bebe7a5d1211f08ab0da88aa49c01e"
+    Starting pipeline: anomaly_detection
+    Launching pipeline: anomaly_detection
+    Extracting payload for pipeline: anomaly_detection
+    Found 1 payload(s) for pipeline: anomaly_detection
+    Payload for pipeline 'anomaly_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"anomaly"}},"parameters":{"classification-properties":{"model":"/home/pipeline-server/resources/models/anomaly-detection/model.xml","device":"CPU"}}}
+    Posting payload to REST server at http://10.223.23.156:8080/pipelines/user_defined_pipelines/anomaly_detection
+    Payload for pipeline 'anomaly_detection' posted successfully. Response: "f0c0b5aa5d4911f0bca7023bb629a486"
     ```
-    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/worker_safety/
+    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/anomaly/
     
 7.  Get status of pipeline instance(s) running.
     ```sh
@@ -109,16 +109,16 @@
     
     Output:
     ```sh
-    # Example output for Worker Safety
-    Environment variables loaded from $PWD/.env
-    Running sample app: worker-safety
+    # Example output for Anomaly Detection
+    Environment variables loaded from <Work-Dir>/.env
+    Running sample app: anomaly-detection
     [
     {
-        "avg_fps": 30.036955894826452,
-        "elapsed_time": 3.096184492111206,
-        "id": "784b87b45d1511f08ab0da88aa49c01e",
+        "avg_fps": 24.123323428597942,
+        "elapsed_time": 9.865960359573364,
+        "id": "f0c0b5aa5d4911f0bca7023bb629a486",
         "message": "",
-        "start_time": 1752100724.3075056,
+        "start_time": 1752123260.5558383,
         "state": "RUNNING"
     }
     ]
@@ -131,26 +131,26 @@
     
     Output:
     ```sh
-    # Example output for Worker Safety
+    # Example output for Anomaly Detection
     No pipelines specified. Stopping all pipeline instances
-    Environment variables loaded from $PWD/.env
-    Running sample app: worker-safety
+    Environment variables loaded from <Work-Dir>/.env
+    Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Instance list fetched successfully. HTTP Status Code: 200
     Found 1 running pipeline instances.
-    Stopping pipeline instance with ID: 784b87b45d1511f08ab0da88aa49c01e
-    Pipeline instance with ID '784b87b45d1511f08ab0da88aa49c01e' stopped successfully. Response: {
-        "avg_fps": 29.985911953641363,
-        "elapsed_time": 37.45091152191162,
-        "id": "784b87b45d1511f08ab0da88aa49c01e",
+    Stopping pipeline instance with ID: f0c0b5aa5d4911f0bca7023bb629a486
+    Pipeline instance with ID 'f0c0b5aa5d4911f0bca7023bb629a486' stopped successfully. Response: {
+        "avg_fps": 26.487679514091333,
+        "elapsed_time": 25.634552478790283,
+        "id": "f0c0b5aa5d4911f0bca7023bb629a486",
         "message": "",
-        "start_time": 1752100724.3075056,
+        "start_time": 1752123260.5558383,
         "state": "RUNNING"
     }
     ```
     If you wish to stop a specific instance, you can provide it with an `--id` argument to the command.    
-    For example, `./sample_stop.sh --id 784b87b45d1511f08ab0da88aa49c01e`
+    For example, `./sample_stop.sh --id f0c0b5aa5d4911f0bca7023bb629a486`
 
 9.  Bring down the application
     ```sh

@@ -12,7 +12,7 @@ Edge Orchestrator, part of Intel’s Edge Software, simplifies edge application 
 
 * **Flexible Configuration**: From organizing your physical infrastructure to managing the permutations of executing applications in a variety of runtime environments, Edge Orchestrator gives you the flexibility to define the policies, criteria, and hierarchies that make the most sense for your specific business needs.
 
-To deploy the **Worker Safety** Sample Application with the Edge Orchestrator, follow the steps described in this document.
+To deploy the **Anomaly Detection** Sample Application with the Edge Orchestrator, follow the steps described in this document.
 
 ## Procedure to Deploy with Edge Orchestrator
 
@@ -24,18 +24,18 @@ To deploy the **Worker Safety** Sample Application with the Edge Orchestrator, f
 
 ### Making the Deployment Package Available
 
-1. Clone the **Worker Safety** repository:
+1. Clone the **Anomaly Detection** repository:
 
     ```bash
     git clone https://github.com/open-edge-platform/edge-ai-suites
-    cd edge-ai-suites/manufacturing-ai-suite/worker-safety
+    cd edge-ai-suites/manufacturing-ai-suite/anomaly-detection
     ```
 
 1. From the web browser, open the URL of the Edge Orchestrator and import the Deployment Package present in the folder **deployment-package** following the steps described in [Import Deployment Package](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/package_software/import_deployment.html#import-deployment-package>).
 
 1. Once the deployment package has been imported into the Edge Orchestrator, you can see it in the list of Web UI as shown here.
 
-**![Worker Safety Image](./images/worker-safety-dp.png)**
+**![Anomaly Image](./images/anomaly-dp.png)**
 
 See [Deployment Packages](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/package_software/deploy_packages.html#view-deployment-packages>) for more information on deployment packages.
 
@@ -47,7 +47,7 @@ To set up a deployment:
 
 1. Select the **Deployments** tab and click the **Setup a Deployment** button. The Setup a Deployment page appears.
 
-1. On the Setup a Deployment page, select the **worker_safety** package for the deployment from the list, and click **Next**. The Select a Profile step appears.
+1. On the Setup a Deployment page, select the **anomaly** package for the deployment from the list, and click **Next**. The Select a Profile step appears.
 
 1. In the Select a Profile step, select the deployment profile, and click **Next**. The Override Profile Values page appears.
 
@@ -67,7 +67,7 @@ After a few minutes, the deployment will start and will take about 5 minutes to 
 
 In the Edge Orchestrator Web UI, you can track the application installation through the [View Deployment Details](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/package_software/deployment_details.html#view-deployment-details>) view.
 
-The **Worker Safety** Sample Application is fully deployed when the applications become green and the status is shown as _Running_.
+The **Anomaly Detection** Sample Application is fully deployed when the applications become green and the status is shown as _Running_.
 
 You can view the deployment status on the Deployments page.
 
@@ -75,10 +75,10 @@ You can view the deployment status on the Deployments page.
 
 For more information on setting up a deployment, see [Set up a Deployment](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/package_software/setup_deploy.html#set-up-a-deployment>).
 
-### Access the **Worker Safety** Sample Application
+### Access the **Anomaly Detection** Sample Application
 
 1. Download the kubeconfig of the cluster of the Edge Node on which the Application has been deployed. Refer [Kubeconfig Download](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/set_up_edge_infra/accessing_clusters.html#organize-cluster-access-with-a-kubeconfig-file>).
 
-1. Follow the steps described in the **Worker Safety** [Documentation](<how-to-deploy-with-helm.md#run-multiple-ai-pipelines>) on usage of the application.
+1. Follow the steps described in the **Anomaly Detection** [Documentation](<how-to-deploy-with-helm.md#run-multiple-ai-pipelines>) on usage of the application.
 
    > Note: Skip the Deploy helm chart step

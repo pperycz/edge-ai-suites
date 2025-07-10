@@ -35,20 +35,20 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
 3. Start the pipeline with the following cURL command  with `<HOST_IP>` set to system IP. Ensure to give the correct path to the model as seen below. This example starts an AI pipeline.
 
     ```sh
-    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/worker_safety_s3write -X POST -H 'Content-Type: application/json' -d '{
+    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/anomaly_detection_s3write -X POST -H 'Content-Type: application/json' -d '{
         "source": {
-            "uri": "file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4",
+            "uri": "file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi",
             "type": "uri"
         },
         "destination": {
             "frame": {
                 "type": "webrtc",
-                "peer-id": "worker_safety_s3"
+                "peer-id": "anomaly_s3"
             }
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
                 "device": "CPU"
             }
         }

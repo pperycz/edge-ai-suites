@@ -13,10 +13,10 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
     ```sh
     docker compose up -d
     ```
-2. Start the worker safety pipeline with the following Client URL (cURL) command by replacing the `<peer-str-id>` with a string id eg: `worker_safety1` and `<HOST_IP>` with the system IP. This pipeline is configured to run in a loop forever. This REST/cURL request will return a pipeline instance ID, which can be used as an identifier to query later the pipeline status or stop the pipeline instance. For example, a6d67224eacc11ec9f360242c0a86003.
+2. Start the anomaly detection pipeline with the following Client URL (cURL) command by replacing the `<peer-str-id>` with a string id eg: `anomaly1` and `<HOST_IP>` with the system IP. This pipeline is configured to run in a loop forever. This REST/cURL request will return a pipeline instance ID, which can be used as an identifier to query later the pipeline status or stop the pipeline instance. For example, a6d67224eacc11ec9f360242c0a86003.
 
     ``` sh
-    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/worker_safety_mlops -X POST -H 'Content-Type: application/json' -d '{
+    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/anomaly_detection_mlops -X POST -H 'Content-Type: application/json' -d '{
         "destination": {
             "frame": {
                 "type": "webrtc",
@@ -25,19 +25,19 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
                 "device": "CPU"
             }
         }
     }'
     ```
 
-3. Start another worker safety pipeline with the following Client URL (cURL) command by replacing the `<different-peer-str-id>` with a different string id than the one in above step. eg: `worker_safety2` and `<HOST_IP>` with the system IP. This pipeline is not configured to run in a loop forever. This REST/cURL request will return a pipeline instance ID, which can be used as an identifier to query later the pipeline status or stop the pipeline instance. For example, a6d67224eacc11ec9f360242c0a86003.
+3. Start another anomaly detection pipeline with the following Client URL (cURL) command by replacing the `<different-peer-str-id>` with a different string id than the one in above step. eg: `anomaly2` and `<HOST_IP>` with the system IP. This pipeline is not configured to run in a loop forever. This REST/cURL request will return a pipeline instance ID, which can be used as an identifier to query later the pipeline status or stop the pipeline instance. For example, a6d67224eacc11ec9f360242c0a86003.
 
     ``` sh
-    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/worker_safety -X POST -H 'Content-Type: application/json' -d '{
+    curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/anomaly_detection -X POST -H 'Content-Type: application/json' -d '{
         "source": {
-            "uri": "file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4",
+            "uri": "file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi",
             "type": "uri"
         },
         "destination": {
@@ -48,7 +48,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
                 "device": "CPU"
             }
         }
