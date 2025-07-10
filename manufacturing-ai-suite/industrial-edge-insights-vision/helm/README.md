@@ -14,6 +14,4 @@ General instructions for helm based deployment is as follows. This assumes you h
 Using the template above, several industrial recipies have been provided for users to deploy using helm on k8s cluster. Click on the applications below to get started.
 
 * [Pallet Defect Detection](apps/pallet-defect-detection/README.md)
-* [Weld Porosity Classfication]()
-* [Anomaly Detection]()
-* [Work Safety Detection]()
+* [Weld Porosity Classfication](apps/weld-porosity/README.md)
