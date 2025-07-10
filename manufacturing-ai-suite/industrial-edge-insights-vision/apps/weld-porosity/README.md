@@ -11,7 +11,7 @@
 > Note that the following instructions assume Docker engine is setup in the host system.
 1.  Set app specific environment variable file
     ```sh
-    cp .env_pallet_defect_detection .env
+    cp .env_weld_porosity_classification .env
     ```    
 
 2.  Edit the HOST_IP, proxy and other environment variables in `.env` file as follows
@@ -24,7 +24,7 @@
     MTX_WEBRTCICESERVERS2_0_PASSWORD=<password>
 
     # application directory
-    SAMPLE_APP=pallet-defect-detection
+    SAMPLE_APP=env_weld_porosity_classification
     ```
 3.  Install pre-requisites. Run with sudo if needed.
     ```sh
@@ -47,9 +47,9 @@
     Example Output:
 
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Weld Porosity Classification
+    Environment variables loaded from /home/intel/OEP/new/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: weld-porosity
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Loaded pipelines:
@@ -60,46 +60,47 @@
             "name": "user_defined_pipelines",
             "parameters": {
             "properties": {
-                "detection-properties": {
+                "classification-properties": {
                 "element": {
                     "format": "element-properties",
-                    "name": "detection"
+                    "name": "classification"
                 }
                 }
             },
             "type": "object"
             },
             "type": "GStreamer",
-            "version": "pallet_defect_detection"
-        }
+            "version": "weld_porosity_classification"
+        },
         ...
     ]
     ```
 6.  Start the sample application with a pipeline.
     ```sh
-    ./sample_start.sh -p pallet_defect_detection
+    ./sample_start.sh -p weld_porosity_classification
     ```
     This command would look for the payload for the pipeline specified in `-p` argument above, inside the `payload.json` file and launch the a pipeline instance in DLStreamer Pipeline Server. Refer to the table, to learn about different options available. 
     
     Output:
 
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Weld Porosity Classification
+    Environment variables loaded from /home/intel/OEP/new/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: weld-porosity
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
-    Loading payload from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/apps/pallet-defect-detection/payload.json
+    Loading payload from /home/intel/OEP/new/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/apps/weld-porosity/payload.json
     Payload loaded successfully.
-    Starting pipeline: pallet_defect_detection
-    Launching pipeline: pallet_defect_detection
-    Extracting payload for pipeline: pallet_defect_detection
-    Found 1 payload(s) for pipeline: pallet_defect_detection
-    Payload for pipeline 'pallet_defect_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/warehouse.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"pdd"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/pallet-defect-detection/model.xml","device":"CPU"}}}
-    Posting payload to REST server at http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pallet_defect_detection
-    Payload for pipeline 'pallet_defect_detection' posted successfully. Response: "4b36b3ce52ad11f0ad60863f511204e2"
+    Starting pipeline: weld_porosity_classification
+    Launching pipeline: weld_porosity_classification
+    Extracting payload for pipeline: weld_porosity_classification
+    Found 1 payload(s) for pipeline: weld_porosity_classification
+    Payload for pipeline 'weld_porosity_classification' {"source":{"uri":"file:///home/pipeline-server/resources/videos/welding.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"weld"}},"parameters":{"classification-properties":{"model":"/home/pipeline-server/resources/models/weld-porosity/deployment/Classification/model/model.xml","device":"CPU"}}}
+    Posting payload to REST server at http://<HOST_IP>:8080/pipelines/user_defined_pipelines/weld_porosity_classification
+    Payload for pipeline 'weld_porosity_classification' posted successfully. Response: "6d06422c5c7511f091f03266c7df2abf"
+
     ```
-    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/pdd/ for Pallet Defect Detection or http://<HOST_IP>:8889/weld/ for Weld Porosity Detection
+    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/weld/
     
 7.  Get status of pipeline instance(s) running.
     ```sh
@@ -109,16 +110,16 @@
     
     Output:
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Weld Porosity Classification
+    Environment variables loaded from /home/intel/OEP/new/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: weld-porosity
     [
     {
-        "avg_fps": 30.00446179356829,
-        "elapsed_time": 36.927825689315796,
-        "id": "4b36b3ce52ad11f0ad60863f511204e2",
+        "avg_fps": 30.20765374167394,
+        "elapsed_time": 2.0193545818328857,
+        "id": "0714ca6e5c7611f091f03266c7df2abf",
         "message": "",
-        "start_time": 1750956469.620569,
+        "start_time": 1752032244.3554578,
         "state": "RUNNING"
     }
     ]
@@ -131,26 +132,26 @@
     
     Output:
     ```sh
-    # Example output for Pallet Defect Detection
+    # Example output for Weld Porosity Classification
     No pipelines specified. Stopping all pipeline instances
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    Environment variables loaded from /home/intel/OEP/new/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: weld-porosity
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Instance list fetched successfully. HTTP Status Code: 200
     Found 1 running pipeline instances.
-    Stopping pipeline instance with ID: 4b36b3ce52ad11f0ad60863f511204e2
-    Pipeline instance with ID '4b36b3ce52ad11f0ad60863f511204e2' stopped successfully. Response: {
-    "avg_fps": 30.002200575353214,
-    "elapsed_time": 63.72864031791687,
-    "id": "4b36b3ce52ad11f0ad60863f511204e2",
+    Stopping pipeline instance with ID: 0714ca6e5c7611f091f03266c7df2abf
+    Pipeline instance with ID '0714ca6e5c7611f091f03266c7df2abf' stopped successfully. Response: {
+    "avg_fps": 30.00652493520486,
+    "elapsed_time": 4.965576171875,
+    "id": "0714ca6e5c7611f091f03266c7df2abf",
     "message": "",
-    "start_time": 1750956469.620569,
+    "start_time": 1752032244.3554578,
     "state": "RUNNING"
     }
     ```
     If you wish to stop a specific instance, you can provide it with an `--id` argument to the command.    
-    For example, `./sample_stop.sh --id 4b36b3ce52ad11f0ad60863f511204e2`
+    For example, `./sample_stop.sh --id 0714ca6e5c7611f091f03266c7df2abf`
 
 9.  Bring down the application
     ```sh

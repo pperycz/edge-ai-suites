@@ -47,7 +47,7 @@ To set up a deployment:
 
 1. Select the **Deployments** tab and click the **Setup a Deployment** button. The Setup a Deployment page appears.
 
-1. On the Setup a Deployment page, select the **pdd** package for the deployment from the list, and click **Next**. The Select a Profile step appears.
+1. On the Setup a Deployment page, select the **weld** package for the deployment from the list, and click **Next**. The Select a Profile step appears.
 
 1. In the Select a Profile step, select the deployment profile, and click **Next**. The Override Profile Values page appears.
 
