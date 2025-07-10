@@ -111,6 +111,4 @@ Using the template above, several industrial recipies have been provided for use
 Click on the applications below to get started.
 
 * [Pallet Defect Detection](apps/pallet-defect-detection/docs/user-guide/get-started.md)
-* [Weld Porosity Classfication]()
-* [Anomaly Detection]()
-* [Work Safety Detection]()
+* [Weld Porosity Classfication](apps/pallet-defect-detection/docs/user-guide/get-started.md)
