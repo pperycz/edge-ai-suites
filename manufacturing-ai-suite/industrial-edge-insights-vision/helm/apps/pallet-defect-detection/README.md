@@ -7,7 +7,8 @@
 
 ## Setup the application
 
-> Note that the following instructions assume Kubernetes is already running in the host system with helm package manager installed.
+> **Note**: The following instructions assume Kubernetes is already running in the host system with helm package manager installed.
+
 1. Set app specific values.yaml file.
     ```sh
     cp helm/values_pallet_defect_detection.yaml helm/values.yaml
@@ -38,6 +39,7 @@
 5.  Copy the resources such as video and model from local directory to the to the `dlstreamer-pipeline-server` pod to make them available for application while launching pipelines.
     ```sh
     # Below is an example for Pallet Defect Detection. Please adjust the source path of models and videos appropriately for other sample applications.
+    
     POD_NAME=$(kubectl get pods -n apps -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep deployment-dlstreamer-pipeline-server | head -n 1)
 
     kubectl cp resources/pallet-defect-detection/videos/warehouse.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
