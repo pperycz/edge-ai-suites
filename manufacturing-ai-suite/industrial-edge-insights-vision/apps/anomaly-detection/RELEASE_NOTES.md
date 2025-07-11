@@ -1,13 +1,5 @@
 # Release Notes
 
-## v1.0.0 (July 2025)
-
-### Updates
-- Added Anomaly detection app
-- Added documentation for anomaly detection
-
----
-
 ## v2.4.0 (July 2025)
 
 ### Updates

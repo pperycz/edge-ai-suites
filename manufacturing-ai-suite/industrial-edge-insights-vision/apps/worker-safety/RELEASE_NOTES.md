@@ -1,11 +1,5 @@
 # Release Notes
 
-## v1.0.0 (July 2025)
-
-### Updates
-- Added worker safety app
-- Added documentation for worker safety
-
 ## v2.4.0 (July 2025)
 
 ### Updates
