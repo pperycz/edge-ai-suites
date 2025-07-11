@@ -9,12 +9,18 @@
 
 ## Setup the application
 > Note that the following instructions assume Docker engine is setup in the host system.
-1.  Set app specific environment variable file
+
+1. Clone the **edge-ai-suites** repository and change into industrial-edge-insights-vision directory. The directory contains the utility scripts required in the instructions that follows.
+    ```sh
+    git clone https://github.com/open-edge-platform/edge-ai-suites.git
+    cd manufacturing-ai-suite/industrial-edge-insights-vision
+    ```
+2.  Set app specific environment variable file
     ```sh
     cp .env_weld_porosity_classification .env
     ```    
 
-2.  Edit the HOST_IP, proxy and other environment variables in `.env` file as follows
+3.  Edit the HOST_IP, proxy and other environment variables in `.env` file as follows
     ```sh
     HOST_IP=<HOST_IP>   # IP address of server where DLStreamer Pipeline Server is running.
     http_proxy=<http proxy> # proxy details if behind proxy
@@ -26,7 +32,7 @@
     # application directory
     SAMPLE_APP=env_weld_porosity_classification
     ```
-3.  Install pre-requisites. Run with sudo if needed.
+4.  Install pre-requisites. Run with sudo if needed.
     ```sh
     ./setup.sh
     ```
@@ -34,11 +40,11 @@
 
 ## Deploy the Application
 
-4.  Bring up the application
+5.  Bring up the application
     ```sh
     docker compose up -d
     ```
-5.  Fetch the list of pipeline loaded available to launch
+6.  Fetch the list of pipeline loaded available to launch
     ```sh
     ./sample_list.sh
     ```
@@ -75,7 +81,7 @@
         ...
     ]
     ```
-6.  Start the sample application with a pipeline.
+7.  Start the sample application with a pipeline.
     ```sh
     ./sample_start.sh -p weld_porosity_classification
     ```
@@ -102,7 +108,7 @@
     ```
     NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/weld/
     
-7.  Get status of pipeline instance(s) running.
+8.  Get status of pipeline instance(s) running.
     ```sh
     ./sample_status.sh
     ```
@@ -124,7 +130,7 @@
     }
     ]
     ```
-8.  Stop pipeline instance.
+9.  Stop pipeline instance.
     ```sh
     ./sample_stop.sh
     ```
@@ -153,7 +159,7 @@
     If you wish to stop a specific instance, you can provide it with an `--id` argument to the command.    
     For example, `./sample_stop.sh --id 0714ca6e5c7611f091f03266c7df2abf`
 
-9.  Bring down the application
+10. Bring down the application
     ```sh
     docker compose down -v
     ```
