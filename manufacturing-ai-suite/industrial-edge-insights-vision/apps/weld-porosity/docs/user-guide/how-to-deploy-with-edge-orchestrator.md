@@ -79,6 +79,6 @@ For more information on setting up a deployment, see [Set up a Deployment](<http
 
 1. Download the kubeconfig of the cluster of the Edge Node on which the Application has been deployed. Refer [Kubeconfig Download](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/set_up_edge_infra/accessing_clusters.html#organize-cluster-access-with-a-kubeconfig-file>).
 
-1. Follow the steps described in the **Pallet Defect Detection** [Documentation](<how-to-deploy-with-helm.md#run-multiple-ai-pipelines>) on usage of the application.
+1. Follow the steps described in the **Weld Porosity Classification** [Documentation](<how-to-deploy-with-helm.md#run-multiple-ai-pipelines>) on usage of the application.
 
    > Note: Skip the Deploy helm chart step
