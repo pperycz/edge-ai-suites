@@ -3,8 +3,9 @@
 ## Prerequisites
 
 - [System Requirements](system-requirements.md)
-- K8s installation on a single or multi node. Additionally, helm package manager must also be installed.
-> **Note**: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`. If you would like a local single node setup to try out, follow the instructions [here](how-to-setup-helm-locally.md).
+- K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`.
+  Refer to tutorials online to setup kubernetes cluster on the web with host OS as ubuntu 22.04 and/or ubuntu 24.04.
+- For helm installation, refer to [helm website](https://helm.sh/docs/intro/install/)
 
 
 ## Setup the application
