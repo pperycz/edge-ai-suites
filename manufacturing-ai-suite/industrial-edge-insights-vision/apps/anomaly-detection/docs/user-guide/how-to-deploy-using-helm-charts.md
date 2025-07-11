@@ -3,19 +3,25 @@
 ## Prerequisites
 
 - [System Requirements](system-requirements.md)
-- K8s installation on a single or multi node. Additionally, helm package manager must also be installed.
-> **Note**: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`. If you would like a local single node setup to try out, follow the instructions [here](how-to-setup-helm-locally.md).
+- K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`.
+  Refer to tutorials online to setup kubernetes cluster on the web with host OS as ubuntu 22.04 and/or ubuntu 24.04.
+- For helm installation, refer to [helm website](https://helm.sh/docs/intro/install/)
 
 
 ## Setup the application
 
 > **Note**: The following instructions assume Kubernetes is already running in the host system with helm package manager installed.
 
-1. Set app specific values.yaml file.
+1. Clone the **edge-ai-suites** repository and change into industrial-edge-insights-vision directory. The directory contains the utility scripts required in the instructions that follows.
+    ```sh
+    git clone https://github.com/open-edge-platform/edge-ai-suites.git
+    cd manufacturing-ai-suite/industrial-edge-insights-vision
+    ``` 
+2. Set app specific values.yaml file.
     ```sh
     cp helm/values_anomaly_detection.yaml helm/values.yaml
     ```
-2.  Edit the HOST_IP, proxy and other environment variables in `values.yaml` as follows
+3.  Edit the HOST_IP, proxy and other environment variables in `values.yaml` as follows
     ```yaml
     env:        
         HOST_IP: <HOST_IP>   # host IP address
@@ -26,19 +32,19 @@
         username: <username>  # WebRTC credentials e.g. intel1234
         password: <password>
     ```
-3.  Install pre-requisites. Run with sudo if needed.
+4.  Install pre-requisites. Run with sudo if needed.
     ```sh
-    ./install.sh helm
+    ./setup.sh helm
     ```
     This sets up application pre-requisites, download artifacts, sets executable permissions for scripts etc. Downloaded resource directories.
 
 ## Deploy the application
 
-4.  Install the helm chart
+5.  Install the helm chart
     ```sh
     helm install app-deploy helm -n apps --create-namespace
     ```
-5.  Copy the resources such as video and model from local directory to the to the `dlstreamer-pipeline-server` pod to make them available for application while launching pipelines.
+6.  Copy the resources such as video and model from local directory to the to the `dlstreamer-pipeline-server` pod to make them available for application while launching pipelines.
     ```sh
     # Below is an example for Anomaly Detection. Please adjust the source path of models and videos appropriately for other sample applications.
     
@@ -48,7 +54,7 @@
  
     kubectl cp  resources/anomaly-detection/models/* $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps    
     ```
-6.  Fetch the list of pipeline loaded available to launch
+7.  Fetch the list of pipeline loaded available to launch
     ```sh
     ./sample_list.sh
     ```
@@ -84,7 +90,7 @@
         ...
     ]
     ```
-7.  Start the sample application with a pipeline.
+8.  Start the sample application with a pipeline.
     ```sh
     ./sample_start.sh -p anomaly_detection
     ```
@@ -109,7 +115,7 @@
     ```
     >NOTE- This would start the pipeline. You can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:31111/anomaly/ for Anomaly Detection.
 
-8.  Get status of pipeline instance(s) running.
+9.  Get status of pipeline instance(s) running.
     ```sh
     ./sample_status.sh
     ```
@@ -132,7 +138,7 @@
     ]
     ```
 
-9.  Stop pipeline instance.
+10.  Stop pipeline instance.
     ```sh
     ./sample_stop.sh
     ```
@@ -161,7 +167,7 @@
     If you wish to stop a specific instance, you can provide it with an `--id` argument to the command.    
     For example, `./sample_stop.sh --id f0c0b5aa5d4911f0bca7023bb629a486`
 
-10.  Uninstall the helm chart.
+11.  Uninstall the helm chart.
      ```sh
      helm uninstall app-deploy -n apps
      ```

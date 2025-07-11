@@ -2,7 +2,7 @@
 
 
 You can bring your own model and run this sample application the same way as how we bring in the anomaly detection model. You can also bring your own video file source. Please see below for details:
->**Important** If you have previously run the setup for the sample app using `install.sh`, default sample model and video are downloaded under `resource/<app_name>` in your repo directory. You can manually add the model and video of your choice and keep it in this structure. 
+>**Important** If you have previously run the setup for the sample app using `setup.sh`, default sample model and video are downloaded under `resource/<app_name>` in your repo directory. You can manually add the model and video of your choice and keep it in this structure. 
 For compose based deployment, the entire resources directory is volume mounted and made available to pipeline server. However for helm, you need to manually copy those to the container.
 
 ## For docker compose based deployment

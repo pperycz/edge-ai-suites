@@ -60,7 +60,7 @@ With this feature, during runtime, you can download a new model from the registr
     Navigate to the [WORKDIR]/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision directory and set up the app.
     ```sh
     cp .env_worker_safety .env
-    ./install.sh
+    ./setup.sh
     ```
 2. Bring up the containers
     ```sh
