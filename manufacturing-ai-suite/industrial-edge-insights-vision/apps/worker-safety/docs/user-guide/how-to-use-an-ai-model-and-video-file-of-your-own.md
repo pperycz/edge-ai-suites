@@ -8,15 +8,18 @@ For compose based deployment, the entire resources directory is volume mounted a
 ## For docker compose based deployment
 
 1. The worker safety model is placed in the repository under  `resources/worker-safety/models`. You can also find the input video file source for inference under `resources/worker-safety/videos`.
-
+/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml
 - resources/
   - worker-safety/
     - models/
-        - worker-safety/
-            - model.bin
-            - model.xml
+      - worker-safety/
+        - deployment/
+          - detection_1/
+            - model/
+              - model.bin
+              - model.xml
     - videos/
-        - Safety_Full_Hat_and_Vest.mp4
+      - Safety_Full_Hat_and_Vest.mp4
 
    > **Note**
    > You can organize the directory structure for models for different use cases.
@@ -53,7 +56,7 @@ For compose based deployment, the entire resources directory is volume mounted a
             },
             "parameters": {
                 "detection-properties": {
-                    "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                    "model": "/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml",
                     "device": "CPU"
                 }
             }
@@ -62,18 +65,21 @@ For compose based deployment, the entire resources directory is volume mounted a
 
 ## For helm chart based deployment
 
-You can bring your own model and run this sample application the same way as how we bring in the pallet defect detection model as follows:
+You can bring your own model and run this sample application the same way as how we bring in the worker safety detection model as follows:
 
-1. The pallet defect detection model is placed in the repository under `resources/worker-safety/models`. You can also find the input video file source for inference under `resources/worker-safety/videos`.
+1. The worker safety detection model is placed in the repository under `resources/worker-safety/models`. You can also find the input video file source for inference under `resources/worker-safety/videos`.
 
 - resources/
   - worker-safety/
     - models/
-        - worker-safety/
-            - model.bin
-            - model.xml
+      - worker-safety/
+        - deployment/
+          - detection_1/
+            - model/
+              - model.bin
+              - model.xml
     - videos/
-        - Safety_Full_Hat_and_Vest.mp4.avi
+      - Safety_Full_Hat_and_Vest.mp4
 
    > **Note**
    > You can organize the directory structure for models for different use cases.
@@ -121,7 +127,7 @@ You can bring your own model and run this sample application the same way as how
             },
             "parameters": {
                 "detection-properties": {
-                        "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                        "model": "/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml",
                         "device": "CPU"
                 }
             }

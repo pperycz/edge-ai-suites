@@ -25,7 +25,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml",
                 "device": "CPU"
             }
         }
@@ -48,7 +48,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml",
                 "device": "CPU"
             }
         }

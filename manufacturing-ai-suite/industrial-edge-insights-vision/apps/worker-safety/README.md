@@ -17,7 +17,7 @@
     ```
 2.  Set app specific environment variable file
     ```sh
-    cp .env_pallet_defect_detection .env
+    cp .env_worker_safety .env
     ```    
 
 3.  Edit the HOST_IP, proxy and other environment variables in `.env` file as follows
@@ -30,7 +30,7 @@
     MTX_WEBRTCICESERVERS2_0_PASSWORD=<password>
 
     # application directory
-    SAMPLE_APP=pallet-defect-detection
+    SAMPLE_APP=worker-safety
     ```
 4.  Install pre-requisites. Run with sudo if needed.
     ```sh
@@ -53,9 +53,9 @@
     Example Output:
 
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Worker Safety
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Loaded pipelines:
@@ -67,45 +67,45 @@
             "parameters": {
             "properties": {
                 "detection-properties": {
-                "element": {
-                    "format": "element-properties",
-                    "name": "detection"
-                }
+                    "element": {
+                        "format": "element-properties",
+                        "name": "detection"
+                    }
                 }
             },
             "type": "object"
             },
             "type": "GStreamer",
-            "version": "pallet_defect_detection"
+            "version": "worker_safety"
         }
         ...
     ]
     ```
 7.  Start the sample application with a pipeline.
     ```sh
-    ./sample_start.sh -p pallet_defect_detection
+    ./sample_start.sh -p worker_safety
     ```
     This command would look for the payload for the pipeline specified in `-p` argument above, inside the `payload.json` file and launch the a pipeline instance in DLStreamer Pipeline Server. Refer to the table, to learn about different options available. 
     
     Output:
 
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Worker Safety
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
-    Loading payload from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/apps/pallet-defect-detection/payload.json
+    Loading payload from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/apps/worker-safety/payload.json
     Payload loaded successfully.
-    Starting pipeline: pallet_defect_detection
-    Launching pipeline: pallet_defect_detection
-    Extracting payload for pipeline: pallet_defect_detection
-    Found 1 payload(s) for pipeline: pallet_defect_detection
-    Payload for pipeline 'pallet_defect_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/warehouse.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"pdd"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/pallet-defect-detection/model.xml","device":"CPU"}}}
-    Posting payload to REST server at http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pallet_defect_detection
-    Payload for pipeline 'pallet_defect_detection' posted successfully. Response: "4b36b3ce52ad11f0ad60863f511204e2"
+    Starting pipeline: worker_safety
+    Launching pipeline: worker_safety
+    Extracting payload for pipeline: worker_safety
+    Found 1 payload(s) for pipeline: worker_safety
+    Payload for pipeline 'worker_safety' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml","device":"CPU"}}}
+    Posting payload to REST server at http://10.223.23.156:8080/pipelines/user_defined_pipelines/worker_safety
+    Payload for pipeline 'worker_safety' posted successfully. Response: "784b87b45d1511f08ab0da88aa49c01e"
     ```
-    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/pdd/ for Pallet Defect Detection
+    NOTE: This would start the pipeline. We can view the inference stream on WebRTC by opening a browser and navigating to http://<HOST_IP>:8889/worker_safety/
     
 8.  Get status of pipeline instance(s) running.
     ```sh
@@ -115,16 +115,16 @@
     
     Output:
     ```sh
-    # Example output for Pallet Defect Detection
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    # Example output for Worker Safety
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: worker-safety
     [
     {
-        "avg_fps": 30.00446179356829,
-        "elapsed_time": 36.927825689315796,
-        "id": "4b36b3ce52ad11f0ad60863f511204e2",
+        "avg_fps": 30.036955894826452,
+        "elapsed_time": 3.096184492111206,
+        "id": "784b87b45d1511f08ab0da88aa49c01e",
         "message": "",
-        "start_time": 1750956469.620569,
+        "start_time": 1752100724.3075056,
         "state": "RUNNING"
     }
     ]
@@ -137,28 +137,28 @@
     
     Output:
     ```sh
-    # Example output for Pallet Defect Detection
+    # Example output for Worker Safety
     No pipelines specified. Stopping all pipeline instances
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
-    Running sample app: pallet-defect-detection
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
     Instance list fetched successfully. HTTP Status Code: 200
     Found 1 running pipeline instances.
-    Stopping pipeline instance with ID: 4b36b3ce52ad11f0ad60863f511204e2
-    Pipeline instance with ID '4b36b3ce52ad11f0ad60863f511204e2' stopped successfully. Response: {
-    "avg_fps": 30.002200575353214,
-    "elapsed_time": 63.72864031791687,
-    "id": "4b36b3ce52ad11f0ad60863f511204e2",
-    "message": "",
-    "start_time": 1750956469.620569,
-    "state": "RUNNING"
+    Stopping pipeline instance with ID: 784b87b45d1511f08ab0da88aa49c01e
+    Pipeline instance with ID '784b87b45d1511f08ab0da88aa49c01e' stopped successfully. Response: {
+        "avg_fps": 29.985911953641363,
+        "elapsed_time": 37.45091152191162,
+        "id": "784b87b45d1511f08ab0da88aa49c01e",
+        "message": "",
+        "start_time": 1752100724.3075056,
+        "state": "RUNNING"
     }
     ```
     If you wish to stop a specific instance, you can provide it with an `--id` argument to the command.    
-    For example, `./sample_stop.sh --id 4b36b3ce52ad11f0ad60863f511204e2`
+    For example, `./sample_stop.sh --id 784b87b45d1511f08ab0da88aa49c01e`
 
-10. Bring down the application
+10.  Bring down the application
     ```sh
     docker compose down -v
     ```

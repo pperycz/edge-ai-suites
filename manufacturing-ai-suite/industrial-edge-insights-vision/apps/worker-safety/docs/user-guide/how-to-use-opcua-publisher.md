@@ -55,7 +55,7 @@ Follow this procedure to test the DL Streamer Pipeline Server OPC UA publishing 
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety/model.xml",
+                "model": "/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml",
                 "device": "CPU"
             }
         }

@@ -63,7 +63,7 @@
     Output:
     ```sh
     # Example output for Worker Safety
-    Environment variables loaded from /home/intel/OEP/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
@@ -99,17 +99,17 @@
     Output:
     ```sh
     # Example output for Worker Safety
-    Environment variables loaded from $PWD/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
-    Loading payload from $PWD/helm/apps/worker-safety/payload.json
+    Loading payload from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/helm/apps/worker-safety/payload.json
     Payload loaded successfully.
     Starting pipeline: worker_safety
     Launching pipeline: worker_safety
     Extracting payload for pipeline: worker_safety
     Found 1 payload(s) for pipeline: worker_safety
-    Payload for pipeline 'worker_safety' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/worker-safety/model.xml","device":"CPU"}}}
+    Payload for pipeline 'worker_safety' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/worker-safety/deployment/detection_1/model/model.xml","device":"CPU"}}}
     Posting payload to REST server at http://<HOST_IP>:30107/pipelines/user_defined_pipelines/worker_safety
     Payload for pipeline 'worker_safety' posted successfully. Response: "74bebe7a5d1211f08ab0da88aa49c01e"
     ```
@@ -124,7 +124,7 @@
     Output:
     ```sh
     # Example output for Worker Safety
-    Environment variables loaded from $PWD/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: worker-safety
     [
     {
@@ -148,7 +148,7 @@
     ```sh
     # Example output for Worker Safety
     No pipelines specified. Stopping all pipeline instances
-    Environment variables loaded from $PWD/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: worker-safety
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200

@@ -54,7 +54,7 @@
 
     ```sh
     # Example output for Anomaly Detection
-    Environment variables loaded from <Work-Dir>/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
@@ -91,17 +91,17 @@
 
     ```sh
     # Example output for Anomaly Detection
-    Environment variables loaded from <Work-Dir>/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200
-    Loading payload from /home/intel/Desktop/codebase/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision/helm/apps/anomaly-detection/payload.json
+    Loading payload from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/apps/anomaly-detection/payload.json
     Payload loaded successfully.
     Starting pipeline: anomaly_detection
     Launching pipeline: anomaly_detection
     Extracting payload for pipeline: anomaly_detection
     Found 1 payload(s) for pipeline: anomaly_detection
-    Payload for pipeline 'anomaly_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"anomaly"}},"parameters":{"classification-properties":{"model":"/home/pipeline-server/resources/models/anomaly-detection/model.xml","device":"CPU"}}}
+    Payload for pipeline 'anomaly_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"anomaly"}},"parameters":{"classification-properties":{"model":"/home/pipeline-server/resources/models/anomaly-detection/deployment/Anomaly classification/model/model.xml","device":"CPU"}}}
     Posting payload to REST server at http://10.223.23.156:8080/pipelines/user_defined_pipelines/anomaly_detection
     Payload for pipeline 'anomaly_detection' posted successfully. Response: "f0c0b5aa5d4911f0bca7023bb629a486"
     ```
@@ -116,7 +116,7 @@
     Output:
     ```sh
     # Example output for Anomaly Detection
-    Environment variables loaded from <Work-Dir>/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: anomaly-detection
     [
     {
@@ -139,7 +139,7 @@
     ```sh
     # Example output for Anomaly Detection
     No pipelines specified. Stopping all pipeline instances
-    Environment variables loaded from <Work-Dir>/.env
+    Environment variables loaded from [WORKDIR]/manufacturing-ai-suite/industrial-edge-insights-vision/.env
     Running sample app: anomaly-detection
     Checking status of dlstreamer-pipeline-server...
     Server reachable. HTTP Status Code: 200

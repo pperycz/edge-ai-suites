@@ -12,11 +12,14 @@ For compose based deployment, the entire resources directory is volume mounted a
 - resources/
   - anomaly-detection/
     - models/
-        - anomaly-detection/
-            - model.bin
-            - model.xml
+      - anomaly-detection/
+        - deployment/
+          - Anomaly classification/
+            - model/
+              - model.bin
+              - model.xml
     - videos/
-        - anomalib_pcb_test.avi
+      - anomalib_pcb_test.avi
 
    > **Note**
    > You can organize the directory structure for models for different use cases.
@@ -53,7 +56,7 @@ For compose based deployment, the entire resources directory is volume mounted a
             },
             "parameters": {
                 "detection-properties": {
-                    "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
+                    "model": "/home/pipeline-server/resources/models/anomaly-detection/deployment/Anomaly classification/model/model.xml",
                     "device": "CPU"
                 }
             }
@@ -69,11 +72,14 @@ You can bring your own model and run this sample application the same way as how
 - resources/
   - anomaly-detection/
     - models/
-        - anomaly-detection/
-            - model.bin
-            - model.xml
+      - anomaly-detection/
+        - deployment/
+          - Anomaly classification/
+            - model/
+              - model.bin
+              - model.xml
     - videos/
-        - anomalib_pcb_test.avi
+      - anomalib_pcb_test.avi
 
    > **Note**
    > You can organize the directory structure for models for different use cases.
@@ -121,7 +127,7 @@ You can bring your own model and run this sample application the same way as how
             },
             "parameters": {
                 "detection-properties": {
-                        "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
+                        "model": "/home/pipeline-server/resources/models/anomaly-detection/deployment/Anomaly classification/model/model.xml",
                         "device": "CPU"
                 }
             }
