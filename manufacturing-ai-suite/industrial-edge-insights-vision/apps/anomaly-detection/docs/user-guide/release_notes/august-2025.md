@@ -1,8 +1,8 @@
-# Release Notes
+# August 2025
 
-## 1.0.0 (August 2025)
+## v1.0.0
 
-### Updates
+### Updates in v1.0.0
 - Consumed latest DL Streamer Pipeline Server version 3.1.0.
 - Added support for anomaly detection.
 - Documentation release for anomaly detection
