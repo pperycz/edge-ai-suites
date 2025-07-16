@@ -32,7 +32,7 @@ For compose based deployment, the entire resources directory is volume mounted a
     ```
     > The value of `${SAMPLE_APP}` is fetched from the `.env` file specifying the particular sample app you are running.
 
-3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pcb_anomaly_detection` pipeline in `pipeline-server-config.json` (present in the repository) where gvadetect is used.
+3. Since this is a classification model, ensure to use gvaclassify in the pipeline. For example: See the `pcb_anomaly_detection` pipeline in `pipeline-server-config.json` (present in the repository) where gvadetect is used.
 
 4. The `pipeline-server-config.json` is volume mounted into DL Streamer Pipeline Server in `docker-compose.yml` as follows:
 
@@ -97,9 +97,9 @@ You can bring your own model and run this sample application the same way as how
     ```
     - Please update `imagePullPolicy` as `imagePullPolicy: IfNotPresent` in `values.yaml` in order to use the above built image.
 
-3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pcb_anomaly_detection` pipeline in `pipelnine-server-config.json` (present in the repository) where gvadetect is used.
+3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pcb_anomaly_detection` pipeline in `pipeline-server-config.json` (present in the repository) where gvadetect is used.
 
-4. The `pipelnine-server-config.json` is volume mounted into DL Streamer Pipeline Server in `provision-configmap.yaml` as follows:
+4. The `pipeline-server-config.json` is volume mounted into DL Streamer Pipeline Server in `provision-configmap.yaml` as follows:
 
     ```sh
     apiVersion: v1
