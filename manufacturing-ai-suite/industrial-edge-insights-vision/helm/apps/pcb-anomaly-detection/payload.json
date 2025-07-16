@@ -1,6 +1,6 @@
 [
     {
-        "pipeline": "anomaly_detection",
+        "pipeline": "pcb_anomaly_detection",
         "payload": {
             "source": {
                 "uri": "file:///home/pipeline-server/resources/videos/anomalib_pcb_test.avi",
@@ -14,7 +14,7 @@
             },
             "parameters": {
                 "classification-properties": {
-                    "model": "/home/pipeline-server/resources/models/anomaly-detection/model.xml",
+                    "model": "/home/pipeline-server/resources/models/pcb-anomaly-detection/model.xml",
                     "device": "CPU"
                 }
             }

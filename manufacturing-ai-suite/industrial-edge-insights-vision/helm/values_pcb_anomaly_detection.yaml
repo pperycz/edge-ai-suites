@@ -43,7 +43,7 @@ env:
   MR_SAVED_MODELS_DIR: ./mr_models
   MR_REQUEST_TIMEOUT: 300
   MR_VERIFY_CERT:
-  SAMPLE_APP: anomaly-detection
+  SAMPLE_APP: pcb-anomaly-detection
 privileged_access_required: false
 gpu:
   enabled: false

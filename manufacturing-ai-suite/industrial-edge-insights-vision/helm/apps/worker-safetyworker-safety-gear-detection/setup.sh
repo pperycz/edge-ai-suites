@@ -3,8 +3,8 @@
 # Download artifacts for a specific sample application
 #   by calling respective app's setup.sh script
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
-MODEL_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/anomaly_detection.zip"
-VIDEO_URL="https://github.com/open-edge-platform/edge-ai-suites/raw/9da6eb59431eb7edbc5491e8d6ee37d347bebcbb/manufacturing-ai-suite/anomaly-detection/resources/videos/anomalib_pcb_test.avi"
+MODEL_URL="https://ubit-artifactory-ba.intel.com/artifactory/eis-aiservices-devops-ba-local/manufacturing-ai-suite/worker_safety_detection/Deployment-Worker-Safety.zip"
+VIDEO_URL="https://github.com/open-edge-platform/edge-ai-resources/raw/c13b8dbf23d514c2667d39b66615bd1400cb889d/videos/Safety_Full_Hat_and_Vest.mp4"
 
 err() {
     echo "ERROR: $1" >&2
@@ -37,7 +37,7 @@ download_artifacts() {
         return 1
     fi
     # Download model artifacts if not already present
-    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../../resources/$app_name/models"
+    LOCAL_MODEL_DIR="$SCRIPT_DIR/../../../resources/$app_name/models/$app_name"
     if [ ! -d $LOCAL_MODEL_DIR ]; then
         # create the models directory if it does not exist
 
@@ -86,4 +86,4 @@ download_artifacts() {
 
 }
 
-download_artifacts "anomaly-detection"
+download_artifacts "worker-safety-gear-detection"
