@@ -61,7 +61,7 @@ config:
     int:
       prometheus_port: "9090"
     ext:
-      prometheus_port: "31909"
+      prometheus_port: "32909"
   otel_collector:
     name: otel-collector
     int:
