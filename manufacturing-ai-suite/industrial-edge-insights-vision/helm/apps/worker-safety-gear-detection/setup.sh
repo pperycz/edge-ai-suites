@@ -48,6 +48,11 @@ download_artifacts() {
         echo "Downloading model artifacts for $app_name..."
         # echo "Model XML: $MODEL_XML_URL"
         echo "Model URL: $MODEL_URL"
+        # Check if Model URL is empty
+        if [ -z "$MODEL_URL" ]; then
+            echo "❌ Error: Model URL is empty. Please provide a valid URL." >&2
+            exit 1
+        fi
         # Download model XML and BIN files
         if curl -L "$MODEL_URL" -o "$LOCAL_MODEL_DIR/$(basename $MODEL_URL)"; then
             echo "Model zip for $app_name downloaded successfully."
