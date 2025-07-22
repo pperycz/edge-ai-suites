@@ -27,7 +27,7 @@ To deploy the **Pallet Defect Detection** Sample Application with the Edge Orche
 1. Clone the **Pallet Defect Detection** repository:
 
     ```bash
-    git clone https://github.com/open-edge-platform/edge-ai-suites
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
     cd edge-ai-suites/manufacturing-ai-suite/pallet-defect-detection
     ```
 
