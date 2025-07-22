@@ -27,7 +27,7 @@ Follow this procedure on the target system to install the package.
 
     `helm pull oci://registry-1.docker.io/intel/smart-parking --version 1.1.0`
 
-2. unzip the package using the following command:
+2. Unzip the package using the following command:
 
     `tar xvf smart-parking-1.1.0.tgz`
     
