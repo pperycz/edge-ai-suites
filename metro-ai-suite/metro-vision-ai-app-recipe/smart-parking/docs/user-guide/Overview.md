@@ -2,7 +2,7 @@
 
 The Smart Parking application effortlessly manages parking spaces with AI-driven video analytics for real-time insights and enhanced efficiency.
 
-It uses AI-driven video analytics to optimize parking management. It identifies and counts, providing real-time information on available parking spaces, ensuring precise detection of empty slots. By continuously monitoring parking areas, it tracks changes in occupancy and provides up-to-date information on parking availability.
+It uses AI-driven video analytics to optimize parking management. It identifies and counts available parking spaces, providing real-time information, ensuring precise detection of empty slots. By continuously monitoring parking areas, it tracks changes in occupancy and provides up-to-date information on parking availability.
 
 This solution also records the status of occupied parking spaces, enabling efficient utilization and reporting. Designed to enhance parking efficiency, the application improves user experience by delivering real-time insights into parking operations.
 
