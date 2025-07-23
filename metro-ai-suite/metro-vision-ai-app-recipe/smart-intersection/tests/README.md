@@ -33,8 +33,7 @@
   Replace `YOUR_MACHINE_IP` with the actual IP address of your machine. If you do not set those URLs, remote endpoint tests will be skipped.
 
 - Prepare your environment according to the following guides:
-  - [Get Started Guide](https://github.com/open-edge-platform/edge-ai-suites/blob/main/metro-ai-suite/smart-intersection/docs/user-guide/get-started.md)
-  - [Docker Deployment Guide](https://github.com/open-edge-platform/edge-ai-suites/blob/main/metro-ai-suite/smart-intersection/docs/user-guide/how-to-deploy-docker.md)
+  - [Get Started Guide](https://github.com/open-edge-platform/edge-ai-suites/blob/main/metro-ai-suite/metro-vision-ai-app-recipe/smart-intersection/docs/user-guide/get-started.md)
 
 ## Installation
 

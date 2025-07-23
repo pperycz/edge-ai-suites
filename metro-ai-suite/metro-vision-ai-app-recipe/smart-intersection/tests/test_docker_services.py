@@ -13,7 +13,6 @@ from tests.utils.ui_utils import waiter, driver
 from tests.utils.utils import run_command, check_url_access
 from .conftest import (
   wait_for_services_readiness,
-  DOCKER_COMPOSE_FILE,
   SCENESCAPE_URL,
   GRAFANA_URL,
   INFLUX_DB_URL,
@@ -22,7 +21,7 @@ from .conftest import (
 
 logger = logging.getLogger(__name__)
 
-DLSTREAMER_CONTAINER = "smart-intersection-dlstreamer-pipeline-server-1"
+DLSTREAMER_CONTAINER = "metro-vision-ai-app-recipe-dlstreamer-pipeline-server-1"
 URLS_TO_CHECK = [
   SCENESCAPE_URL,
   GRAFANA_URL,
@@ -113,15 +112,15 @@ def test_docker_build_and_deployment():
 def test_docker_application_restart():
   """Test that all application components are accessible after Docker restart."""
   # Teardown: stop and remove containers
-  run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} down")
+  logger.info("Tearing down Docker containers...")
+  run_command(f"docker compose down")
+  logger.info("Docker containers stopped and removed.")
     
-  # Build Docker images
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} build")
-  assert code == 0, f"Build failed: {err}"
-
-  # Deploy (up) Docker containers
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} up -d")
-  assert code == 0, f"Deploy failed: {err}"
+  # Build and Deploy Docker images
+  logger.info("Building and deploying Docker containers...")
+  out, err, code = run_command(f"docker compose up -d")
+  assert code == 0, f"Build and Deploy failed: {err}"
+  logger.info("Docker containers deployed.")
 
   # Wait for services to be ready
   services_urls = [SCENESCAPE_URL, GRAFANA_URL, INFLUX_DB_URL, NODE_RED_URL]

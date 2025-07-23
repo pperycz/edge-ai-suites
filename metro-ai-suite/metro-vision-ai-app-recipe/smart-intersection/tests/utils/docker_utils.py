@@ -4,14 +4,13 @@
 
 import json
 from tests.utils.utils import run_command
-from ..conftest import DOCKER_COMPOSE_FILE
 
 def get_all_services():
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} config --services")
+  out, err, code = run_command(f"docker compose config --services")
   assert code == 0, f"Failed to list all services: {err}"
   return set(out.strip().splitlines())
 
 def get_running_services():
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} ps --services --filter 'status=running'")
+  out, err, code = run_command(f"docker compose ps --services --filter 'status=running'")
   assert code == 0, f"Failed to list running services: {err}"
   return set(out.strip().splitlines())

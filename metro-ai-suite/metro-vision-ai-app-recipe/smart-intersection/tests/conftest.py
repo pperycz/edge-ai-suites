@@ -20,8 +20,6 @@ from tests.utils.utils import (
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-DOCKER_COMPOSE_FILE = os.getenv("DOCKER_COMPOSE_FILE", "compose.yml")
-
 SCENESCAPE_URL = os.getenv("SCENESCAPE_URL", "https://localhost")
 SCENESCAPE_REMOTE_URL = os.getenv("SCENESCAPE_REMOTE_URL")
 
@@ -72,16 +70,14 @@ def wait_for_services_readiness(services_urls, timeout=120, interval=2):
 def build_and_deploy():
   """
   Fixture to build and deploy Docker containers for testing.
-
   This fixture is automatically used for the entire test session.
   """
-  # Build Docker images
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} build")
-  assert code == 0, f"Build failed: {err}"
 
-  # Deploy (up) Docker containers
-  out, err, code = run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} up -d")
-  assert code == 0, f"Deploy failed: {err}"
+  # Build and Deploy Docker images
+  logger.info("Building and deploying Docker containers...")
+  out, err, code = run_command(f"docker compose up -d")
+  assert code == 0, f"Build and Deploy failed: {err}"
+  logger.info("Docker containers deployed.")
 
   # Wait for services to be ready
   services_urls = [SCENESCAPE_URL, GRAFANA_URL, INFLUX_DB_URL, NODE_RED_URL]
@@ -90,6 +86,11 @@ def build_and_deploy():
   yield
 
   # Teardown: stop and remove containers
-  run_command(f"docker compose -f {DOCKER_COMPOSE_FILE} down")
+  logger.info("Tearing down Docker containers...")
+  run_command(f"docker compose down")
+  logger.info("Docker containers stopped and removed.")
+
   # Remove Docker volumes
-  run_command("docker volume ls | grep smart-intersection | awk '{ print $2 }' | xargs docker volume rm")
+  logger.info("Removing Docker volumes...")
+  run_command("docker volume ls | grep metro-vision-ai-app-recipe | awk '{ print $2 }' | xargs docker volume rm")
+  logger.info("Docker volumes removed.")
