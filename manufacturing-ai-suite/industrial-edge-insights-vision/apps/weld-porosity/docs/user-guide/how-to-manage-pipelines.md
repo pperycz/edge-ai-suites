@@ -4,9 +4,9 @@ This section describes how to create custom AI pipelines for the sample applicat
 
 ## Create Pipelines
 
-The AI pipelines are defined by the `config.json` file present at the root of the repository (for docker compose deployment) and present inside the helm directory (for helm based deployment. Please also note that the port in the cURL/REST requests needs to be changed from 8080 to 31107 for helm based deployment).
+The AI pipelines are defined by the `pipeline-server-config.json` file present under the configs subdirectory of a particular application directory (for docker compose deployment) and similary inside the helm directory (for helm based deployment. Please also note that the port in the cURL/REST requests needs to be changed from 8080 to 30107 for helm based deployment).
 
-The following is an example of the weld porosity classification pipeline, which is included in the `config.json` file.
+The following is an example of the weld porosity classification pipeline, which is included in the `pipeline-server-config.json` file.
 
 
          "pipelines": [
@@ -38,7 +38,7 @@ Customize the pipeline according to your needs. For details, see the following D
 
 Follow this procedure to start the pipeline.
 
-1. In the `config.json` file, identify the name of the pipeline you want to start.
+1. In the `pipeline-server-config.json` file, identify the name of the pipeline you want to start.
 
    The name of the pipeline is defined by the **name** parameter.
 
