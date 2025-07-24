@@ -13,7 +13,7 @@ With this feature, during runtime, you can download a new model from the registr
     HOST_IP= # <IP Adress of the host machine>
     PROTOCOL= # Protocol can be http or https
     MR_IP= # <IP address of host where model registry is running>
-    MR_URL= # Mlflow url. Example http://<MR_IP>:32002 or https://<MR_IP>:32002
+    MR_URL= # Model registry url. Example http://<MR_IP>:32002 or https://<MR_IP>:32002
     ```
 
 2. List all the registered models in the model registry
