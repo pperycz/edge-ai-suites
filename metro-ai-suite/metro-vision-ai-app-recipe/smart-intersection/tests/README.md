@@ -16,7 +16,7 @@
 - Python 3.12 or higher
 - Python venv installed
 - Latest Chrome browser installed
-- **For remote endpoint tests**: Configure remote URLs in the `.env` file for the following variables:
+- **For remote endpoint tests**: Configure remote URLs in the `.env` file inside smart-instersection directory for the following variables:
   - `SCENESCAPE_REMOTE_URL`
   - `GRAFANA_REMOTE_URL`
   - `INFLUX_REMOTE_DB_URL`
