@@ -10,7 +10,7 @@ on:
   pull_request:
     paths:
       - 'manufacturing-ai-suite/industrial-edge-insights-vision/**'
-      - 'github/workflows/**'
+      
       
   workflow_call:
 permissions: {}
