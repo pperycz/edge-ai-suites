@@ -37,19 +37,25 @@
 
 ## Installation
 
-1. **Create a virtual environment on your system:**
+1. **Navigate to the smart-intersection directory:**
+
+   ```bash
+   cd smart-intersection
+   ```
+
+2. **Create a virtual environment on your system:**
 
    ```bash
    python3 -m venv venv
    ```
 
-2. **Activate the virtual environment:**
+3. **Activate the virtual environment:**
 
    ```bash
    source venv/bin/activate
    ```
 
-3. **Install the required packages using pip:**
+4. **Install the required packages using pip:**
 
    ```bash
    python3 -m pip install -r requirements.txt
