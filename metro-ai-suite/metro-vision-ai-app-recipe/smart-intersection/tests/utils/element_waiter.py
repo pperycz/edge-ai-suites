@@ -4,6 +4,17 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.common.exceptions import TimeoutException
 
 class ElementWaiter:
+  """
+  A utility class for handling explicit waits in Selenium WebDriver tests.
+  
+  This class provides methods to wait for specific conditions before interacting
+  with web elements, improving test reliability by avoiding race conditions and
+  timing issues common in web automation.
+  
+  Attributes:
+    driver (WebDriver): The Selenium WebDriver instance
+    timeout (int): Default timeout in seconds for wait operations (default: 10)
+  """
   def __init__(self, driver: WebDriver, timeout=10):
     self.driver = driver
     self.timeout = timeout
