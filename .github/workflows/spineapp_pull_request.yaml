@@ -23,9 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - ubuntu_version: ubuntu22
     steps:
     - name: Check out edge-ai-suites repository
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #4.2.2
