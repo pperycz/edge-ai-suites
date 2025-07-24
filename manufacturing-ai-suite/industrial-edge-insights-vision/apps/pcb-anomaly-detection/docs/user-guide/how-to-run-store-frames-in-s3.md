@@ -12,7 +12,7 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
     ```
     > **Note** DLStreamer Pipeline Server expects the bucket to be already present in the database. The next step will help you create one.
 
-2. Update the following variables related to minio S3 storage in `.env`
+2. Update the following variables related to minio S3 storage in `.env` file
     ``` sh
     HOST_IP= # <IP Adress of the host machine>
     MR_MINIO_ACCESS_KEY= # <DATABASE USERNAME> example: minioadmin
