@@ -1,5 +1,5 @@
-name: "[Spine App] PR workflow"
-run-name: "[Spine App] PR  workflow (by @${{ github.actor }} via ${{ github.event_name }})"
+name: "[industrial-edge-insights-vision] PR workflow"
+run-name: "[industrial-edge-insights-vision] PR  workflow (by @${{ github.actor }} via ${{ github.event_name }})"
 on:
   push:
     branches:
