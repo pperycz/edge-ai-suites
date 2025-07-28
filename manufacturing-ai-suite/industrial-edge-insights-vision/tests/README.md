@@ -24,11 +24,11 @@ The folder structure is designed to ensure a clear and organized workflow.
 4. **robot_files:** Contains Robot Framework test files.
 
 ```
-tests --> scripts 
-            |--> configs 
-            |--> common_library
-            |--> functional_tests
-            |--> robot_files
+tests 
+  |--> configs 
+  |--> common_library
+  |--> functional_tests
+  |--> robot_files
 ```
 
 ## Running Industrial Edge Insights Vision Automation Tests
