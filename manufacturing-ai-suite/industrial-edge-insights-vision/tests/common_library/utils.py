@@ -17,9 +17,9 @@ hostIP = subprocess.check_output(
     "ip route get 1 | awk '{print $7}'|head -1", shell=True
 ).decode('utf-8').split("\n")[0]
 
-class industrial_edge_insights_vision_utils:
+class utils:
     def __init__(self):
-        """Initialize the industrial_edge_insights_vision_utils class with the base path."""
+        """Initialize the utils class with the base path."""
         self.path = repo_path
 
     def json_reader(self, tc, JSON_PATH):
