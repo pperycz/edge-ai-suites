@@ -1,6 +1,6 @@
 ***Settings***
 Documentation    This is main test case file.
-Library          test_suit.py
+Library          test_suite.py
 
 ***Keywords***
 
