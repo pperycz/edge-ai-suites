@@ -5,7 +5,7 @@ import os
 env = os.environ.copy()
 
 
-class test_suit(unittest.TestCase):
+class test_suite(unittest.TestCase):
 
     ##################################################################################################################################################
     #                                   Test case with industrial_edge_insights_vision apps use cases
