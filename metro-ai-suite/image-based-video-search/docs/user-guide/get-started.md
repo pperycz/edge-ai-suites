@@ -295,34 +295,13 @@ a pre-step to prepare models may be needed
    - Update the `ports` section in the Compose file to resolve conflicts.
 
 3. **ibvs-milvusdb container is unhealthy**:
-   - Currently, milvusdb does not work with proxy servers. For this make sure that the proxies are set to empty strings if present in `~/.docker/config.json`. Please make sure to take backup of the proxies if needed later
-     ```
-     # set httpProxy, httpsProxy and noProxy to empty strings
-     ...
-     "proxies": {
-              "default": {
-                      "httpProxy": "",
-                      "httpsProxy": "",
-                      "noProxy": ""
-              }
-      }
-     ...
-     ```
-   - Restart docker service after making above changes
-     ```bash
-     sudo systemctl daemon-reload
-     sudo systemctl restart docker
-     ```  
-   - Now bring up the dockers again
-     ```bash
-     docker compose up -d
-     ```
+   - Currently, milvusdb does not work with proxy servers. Make sure that the proxies `http_proxy`, `https_proxy` and `no_proxy` are set to empty string in `compose.yml` file
 
 4. **Empty search results after clicking on `Search Object`**:
    - Make sure the models are able to detect the objects in the stream correctly
-   - Make sure you have analysed the stream first to capture the video into milvus database
-   - Make sure you using right frame to search the object
-   - Make sure the time range given to filter the search results matches your time zone
+   - Make sure you have analysed the stream first to capture the video frames into milvus database
+   - Make sure you are using the right frame to search the object
+   - Increase the 'To' timestamp in the search results to accommodate the latest results
 
 ## Supporting Resources
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
