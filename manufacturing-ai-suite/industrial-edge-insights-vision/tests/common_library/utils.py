@@ -17,10 +17,10 @@ hostIP = subprocess.check_output(
     "ip route get 1 | awk '{print $7}'|head -1", shell=True
 ).decode('utf-8').split("\n")[0]
 
-class spineapps_utils:
+class industrial_edge_insights_vision_utils:
     def __init__(self):
-        """Initialize the spineapps_utils class with the base path."""
-        self.spineapps_path = repo_path
+        """Initialize the industrial_edge_insights_vision_utils class with the base path."""
+        self.path = repo_path
 
     def json_reader(self, tc, JSON_PATH):
         """
@@ -49,7 +49,7 @@ class spineapps_utils:
             value (dict): Dictionary containing test type and other parameters.
         """
         print('\n\n**********Navigating to industrial-edge-insights-vision directory...')
-        os.chdir('{}'.format(self.spineapps_path + "/manufacturing-ai-suite/industrial-edge-insights-vision"))
+        os.chdir('{}'.format(self.path + "/manufacturing-ai-suite/industrial-edge-insights-vision"))
         
         print('\n**********Copying appropriate .env file**********')
         if value.get("type") == "pdd":
@@ -118,7 +118,7 @@ class spineapps_utils:
             value (dict): Dictionary containing test type and other parameters.
         """
         time.sleep(5)
-        os.chdir('{}'.format(self.spineapps_path + "/manufacturing-ai-suite/industrial-edge-insights-vision"))
+        os.chdir('{}'.format(self.path + "/manufacturing-ai-suite/industrial-edge-insights-vision"))
         print("\n\n**********Starting pipeline 'pallet_defect_detection' with sample_start.sh**********")
         try:
             if value.get("type")=="pdd":
