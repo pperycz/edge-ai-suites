@@ -27,7 +27,7 @@ By following this guide, you will learn how to:
     - Create and navigate to directory:
       ```bash
         git clone https://github.com/open-edge-platform/edge-ai-suites.git
-        cd metro-ai-suite/image-based-video-search
+        cd edge-ai-suites/metro-ai-suite/image-based-video-search
         docker compose build
       ```
 <!--
