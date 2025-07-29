@@ -1,5 +1,7 @@
 FROM docker.io/library/python:3.11
 
+USER root
+
 WORKDIR /usr/src/app
 
 COPY ./requirements.txt .
