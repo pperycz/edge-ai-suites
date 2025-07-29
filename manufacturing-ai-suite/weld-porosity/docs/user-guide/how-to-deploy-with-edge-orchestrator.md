@@ -24,7 +24,7 @@ To deploy the **Weld Porosity Detection** Sample Application with the Edge Orche
 
 ### Making the Deployment Package Available
 
-1. Clone the **Weld Porosity Detection** repository:
+1. Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
 
     ```bash
     git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld

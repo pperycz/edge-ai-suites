@@ -35,9 +35,16 @@ Follow this procedure on the target system to install the package.
     `cd weld-porosity-sample-application`
 
 
-## Configure and update the environment variables
+## Clone the repository. Configure and update the environment variables
 
-1. Update the below fields in `values.yaml` file in the helm chart
+1. Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
+
+2. Update the below fields in `values.yaml` file in the helm chart
 
     ``` sh
     HOST_IP: # replace localhost with system IP example: HOST_IP: 10.100.100.100
@@ -84,7 +91,7 @@ You need to copy your own or existing model into DL Streamer Pipeline Server ino
    > You need to run the above commands only after performing the Helm install, and before executing any pipeline.
    > Make sure to replace the 'apps' namespace in the above command with the namespace you are using.
 
-3. Since this is a classification model, ensure to use gvaclassify in the pipeline. For example: See the `weld_porosity_classification` pipeline in `config.json` (present in the repository) where gvaclassify is used.
+3. Since this is a classification model, ensure to use gvaclassify in the pipeline. For example: See the `weld_porosity_classification` pipeline in `config.json` (present in the helm chart) where gvaclassify is used.
 
 4. The `config.json` is volume mounted into DL Streamer Pipeline Server in `provision-configmap.yaml` as follows:
     ```sh

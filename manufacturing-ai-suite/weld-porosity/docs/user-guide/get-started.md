@@ -7,9 +7,16 @@
 
 - [System Requirements](system-requirements.md)
 
-## Configure and update the environment variables
+## Clone the repository. Configure and update the environment variables
 
-1. Update the below fields in `.env` file present at the root of the repository.
+1. Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
+
+2. Update the below fields in `.env` file.
 
     ``` sh
     HOST_IP= # replace localhost with system IP example: HOST_IP=10.100.100.100
@@ -22,7 +29,7 @@
     MTX_WEBRTCICESERVERS2_0_PASSWORD= # example: MTX_WEBRTCICESERVERS2_0_PASSWORD=mypassword
     ```
 
-2. Update HOST_IP_where_MRaaS_is_running in `config.json` file present in the repository inside the `configs` folder.
+3. Update HOST_IP_where_MRaaS_is_running in `config.json` file present inside the `weld-porosity/configs` folder.
 
     ```shell
          "model_registry": {
