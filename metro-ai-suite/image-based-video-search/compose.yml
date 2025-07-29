@@ -1,6 +1,6 @@
 services:
   milvus-db:
-    image: ${DOCKER_REGISTRY}/milvusdb/milvus:v2.4.16
+    image: docker.io/milvusdb/milvus:v2.4.16
     container_name: ibvs-milvusdb
     security_opt:
       - seccomp:unconfined
@@ -33,7 +33,7 @@ services:
     command: ["milvus", "run", "standalone"]
     restart: on-failure:5
   milvus-ui:
-    image: ${DOCKER_REGISTRY}/zilliz/attu:v2.4
+    image: docker.io/zilliz/attu:v2.4
     container_name: ibvs-milvusui
     environment:
       - MILVUS_URL=milvus-db:19530
@@ -49,7 +49,7 @@ services:
     depends_on:
       - milvus-db
   feature-matching:
-    image: ${DOCKER_REGISTRY}/intel/feature-matching:v1.0.0
+    image: docker.io/intel/feature-matching:v1.0.0
     ports:
       - "9000:8000"
     container_name: ibvs-featurematching
@@ -79,7 +79,7 @@ services:
       - image-data:/user/src/app/static
     restart: on-failure:5
   streaming-pipeline:
-    image: ${DOCKER_REGISTRY}/intel/streaming-pipeline:v1.0.0
+    image: docker.io/intel/streaming-pipeline:v1.0.0
     build:
       context: src/streaming-pipeline
       dockerfile: Dockerfile
@@ -98,7 +98,7 @@ services:
       - rtsp-server
     restart: on-failure:5
   rtsp-server:
-    image: ${DOCKER_REGISTRY}/bluenviron/mediamtx:1.10.0
+    image: docker.io/bluenviron/mediamtx:1.10.0
     container_name: ibvs-mediamtx
     environment:
       - MTX_PROTOCOLS=tcp
@@ -118,7 +118,7 @@ services:
       - "8189:8189/udp"
     restart: on-failure:5
   broker:
-    image: ${DOCKER_REGISTRY}/library/eclipse-mosquitto:2.0.20
+    image: docker.io/library/eclipse-mosquitto:2.0.20
     container_name: ibvs-broker
     volumes:
       - ./src/broker:/mosquitto/config
@@ -197,7 +197,7 @@ services:
       - broker
     restart: on-failure:5
   app:
-    image: ${DOCKER_REGISTRY}/intel/image-based-video-search:v1.0.0
+    image: docker.io/intel/image-based-video-search:v1.0.0
     container_name: ibvs-app
     ports:
       - "3000:3000"
