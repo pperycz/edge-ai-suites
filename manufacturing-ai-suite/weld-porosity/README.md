@@ -43,6 +43,16 @@ It also consists of the below Third-party microservices:
 
 ### Note: Refer this [README](./helm/README.md) for helm deployment on k8s. For docker compose based deployment, proceed with this document.
 
+### Prerequisites
+
+* [System Requirements](docs/user-guide/system-requirements.md)
+* Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
+    
 ### How to bring your own model and run this sample application (No need to run this section, it is just for your information)
 You can bring your own model and run this sample application the same way as how we bring in the weld porosity model as follows:
 
@@ -100,15 +110,6 @@ You can bring your own model and run this sample application the same way as how
 
 5. Please follow the rest of this document to get a hands-on experience in working with this sample application.
 
-### Prerequisites
-
-* [System Requirements](docs/user-guide/system-requirements.md)
-* Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
-
-    ```bash
-    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
-    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
-    ```
 
 ### Step 1: Configure and update the environment variables
 
