@@ -37,7 +37,7 @@ Follow this procedure on the target system to install the package.
 
 ## Clone the repository. Configure and update the environment variables
 
-1. Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
+1. Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
 
     ```bash
     git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld

@@ -103,7 +103,7 @@ You can bring your own model and run this sample application the same way as how
 ### Prerequisites
 
 * [System Requirements](docs/user-guide/system-requirements.md)
-* Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
+* Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
 
     ```bash
     git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
@@ -125,7 +125,7 @@ You can bring your own model and run this sample application the same way as how
     MTX_WEBRTCICESERVERS2_0_PASSWORD= # example: MTX_WEBRTCICESERVERS2_0_PASSWORD=mypassword
     ```
 
-3. Update HOST_IP_where_MRaaS_is_running in [config.json](./configs/config.json)
+2. Update HOST_IP_where_MRaaS_is_running in [config.json](./configs/config.json)
 
     ```shell
          "model_registry": {

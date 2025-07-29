@@ -56,7 +56,7 @@ It also consists of the below Third-party microservices:
   Refer to tutorials such as <https://adamtheautomator.com/installing-kubernetes-on-ubuntu> and many other
   online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 22.04.
 - For helm installation, refer to [helm website](https://helm.sh/docs/intro/install/)
-- Clone the **edge-ai-suites** repository change into Weld Porosity Detection directory:
+- Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
 
     ```bash
     git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
