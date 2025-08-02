@@ -2,7 +2,7 @@
 
 apiVersion: v2
 name: pallet-defect-detection-reference-implementation
-description:  A Helm chart for Pallet Defect Detection
+description: A Helm chart for Pallet Defect Detection
 
 # A chart can be either an 'application' or a 'library' chart.
 #
