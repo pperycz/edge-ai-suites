@@ -2,7 +2,7 @@
 
 In a typical deployment, multiple cameras deliver video streams that are connected to AI pipelines to improve the detection and recognition accuracy. 
 
-The DLStreamer Pipeline Server config supports multiple pipelines that you can use to launch pipeline instances. The sample application has been provided with such a config i.e. **pipeline-server-config.json**. We will use the same to demonstrate launching multiple AI pipelines.
+The DLStreamer Pipeline Server config supports multiple pipelines that you can use to launch pipeline instances. The sample application has been provided with such a config i.e. `pipeline-server-config.json`. We will use the same to demonstrate launching multiple AI pipelines.
 
 ## Steps
 
@@ -25,7 +25,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety-gear-detection/deployment/detection_1/model/model.xml",
+                "model": "/home/pipeline-server/resources/models/worker-safety-gear-detection/deployment/Detection/model/model.xml",
                 "device": "CPU"
             }
         }
@@ -37,7 +37,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
     ``` sh
     curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/worker_safety_gear_detection -X POST -H 'Content-Type: application/json' -d '{
         "source": {
-            "uri": "file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4",
+            "uri": "file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.avi",
             "type": "uri"
         },
         "destination": {
@@ -48,7 +48,7 @@ The DLStreamer Pipeline Server config supports multiple pipelines that you can u
         },
         "parameters": {
             "detection-properties": {
-                "model": "/home/pipeline-server/resources/models/worker-safety-gear-detection/deployment/detection_1/model/model.xml",
+                "model": "/home/pipeline-server/resources/models/worker-safety-gear-detection/deployment/Detection/model/model.xml",
                 "device": "CPU"
             }
         }

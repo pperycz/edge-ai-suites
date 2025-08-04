@@ -20,7 +20,7 @@
     ```sh
     cp helm/values_worker_safety_gear_detection.yaml helm/values.yaml
     ```
-3.  Edit the HOST_IP, proxy and other environment variables in `values.yaml` as follows
+3.  Edit the HOST_IP, proxy and other environment variables in `helm/values.yaml` as follows
     ```yaml
     env:        
         HOST_IP: <HOST_IP>   # host IP address
@@ -43,13 +43,22 @@
     ```sh
     helm install app-deploy helm -n apps --create-namespace
     ```
+    After installation, check the status of the running pods:
+    ```sh
+    kubectl get pods -n apps
+    ```
+    To view logs of a specific pod, replace `<pod_name>` with the actual pod name from the output above:
+    ```sh
+    kubectl logs -n apps -f <pod_name>
+    ```
+
 6.  Copy the resources such as video and model from local directory to the to the `dlstreamer-pipeline-server` pod to make them available for application while launching pipelines.
     ```sh
     # Below is an example for Worker Safety Gear Detection. Please adjust the source path of models and videos appropriately for other sample applications.
     
     POD_NAME=$(kubectl get pods -n apps -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep deployment-dlstreamer-pipeline-server | head -n 1)
 
-    kubectl cp resources/worker-safety-gear-detection/videos/Safety_Full_Hat_and_Vest.mp4 $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
+    kubectl cp resources/worker-safety-gear-detection/videos/Safety_Full_Hat_and_Vest.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
 
     kubectl cp resources/worker-safety-gear-detection/models/* $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
     ```
@@ -108,7 +117,7 @@
     Launching pipeline: worker_safety_gear_detection
     Extracting payload for pipeline: worker_safety_gear_detection
     Found 1 payload(s) for pipeline: worker_safety_gear_detection
-    Payload for pipeline 'worker_safety_gear_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.mp4","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/models/worker-safety-gear-detection/model.xml","device":"CPU"}}}
+    Payload for pipeline 'worker_safety_gear_detection' {"source":{"uri":"file:///home/pipeline-server/resources/videos/Safety_Full_Hat_and_Vest.avi","type":"uri"},"destination":{"frame":{"type":"webrtc","peer-id":"worker_safety"}},"parameters":{"detection-properties":{"model":"/home/pipeline-server/resources/models/models/worker-safety-gear-detection/model.xml","device":"CPU"}}}
     Posting payload to REST server at http://<HOST_IP>:30107/pipelines/user_defined_pipelines/worker_safety_gear_detection
     Payload for pipeline 'worker_safety_gear_detection' posted successfully. Response: "99ac50d852b511f09f7c2242868ff651"
     ```
@@ -170,4 +179,8 @@
      ```sh
      helm uninstall app-deploy -n apps
      ```
+
+
+## Troubleshooting
+- [Troubleshooting Guide](../../../apps/worker-safety-gear-detection/docs/user-guide/troubleshooting-guide.md)
     
