@@ -82,4 +82,10 @@ spec:
             value: "no"
         image: bluenviron/mediamtx:1.11.3
         imagePullPolicy: {{ .Values.imagePullPolicy }}
+        # Added security context to restrict container privileges
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
       restartPolicy: Always
