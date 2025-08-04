@@ -4,7 +4,7 @@ The **Smart Intersection** is a sample application that unifies the analytics of
 
 It demonstrates how edge AI technologies can address traffic management challenges using scene-based analytics. It combines analytics from multiple traffic cameras to provide a unified intersection view, enabling advanced use cases such as object tracking across multiple viewpoints, motion vector analysis (e.g., speed and heading), and understanding object interactions in three-dimensional space. This application highlights how existing camera infrastructure can be leveraged for real-time, multi-camera scene analytics, showcasing a shift from frame-based analysis to integrated, edge AI-driven solutions for smarter traffic management.
 
-The following are some examples use cases:
+The following are some example use cases:
 
 - **Use Case 1**: Pedestrian Safety - Enhance the safety for vulnerable road users (VRUs) at crosswalks.
   - Example: Scene-based region of interest (ROI) analytics help identify VRUs actively using crosswalks and detect unsafe situations, such as pedestrians walking outside the designated crosswalk areas.
