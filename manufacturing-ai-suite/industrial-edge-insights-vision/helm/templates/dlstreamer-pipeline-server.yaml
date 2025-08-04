@@ -60,6 +60,7 @@ spec:
           name: vol-pipeline-root-tmpfs0
         - name: dev
           mountPath: /dev
+          readOnly: true # Reduce risk while preserving access to GPU/NPU devices
         - name: dev-shm
           mountPath: /dev/shm
         - name: tmp
@@ -136,6 +137,8 @@ spec:
       - name: wait-for-model-registry
         image: busybox
         command: ['sh', '-c', 'wget --spider --quiet --tries=5 --timeout=3 http://model-registry:8111/docs']
+        securityContext:
+          readOnlyRootFilesystem: true
       volumes:
       - name: vol-pipeline-root-tmpfs0
         emptyDir: {}
