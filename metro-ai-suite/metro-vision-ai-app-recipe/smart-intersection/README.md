@@ -8,7 +8,7 @@ The following are some examples use cases:
 
 - **Use Case 1**: Pedestrian Safety - Enhance the safety for vulnerable road users (VRUs) at crosswalks.
   - Example: Scene-based region of interest (ROI) analytics help identify VRUs actively using crosswalks and detect unsafe situations, such as pedestrians walking outside the designated crosswalk areas.
-- **Use Case 2**: Measure average vehicle count and average dwell time in each lane. Dwell time    refers to the amount of time a vehicle spends at a stop, such as a bus stop or train station, without moving.
+- **Use Case 2**: Measure average vehicle count and average dwell time in each lane. Dwell time refers to the amount of time a vehicle spends at a stop, such as a bus stop or train station, without moving.
   - Example: Vehicles spending too much time in a lane indicates anomalies such as stalled vehicles, accidents, and congestion.
 
 The key benefits are as follows:
