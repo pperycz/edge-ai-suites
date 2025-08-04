@@ -52,4 +52,10 @@ spec:
         - containerPort: {{ $.Values.config.coturn.int.coturn_udp_port }}
           protocol: UDP
         imagePullPolicy: {{ .Values.imagePullPolicy }}
+        # Added security context to improve container hardening
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
       restartPolicy: Always
