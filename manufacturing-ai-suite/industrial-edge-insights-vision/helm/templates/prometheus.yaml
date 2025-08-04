@@ -51,6 +51,14 @@ spec:
             - name: prometheus-config-input
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
       volumes:
         - name: prometheus-config-input
           configMap:
