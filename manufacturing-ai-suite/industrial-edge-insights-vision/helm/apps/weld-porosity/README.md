@@ -24,8 +24,12 @@
     ```yaml
     env:        
         HOST_IP: <HOST_IP>   # host IP address
+        MINIO_ACCESS_KEY: <DATABASE USERNAME> #  example: minioadmin
+        MINIO_SECRET_KEY: <DATABASE PASSWORD> #  example: minioadmin
         http_proxy: <http proxy> # proxy details if behind proxy
         https_proxy: <https proxy>
+        POSTGRES_PASSWORD: <POSTGRES PASSWORD> #  example: intel1234
+        MR_URL: <PROTOCOL>://<HOST_IP>:32002 # example: http://<ip-addr>:32002
         SAMPLE_APP: weld-porosity # application directory
     webrtcturnserver:
         username: <username>  # WebRTC credentials e.g. intel1234
