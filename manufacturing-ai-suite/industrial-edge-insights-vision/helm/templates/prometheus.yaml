@@ -54,6 +54,8 @@ spec:
             - name: prometheus-config-input
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+            - name: prometheus-data
+              mountPath: /prometheus
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -66,3 +68,5 @@ spec:
         - name: prometheus-config-input
           configMap:
             name: prometheus-config
+        - name: prometheus-data
+          emptyDir: {}
