@@ -1,6 +1,6 @@
 
-name: "[Spine App] Package helm charts weekly "
-run-name: "[Spine App] Package helm charts weekly"
+name: "[industrial-edge-insights-vision] Package helm charts weekly "
+run-name: "[industrial-edge-insights-vision] Package helm charts weekly"
 on:
   workflow_dispatch:
     inputs:
@@ -38,11 +38,11 @@ jobs:
 
     - name: Package Helm Chart
       run: |
-        cd edge-ai-suites-repo/industrial-edge-insights-vision/helm
+        cd edge-ai-suites-repo/manufacturing-ai-suite/industrial-edge-insights-vision/helm
         helm package . --version ${{ inputs.helm-chart-tag }} --app-version ${{ inputs.helm-chart-tag }}
     - name: Push to GHCR
       run: |
-        CHART_PACKAGE=$(ls edge-ai-suites-repo/industrial-edge-insights-vision/helm/pallet-defect-detection-reference-implementation-${{ inputs.helm-chart-tag }}.tgz)
+        CHART_PACKAGE=$(ls edge-ai-suites-repo/manufacturing-ai-suite/industrial-edge-insights-vision/helm/pallet-defect-detection-reference-implementation-${{ inputs.helm-chart-tag }}.tgz)
         helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/
         
     - name: Update Github Summary
