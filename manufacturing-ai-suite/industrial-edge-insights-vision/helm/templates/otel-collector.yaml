@@ -63,6 +63,15 @@ spec:
             - name: otel-config-input
               mountPath: /etc/otelcol-contrib/config.yaml
               subPath: otel-collector-config.yaml
+          # Added security context to restrict container privileges
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
       restartPolicy: Always
       volumes:
         - name: otel-config-input
