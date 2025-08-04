@@ -45,6 +45,9 @@ spec:
       imagePullSecrets:
       - name: registryauth
       {{- end }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
         - name: otel-collector
           image: otel/opentelemetry-collector-contrib:0.94.0
