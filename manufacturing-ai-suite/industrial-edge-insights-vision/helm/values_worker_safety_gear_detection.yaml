@@ -4,7 +4,7 @@ namespace: apps
 DOCKER_REGISTRY: ''
 DOCKER_USERNAME: ''
 DOCKER_PASSWORD: ''
-imagePullPolicy: Always
+imagePullPolicy: IfNotPresent
 storageClassName: manual
 num_video_instances: 1
 env:
