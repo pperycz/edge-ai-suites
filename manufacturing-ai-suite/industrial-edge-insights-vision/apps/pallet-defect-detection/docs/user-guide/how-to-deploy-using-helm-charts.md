@@ -26,10 +26,10 @@
 
     - Download helm chart with the following command
 
-        `helm pull oci://ghcr.io/open-edge-platform/edge-ai-suites/manufacturing-ai-suite-vision-helm-chart/pallet-defect-detection-reference-implementation --version 20250805-EAS1.2-RC3`
+        `helm pull oci://ghcr.io/open-edge-platform/edge-ai-suites/manufacturing-ai-suite-vision-helm-chart/pallet-defect-detection-reference-implementation --version 20250805-EAS1.2`
     - unzip the package using the following command
 
-        `tar -xvf pallet-defect-detection-reference-implementation-20250805-EAS1.2-RC3.tgz`
+        `tar -xvf pallet-defect-detection-reference-implementation-20250805-EAS1.2.tgz`
     - Replace the helm directory
 
         `rm -rf helm && mv pallet-defect-detection-reference-implementation helm`
