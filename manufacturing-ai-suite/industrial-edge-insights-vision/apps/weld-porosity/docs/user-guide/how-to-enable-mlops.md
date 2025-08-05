@@ -16,7 +16,7 @@ With this feature, during runtime, you can download a new model from the registr
 
     MR_MINIO_ACCESS_KEY=   # MinIO service & client access key e.g. intel1234
     MR_MINIO_SECRET_KEY=   # MinIO service & client secret key e.g. intel1234
-    
+
     MR_URL= # Model registry url. Example http://<IP_address_of_model_registry_server>:32002
 
     MTX_WEBRTCICESERVERS2_0_USERNAME=  # Webrtc-mediamtx username. e.g intel1234
@@ -74,6 +74,9 @@ With this feature, during runtime, you can download a new model from the registr
     Navigate to the `[WORKDIR]/edge-ai-suites/manufacturing-ai-suite/industrial-edge-insights-vision` directory and set up the app.
     ```sh
     cp .env_weld_porosity_classification .env
+    ```
+    Edit the HOST_IP and other environment variables in `.env` file
+    ```sh
     ./setup.sh
     ```
 2. Bring up the containers
@@ -95,6 +98,12 @@ With this feature, during runtime, you can download a new model from the registr
                         "type": "webrtc",
                         "peer-id": "weld"
                     }
+                },
+                "destination": {
+                "frame": {
+                    "type": "webrtc",
+                    "peer-id": "weld"
+                }
                 },
                 "parameters": {
                     "classification-properties": {
@@ -120,11 +129,9 @@ With this feature, during runtime, you can download a new model from the registr
 
 1.  Download and prepare the model.
     ```sh
-    export MODEL_URL='https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/weld_porosity_classification.zip'
+    export MODEL_URL='https://github.com/open-edge-platform/edge-ai-resources/raw/c13b8dbf23d514c2667d39b66615bd1400cb889d/models/weld_porosity_classification.zip'
     
     curl -L "$MODEL_URL" -o "$(basename $MODEL_URL)"
-
-    unzip -q "$(basename $MODEL_URL)" -d .
     ```
 
 2.  Run the following curl command to upload the local model.
