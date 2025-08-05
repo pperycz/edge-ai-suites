@@ -48,7 +48,7 @@ jobs:
         
     - name: Update Github Summary
       run: |
-        echo "### ✅ DLStreamerPipelineServer helm chart published to github container registry" >> $GITHUB_STEP_SUMMARY
+        echo "### ✅ manufacturing-ai-suite-vision-helm-chart published to github container registry" >> $GITHUB_STEP_SUMMARY
           echo "- Registry: \`oci://ghcr.io/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Version: \`${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Pull command: \`helm pull oci://ghcr.io/${{ github.repository }}/manufacturing-ai-suite-vision-helm-chart --version ${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY 
