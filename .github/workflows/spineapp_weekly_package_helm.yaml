@@ -40,9 +40,10 @@ jobs:
       run: |
         cd edge-ai-suites-repo/manufacturing-ai-suite/industrial-edge-insights-vision/helm
         helm package . --version ${{ inputs.helm-chart-tag }} --app-version ${{ inputs.helm-chart-tag }}
+        mv pallet-defect-detection-reference-implementation-${{ inputs.helm-chart-tag }}.tgz manufacturing-ai-suite-vision-helm-chart-${{ inputs.helm-chart-tag }}.tgz
     - name: Push to GHCR
       run: |
-        CHART_PACKAGE=$(ls edge-ai-suites-repo/manufacturing-ai-suite/industrial-edge-insights-vision/helm/pallet-defect-detection-reference-implementation-${{ inputs.helm-chart-tag }}.tgz)
+        CHART_PACKAGE=$(ls edge-ai-suites-repo/manufacturing-ai-suite/industrial-edge-insights-vision/helm/manufacturing-ai-suite-vision-helm-chart-${{ inputs.helm-chart-tag }}.tgz)
         helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/
         
     - name: Update Github Summary
@@ -50,7 +51,7 @@ jobs:
         echo "### ✅ DLStreamerPipelineServer helm chart published to github container registry" >> $GITHUB_STEP_SUMMARY
           echo "- Registry: \`oci://ghcr.io/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Version: \`${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- Pull command: \`helm pull oci://ghcr.io/${{ github.repository }}/pallet-defect-detection-reference-implementation --version ${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY 
+          echo "- Pull command: \`helm pull oci://ghcr.io/${{ github.repository }}/manufacturing-ai-suite-vision-helm-chart --version ${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY 
     - name: Clean up
       if: always()
       run: |
