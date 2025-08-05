@@ -218,8 +218,8 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
    ```python
    import boto3
    url = "http://<HOST_IP>:30800"
-   user = "<value of MR_MINIO_ACCESS_KEY used in .env>"
-   password = "<value of MR_MINIO_SECRET_KEY used in .env>"
+   user = "<value of MR_MINIO_ACCESS_KEY used in helm/values.yaml>"
+   password = "<value of MR_MINIO_SECRET_KEY used in helm/values.yaml>"
    bucket_name = "ecgdemo"
 
    client= boto3.client(
@@ -266,9 +266,9 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
    ![S3 minio image storage](./images/s3-minio-storage.png)
 
 8. Uninstall the helm chart.
-     ```sh
-     helm uninstall app-deploy -n apps
-     ```
+    ```sh
+    helm uninstall app-deploy -n apps
+    ```
 
 ## MLOps using Model Registry
 
@@ -324,7 +324,7 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
 
 6. Download and prepare the model.
     ```sh
-    export MODEL_URL='https://github.com/open-edge-platform/edge-ai-suites/raw/9b679287cb6650619b4d1dd01f993ae793f8ec04/manufacturing-ai-suite/industrial-edge-insights-vision/pallet_defect_detection.zip'
+    export MODEL_URL='https://github.com/open-edge-platform/edge-ai-resources/raw/c13b8dbf23d514c2667d39b66615bd1400cb889d/models/pallet_defect_detection.zip'
     
     curl -L "$MODEL_URL" -o "$(basename $MODEL_URL)"
     ```
@@ -354,7 +354,6 @@ Applications can take advantage of S3 publish feature from DLStreamer Pipeline S
    ```sh
    curl --location -X GET http://<HOST_IP>:30107/pipelines/status
    ```
-   > NOTE- Replace the port in the curl request according to the deployment method i.e. default 8080 for compose based.
 
 10. Restart the model with a new model from Model Registry.
     The following curl command downloads the model from Model Registry using the specs provided in the payload. Upon download, the running pipeline is restarted with replacing the older model with this new model. Replace the `<instance_id_of_currently_running_pipeline>` in the URL below with the id of the pipeline instance currently running.
