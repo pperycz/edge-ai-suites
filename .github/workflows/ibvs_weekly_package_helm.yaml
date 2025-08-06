@@ -1,4 +1,3 @@
-
 name: "[IBVS] Package helm charts weekly "
 run-name: "[IBVS] Package helm charts weekly"
 on:
@@ -43,15 +42,18 @@ jobs:
     - name: Push to GHCR
       run: |
         CHART_PACKAGE=$(ls edge-ai-suites-repo/metro-ai-suite/image-based-video-search/chart/*-${{ inputs.helm-chart-tag }}.tgz)
-        helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/
+        helm push $CHART_PACKAGE oci://ghcr.io/${{ github.repository }}/metro-ai-suites/
         
     - name: Update Github Summary
       run: |
         echo "### ✅ Image Based Video Search helm chart published to github container registry" >> $GITHUB_STEP_SUMMARY
           echo "- Registry: \`oci://ghcr.io/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Version: \`${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- Pull command: \`helm pull oci://ghcr.io/${{ github.repository }}/image-based-video-search --version ${{ inputs.helm-chart-tag }}\`" >> $GITHUB_STEP_SUMMARY 
+          echo "### Helm Pull Commands" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo "helm pull oci://ghcr.io/${{ github.repository }}/metro-ai-suites/image-based-video-search --version ${{ inputs.helm-chart-tag }}" >> $GITHUB_STEP_SUMMARY 
+          echo '```' >> $GITHUB_STEP_SUMMARY
     - name: Clean up
       if: always()
       run: |
-        rm -rf edge-ai-libraries-repo
+        rm -rf edge-ai-suites-repo
