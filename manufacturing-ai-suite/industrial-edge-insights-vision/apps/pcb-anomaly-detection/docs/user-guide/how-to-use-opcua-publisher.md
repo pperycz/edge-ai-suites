@@ -31,7 +31,7 @@ Follow this procedure to test the DL Streamer Pipeline Server OPC UA publishing 
 
 5. Setup the application to use the docker based deployment following this [document](./get-started.md#setup-the-application).
 
-6. Start the pipeline with the following cURL command. Ensure to give the correct path to the model as seen below. This example starts an AI pipeline.
+6. Start the pipeline using the following cURL command. Update the `HOST_IP` and ensure the correct path to the model is provided as shown below. This example starts an AI pipeline.
 
    ```sh
     curl http://<HOST_IP>:8080/pipelines/user_defined_pipelines/pcb_anomaly_detection_opcua -X POST -H 'Content-Type: application/json' -d '{
