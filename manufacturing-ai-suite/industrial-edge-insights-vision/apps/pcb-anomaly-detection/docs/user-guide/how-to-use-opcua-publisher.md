@@ -18,7 +18,7 @@ Follow this procedure to test the DL Streamer Pipeline Server OPC UA publishing 
     OPCUA_SERVER_PASSWORD= # example: secret
     ```
 
-3. Update the OPC UA `variable` to appropriate value for the pipeline `pcb_anomaly_detection_opcua` in `configs/pipeline-server-config.json`.
+3. Update the OPC UA `variable` to appropriate value for the pipeline `pcb_anomaly_detection_opcua` in `apps/pcb-anomaly-detection/configs/pipeline-server-config.json`.
 
     ```shell
         "opcua_publisher": {
