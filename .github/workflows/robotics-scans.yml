@@ -1,0 +1,135 @@
+---
+# SPDX-FileCopyrightText: (C) 2025 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+name: Robotics AI Suite Security Scans
+
+on:
+  pull_request:
+    paths:
+      - 'robotics-ai-suite/components/**'
+
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout edge-ai-libraries
+        uses: actions/checkout@v4
+        with:
+          repository: open-edge-platform/edge-ai-libraries
+          ref: main
+          path: edge-ai-libraries
+          persist-credentials: false
+
+      - name: Update and install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y curl unzip python3-pip git
+
+  codeql-analysis:
+    runs-on: ubuntu-22.04
+    needs: setup
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: cpp, python
+          source-root: robotics-ai-suite/components
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/analyze@v2
+
+  gitleaks-scan:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    needs: setup
+    steps:
+      - name: Install gitleaks
+        uses: open-edge-platform/orch-ci/.github/actions/bootstrap@14aa8ce3d0a5455574fc7fce7d90b2d18636c68e   # 0.1.40
+        with:
+          bootstrap_tools: "gitleaks"
+
+      - name: Run Gitleaks with output
+        run: gitleaks detect --report-path gitleaks.json --verbose
+      - name: Upload Gitleaks Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks.json
+
+  spectral-scan:
+    runs-on: ubuntu-22.04
+    needs: setup
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Spectral Scan
+        run: |
+          curl -sSL https://install.spectralops.io | sh
+          ./spectral scan -d .
+      - run: ./spectral scan -d . --output-format json > spectral-report.json
+      - name: Upload Spectral Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spectral-report
+          path: spectral-report.json
+
+  trivy-fs-scan:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    needs: setup
+    steps:
+      - name: Install Trivy
+        run: |
+          sudo apt install -y wget
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.57.1/trivy_0.57.1_Linux-64bit.deb
+          sudo dpkg -i trivy_0.57.1_Linux-64bit.deb
+
+      - name: Trivy FileSystem scan
+        run: trivy fs . --scanners vuln,license,config --severity HIGH,CRITICAL --format json -o trivy-full.json
+
+      - name: Trivy license check
+        run: trivy fs --license-full --format json -o trivy-license.json .
+
+      - name: Upload Trivy Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-reports
+          path: trivy-full.json
+
+  zigmor-scan:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    needs: setup
+    env:
+      ZIZMOR_VER: 1.5.2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc  # v6.4.3
+      - name: Run zizmor scan
+        run: uvx zizmor=="$ZIZMOR_VER" "$GITHUB_WORKSPACE" --no-exit-codes > zizmor_scan_report.txt
+      - name: Upload Zizimor Scan Report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: zizmor-scan-report-${{ needs.sanitize-project-folder.outputs.sanitized_project_name }}
+          path: zizmor_scan_report.txt

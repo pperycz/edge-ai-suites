@@ -29,7 +29,6 @@ class MinimalPublisher : public rclcpp::Node
     : Node("adbscan_pub_node")
     {
       publisher_ = this->create_publisher<nav2_dynamic_msgs::msg::ObstacleArray>("Obstacle_Array", 10);
-      //for TurtleSim, turtle1/cmd_vel; for Pengo, cmd_vel
       //publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("turtle1/cmd_vel", 1);
       timer_ = this->create_wall_timer( 1000ms, std::bind(&MinimalPublisher::publish_message, this));
     }
