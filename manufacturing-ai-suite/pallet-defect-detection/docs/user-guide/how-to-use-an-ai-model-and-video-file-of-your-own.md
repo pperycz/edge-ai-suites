@@ -4,7 +4,7 @@
 
 You can bring your own model and run this sample application the same way as how we bring in the pallet defect detection model. You can also bring your own video file source. Please see below for details:
 
-1. The pallet defect detection model is placed as below in the repository under `models`. You can also find the input video file source for inference under `videos`.
+1. The pallet defect detection model is placed as below under `models`. You can also find the input video file source for inference under `videos`.
 
 - resources/
   - models/
@@ -22,14 +22,14 @@ You can bring your own model and run this sample application the same way as how
    > You can organize the directory structure for models for different use cases.
 
 
-2. The `resources` folder containing both the model and video file is volume mounted into DL Streamer Pipeline Server in `docker-compose.yml` (present in the repository) file as follows:
+2. The `resources` folder containing both the model and video file is volume mounted into DL Streamer Pipeline Server in `docker-compose.yml` file as follows:
 
     ```sh
     volumes:
     - ./resources/:/home/pipeline-server/resources/
     ```
 
-3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pallet_defect_detection` pipeline in `config.json` (present in the repository) where gvadetect is used.
+3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pallet_defect_detection` pipeline in `config.json` where gvadetect is used.
 
 4. The `config.json` is volume mounted into DL Streamer Pipeline Server in `docker-compose.yml` as follows:
 
@@ -64,7 +64,7 @@ You can bring your own model and run this sample application the same way as how
 
 You can bring your own model and run this sample application the same way as how we bring in the pallet defect detection model as follows:
 
-1. The pallet defect detection model is placed as below in the repository under `models`. You can also find the input video file source for inference under `videos`.
+1. The pallet defect detection model is placed as below under `models`. You can also find the input video file source for inference under `videos`.
 
 - resources/
   - models/
@@ -83,7 +83,7 @@ You can bring your own model and run this sample application the same way as how
 
 
 2. Build DL Streamer Pipeline Server by including your new AI model (pallet defect detection model used here as an example) and video file. Example steps below:
-    - Create the below `Dockerfile` at the root of the repository
+    - Create the below `Dockerfile` inside `edge-ai-suites/manufacturing-ai-suite/pallet-defect-detection` folder
       ```sh
       FROM intel/dlstreamer-pipeline-server:3.0.0
 
@@ -94,13 +94,13 @@ You can bring your own model and run this sample application the same way as how
       # Define the command to run the application
       ENTRYPOINT ["./run.sh"]
       ```
-    - Build a new DL Streamer Pipeline Server image with the below command from the root of the repository
+    - Build a new DL Streamer Pipeline Server image with the below command from `edge-ai-suites/manufacturing-ai-suite/pallet-defect-detection` folder
       ```sh
       docker build -t intel/dlstreamer-pipeline-server:3.0.0 .
       ```
     - Please update `imagePullPolicy` as `imagePullPolicy: IfNotPresent` in `values.yaml` in order to use the above built image.
 
-3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pallet_defect_detection` pipeline in `config.json` (present in the repository) where gvadetect is used.
+3. Since this is a detection model, ensure to use gvadetect in the pipeline. For example: See the `pallet_defect_detection` pipeline in `config.json` where gvadetect is used.
 
 4. The `config.json` is volume mounted into DL Streamer Pipeline Server in `provision-configmap.yaml` as follows:
 

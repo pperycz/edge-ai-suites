@@ -83,9 +83,9 @@ You need to copy your own or existing model into DL Streamer Pipeline Server ino
 
        POD_NAME=$(kubectl get pods -n apps -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep deployment-dlstreamer-pipeline-server | head -n 1)
 
-       kubectl cp <repo_workdir>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
 
-       kubectl cp <repo_workdir>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
 
    > **Note**
    > You need to run the above commands only after performing the Helm install, and before executing any pipeline.
@@ -213,7 +213,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
    ```shell
-    cd <weld_porosity_sample_application_repo_workdir>/resources/models/weld_porosity/weld_porosity_classification
+    cd <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/weld_porosity_classification
     zip -r ../weld_porosity_classification.zip .
    ```
    You can utilize the generated `<path>/weld_porosity_classification.zip` as `<model_file_path.zip>` in the next step

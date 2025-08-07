@@ -46,6 +46,12 @@ It also consists of the below Third-party microservices:
 ### Prerequisites
 
 * [System Requirements](docs/user-guide/system-requirements.md)
+* Clone the **edge-ai-suites** repository and change into Pallet Defect Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/pallet-defect-detection
+    ```
 
 ### Step 1: Configure and update the environment variables
 
@@ -149,7 +155,7 @@ Note: We have removed "model-instance-id=inst0" from the pallet_defect_detection
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
    ```shell
-    cd <pdd_repo_workdir>/resources/models/geti/pallet_defect_detection
+    cd <edge-ai-suites/manufacturing-ai-suite/pallet-defect-detection>/resources/models/geti/pallet_defect_detection
     zip -r ../pallet_defect_detection.zip .
    ```
    You can utilize the generated `<path>/pallet_defect_detection.zip` as `<model_file_path.zip>` in the next step

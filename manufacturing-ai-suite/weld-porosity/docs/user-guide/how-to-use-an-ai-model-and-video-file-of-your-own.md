@@ -85,9 +85,9 @@ You can bring your own model and run this sample application the same way as how
 
        POD_NAME=$(kubectl get pods -n apps -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep deployment-dlstreamer-pipeline-server | head -n 1)
 
-       kubectl cp <repo_workdir>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
 
-       kubectl cp <repo_workdir>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
 
    > **Note**
    > You need to run the above commands only after performing the Helm install, and before executing any pipeline.
