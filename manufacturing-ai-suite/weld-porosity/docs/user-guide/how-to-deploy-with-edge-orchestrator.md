@@ -18,9 +18,9 @@ To deploy the **Weld Porosity Detection** Sample Application with the Edge Orche
 
 ### Prerequisites
 
-1. Access to the web interface of the Edge Orchestrator with one or more [Edge Nodes Onboarded](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/set_up_edge_infra/edge_node_onboard.html>) to the Edge Orchestrator.
+1. Access to the web interface of the Edge Orchestrator with one or more [Edge Nodes Onboarded](<https://docs.openedgeplatform.intel.com/edge-manage-docs/dev/user_guide/set_up_edge_infra/edge_node_onboard/index.html>) to the Edge Orchestrator.
 
-1. Clusters with a [privilege template](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/additional_howtos/set_up_a_cluster_template.html>) have been created on the needed Edge Nodes following the procedures described in [Create Cluster](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/set_up_edge_infra/create_clusters.html#create-cluster>).
+1. Clusters with a [privilege template](<https://docs.openedgeplatform.intel.com/edge-manage-docs/dev/user_guide/advanced_functionality/set_up_a_cluster_template.html>) have been created on the needed Edge Nodes following the procedures described in [Create Cluster](<https://docs.openedgeplatform.intel.com/edge-manage-docs/dev/user_guide/set_up_edge_infra/clusters/create_clusters.html#create-cluster>).
 
 ### Making the Deployment Package Available
 
@@ -77,7 +77,7 @@ For more information on setting up a deployment, see [Set up a Deployment](<http
 
 ### Making the necessary model and video files available for **Weld Porosity Detection**
 
-1. Download the kubeconfig of the cluster of the Edge Node on which the Application has been deployed and save it on the host in `kubeconfig.yaml` in the `$HOME` path. Refer [Kubeconfig Download](<https://docs.openedgeplatform.intel.com/edge-manage-docs/main/user_guide/set_up_edge_infra/accessing_clusters.html#organize-cluster-access-with-a-kubeconfig-file>).
+1. Download the kubeconfig of the cluster of the Edge Node on which the Application has been deployed and save it on the host in `kubeconfig.yaml` in the `$HOME` path. Refer [Kubeconfig Download](<https://docs.openedgeplatform.intel.com/edge-manage-docs/dev/user_guide/set_up_edge_infra/clusters/accessing_clusters.html>).
 
 2. Set the environment variable `KUBECONFIG` to the path of `kubeconfig.yaml`
 
