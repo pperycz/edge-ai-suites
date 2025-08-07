@@ -56,6 +56,12 @@ It also consists of the below Third-party microservices:
   Refer to tutorials such as <https://adamtheautomator.com/installing-kubernetes-on-ubuntu> and many other
   online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 22.04.
 - For helm installation, refer to [helm website](https://helm.sh/docs/intro/install/)
+- Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
 
 ## Deploy Weld Porosity Detection in the Kubernetes Node
 
@@ -63,7 +69,7 @@ It also consists of the below Third-party microservices:
 
 You need to copy your own or existing model into DL Streamer Pipeline Server inorder to run this sample application in kubernates enviornment:
 
-1. The weld porosity classification model is placed as below in the repository under `models`. You can also find the input video file source for inference under `videos`.
+1. The weld porosity classification model is placed under [models](../resources/models/). You can also find the input video file source for inference under [videos](../resources/videos/).
 
 - resources/
   - models/
@@ -85,15 +91,15 @@ You need to copy your own or existing model into DL Streamer Pipeline Server ino
 
        POD_NAME=$(kubectl get pods -n apps -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep deployment-dlstreamer-pipeline-server | head -n 1)
 
-       kubectl cp <repo_workdir>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/videos/welding.avi $POD_NAME:/home/pipeline-server/resources/videos/ -c dlstreamer-pipeline-server -n apps
 
-       kubectl cp <repo_workdir>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
+       kubectl cp <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/ $POD_NAME:/home/pipeline-server/resources/models/ -c dlstreamer-pipeline-server -n apps
 
    > **Note**
    > You need to run the above commands only after performing the Helm install, and before executing any pipeline.
    > Make sure to replace the 'apps' namespace in the above command with the namespace you are using.
 
-3. Since this is a classification model, ensure to use gvaclassify in the pipeline. For example: See the `weld_porosity_classification` pipeline in `config.json` (present in the repository) where gvaclassify is used.
+3. Since this is a classification model, ensure to use gvaclassify in the pipeline. For example: See the `weld_porosity_classification` pipeline in [config.json](./config.json) where gvaclassify is used.
 
 4. The `config.json` is volume mounted into DL Streamer Pipeline Server in `provision-configmap.yaml` as follows:
     ```sh
@@ -231,7 +237,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
    ```shell
-    cd <weld_porosity_sample_application_repo_workdir>/resources/models/weld_porosity/weld_porosity_classification
+    cd <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/weld_porosity_classification
     zip -r ../weld_porosity_classification.zip .
    ```
    You can utilize the generated `<path>/weld_porosity_classification.zip` as `<model_file_path.zip>` in the next step

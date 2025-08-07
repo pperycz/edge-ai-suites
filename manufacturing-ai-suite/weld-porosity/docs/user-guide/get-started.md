@@ -7,9 +7,16 @@
 
 - [System Requirements](system-requirements.md)
 
-## Configure and update the environment variables
+## Clone the repository. Configure and update the environment variables
 
-1. Update the below fields in `.env` file present at the root of the repository.
+1. Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
+
+2. Update the below fields in `.env` file.
 
     ``` sh
     HOST_IP= # replace localhost with system IP example: HOST_IP=10.100.100.100
@@ -22,7 +29,7 @@
     MTX_WEBRTCICESERVERS2_0_PASSWORD= # example: MTX_WEBRTCICESERVERS2_0_PASSWORD=mypassword
     ```
 
-2. Update HOST_IP_where_MRaaS_is_running in `config.json` file present in the repository inside the `configs` folder.
+3. Update HOST_IP_where_MRaaS_is_running in `config.json` file present inside the `weld-porosity/configs` folder.
 
     ```shell
          "model_registry": {
@@ -109,7 +116,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
    ```shell
-    cd <weld_porosity_sample_application_repo_workdir>/resources/models/weld_porosity/weld_porosity_classification
+    cd <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/weld_porosity_classification
     zip -r ../weld_porosity_classification.zip .
    ```
    You can utilize the generated `<path>/weld_porosity_classification.zip` as `<model_file_path.zip>` in the next step

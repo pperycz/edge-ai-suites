@@ -43,10 +43,20 @@ It also consists of the below Third-party microservices:
 
 ### Note: Refer this [README](./helm/README.md) for helm deployment on k8s. For docker compose based deployment, proceed with this document.
 
+### Prerequisites
+
+* [System Requirements](docs/user-guide/system-requirements.md)
+* Clone the **edge-ai-suites** repository and change into Weld Porosity Detection directory:
+
+    ```bash
+    git clone https://github.com/open-edge-platform/edge-ai-suites -b hotfix/release-1.0.0/emf-doc-weld
+    cd edge-ai-suites/manufacturing-ai-suite/weld-porosity
+    ```
+    
 ### How to bring your own model and run this sample application (No need to run this section, it is just for your information)
 You can bring your own model and run this sample application the same way as how we bring in the weld porosity model as follows:
 
-1. The weld porosity model is placed as below in the repository under `models`. You can also find the input video file source for inference under `videos`.
+1. The weld porosity model is placed under [models](./resources/models/). You can also find the input video file source for inference under [videos](./resources/videos/).
 
 - resources/
   - models/
@@ -100,9 +110,6 @@ You can bring your own model and run this sample application the same way as how
 
 5. Please follow the rest of this document to get a hands-on experience in working with this sample application.
 
-### Prerequisites
-
-* [System Requirements](docs/user-guide/system-requirements.md)
 
 ### Step 1: Configure and update the environment variables
 
@@ -206,7 +213,7 @@ Note: We have removed "model-instance-id=inst0" from the weld_porosity_classific
 
 2. The following step demonstrates how to create a sample model file from an existing model folder for uploading to the Model Registry. If you already have a model zip file, you can skip this step.
    ```shell
-    cd <weld_porosity_sample_application_repo_workdir>/resources/models/weld_porosity/weld_porosity_classification
+    cd <edge-ai-suites/manufacturing-ai-suite/weld-porosity>/resources/models/weld_porosity/weld_porosity_classification
     zip -r ../weld_porosity_classification.zip .
    ```
    You can utilize the generated `<path>/weld_porosity_classification.zip` as `<model_file_path.zip>` in the next step
