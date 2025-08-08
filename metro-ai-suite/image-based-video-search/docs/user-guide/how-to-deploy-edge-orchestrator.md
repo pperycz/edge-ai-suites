@@ -48,7 +48,7 @@ follow the steps described in this document.
 1. Clone the **Image-Based Video Search** repository:
 
    ```bash
-   git clone https://github.com/open-edge-platform/edge-ai-suites -b <version>
+   git clone https://github.com/open-edge-platform/edge-ai-suites -b release-1.2.0
    cd edge-ai-suites/metro-ai-suite/image-based-video-search
    ```
 

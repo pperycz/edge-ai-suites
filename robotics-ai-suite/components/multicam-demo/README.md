@@ -148,7 +148,7 @@ $ sudo usermod -a -G render $USER
 2. Clone the repository - [edge-ai-suites](https://github.com/open-edge-platform/edge-ai-suites)
 
    ```bash
-    $ git clone --recursive https://github.com/open-edge-platform/edge-ai-suites
+    $ git clone --recursive https://github.com/open-edge-platform/edge-ai-suites -b release-1.2.0
    ```
 
 3. Update the dependencies.
