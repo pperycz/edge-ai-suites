@@ -26,7 +26,7 @@ Target System
 -  Slamtec* RPLIDAR A3 2D LIDAR (optional)
 
 .. note::
-   | There is a known issue when deploying Robotics AI Suite with ROS2 Humble, where the underlying OS is Ubuntu 22.04 with kernel version less or equal 6.8 which does not fully support GPU/NPU offload scenarios for 15th gen processors.
+   | There are known issues when deploying Robotics AI Suite with ROS2 Humble, where the underlying OS is Ubuntu 22.04 with kernel version less or equal 6.8. Such setups does not fully support GPU/NPU offload scenarios for 15th gen processors so only CPU-based examples should be used.
 
 .. note::
 
