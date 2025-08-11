@@ -21,6 +21,9 @@ spec:
         {{- include "image_based_video_search.selectorLabels" . | nindent 8 }}
         katenary.v3/component: milvusui
     spec:
+      securityContext: # added pod-level defaults
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
       - envFrom:
         - configMapRef:
@@ -28,6 +31,16 @@ spec:
         image: '{{ tpl .Values.milvusui.repository.image $ }}:{{ tpl .Values.milvusui.repository.tag $ | default "latest" }}'
         imagePullPolicy: {{ .Values.milvusui.imagePullPolicy }}
         name: milvusui
+        securityContext: # added container-level hardening
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+              - ALL
+          seccompProfile:
+            type: RuntimeDefault
         # command: ["/bin/bash", "-c"]
         # args: 
         #   - |
@@ -35,6 +48,9 @@ spec:
         ports:
         - containerPort: 8000
           name: port-8000
+        volumeMounts:
+        - name: build-dir
+          mountPath: /app/build
         {{- if .Values.milvusui.resources }}
         resources:
           {{ .Values.milvusui.resources | toYaml | nindent 10 }}
@@ -50,3 +66,6 @@ spec:
       {{- if ne .Values.milvusui.serviceAccount "" }}
       serviceAccountName: {{ .Values.milvusui.serviceAccount | quote }}
       {{- end }}
+      volumes:
+      - name: build-dir
+        emptyDir: {}

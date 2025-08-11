@@ -38,6 +38,9 @@ spec:
           capabilities:
             drop:
               - ALL
+        volumeMounts:
+        - name: vite-temp
+          mountPath: /usr/src/app/node_modules/.vite-temp
         {{- if .Values.app.resources }}
         resources:
           {{ .Values.app.resources | toYaml | nindent 10 }}
@@ -53,3 +56,6 @@ spec:
       {{- if ne .Values.app.serviceAccount "" }}
       serviceAccountName: {{ .Values.app.serviceAccount | quote }}
       {{- end }}
+      volumes:
+      - name: vite-temp
+        emptyDir: {}

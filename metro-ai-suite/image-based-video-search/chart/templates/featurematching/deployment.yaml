@@ -21,6 +21,9 @@ spec:
         {{- include "image_based_video_search.selectorLabels" . | nindent 8 }}
         katenary.v3/component: featurematching
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
       containers:
       - envFrom:
         - configMapRef:
@@ -28,6 +31,14 @@ spec:
         image: '{{ tpl .Values.featurematching.repository.image $ }}:{{ tpl .Values.featurematching.repository.tag $ | default "latest" }}'
         imagePullPolicy: {{ .Values.featurematching.imagePullPolicy }}
         name: featurematching
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+              - ALL
         # command: ["/bin/bash", "-c"]
         # args: 
         #   - |

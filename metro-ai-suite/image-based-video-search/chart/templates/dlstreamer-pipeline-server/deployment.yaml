@@ -66,14 +66,26 @@ spec:
         - configMapRef:
             name: '{{ include "image_based_video_search.fullname" . }}-dlstreamer-pipeline-server-env'
         image: '{{ tpl .Values.dlstreamerpipelineserver.repository.image $ }}:{{ tpl .Values.dlstreamerpipelineserver.repository.tag $ | default "latest" }}'
+        {{- if eq .Values.dlstreamerpipelineserver.pipeline "config.gpu.json" }}
         securityContext:
-          runAsUser: 0
-          runAsGroup: 0
-          fsGroup: 0
-          {{- if eq .Values.dlstreamerpipelineserver.pipeline "config.gpu.json" }}
           privileged: true
           supplementalGroups: [109, 110]
-          {{- end }}
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: true
+          capabilities:
+            drop:
+              - ALL
+        {{- else }}
+        securityContext:
+          supplementalGroups: [109, 110]
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          runAsUser: 1999
+          capabilities:
+            drop:
+              - ALL
+        {{- end }}
         imagePullPolicy: {{ .Values.dlstreamerpipelineserver.imagePullPolicy }}
         name: dlstreamer-pipeline-server
         command: ["/bin/bash", "-c"]
@@ -101,6 +113,9 @@ spec:
           mountPath: /models
         - name: dev
           mountPath: /dev
+          readOnly: true # Reduce risk while preserving access to GPU/NPU devices
+        - name: config-dir
+          mountPath: /home/pipeline-server
         {{- if .Values.dlstreamerpipelineserver.resources }}
         resources:
           {{ .Values.dlstreamerpipelineserver.resources | toYaml | nindent 10 }}
@@ -123,6 +138,8 @@ spec:
       - name: dev
         hostPath:
           path: /dev
+      - name: config-dir
+        emptyDir: {}
       {{- if .Values.pullSecrets }}
       imagePullSecrets:
       {{- .Values.pullSecrets | toYaml | nindent 6 }}
