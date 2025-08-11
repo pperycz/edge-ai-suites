@@ -102,6 +102,7 @@
 .. |ROS2| replace:: ROS 2
 .. |ros| replace:: ROS 2
 .. |seo| replace:: Intel® Smart Edge Open
+.. |serDes| replace:: Intel's GMSL Serializer-Deserializer ACPI devices
 .. |slamtec_rplidar| replace:: Slamtec RPLIDAR
 .. |tgl| replace:: Tiger Lake platform
 .. |tb3| replace:: TurtleBot3
