@@ -44,6 +44,8 @@ optimized hardware selection and performance tuning.
 
 For more information, see [ViPPET documentation](https://docs.openedgeplatform.intel.com/2026.0/edge-ai-libraries/visual-pipeline-and-platform-evaluation-tool/index.html).
 
+<!-- ViPPET 2026.0 is used here on purpose -->
+
 > **Notice:**
 > The version of Visual Pipeline and Platform Evaluation Tool used in the Handheld Multi-Modal Application
 > does not fully support pipelines that utilize [Hugging Face](https://huggingface.co/) models requiring
