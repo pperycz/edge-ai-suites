@@ -72,7 +72,7 @@ docker info|grep -i PROXY
 Download the compressed file:
 
 ```bash
-curl -OjL https://github.com/open-edge-platform/edge-ai-suites/releases/download/v2026.1.0/handheld-multi-modal.zip
+curl -OjL https://github.com/open-edge-platform/edge-ai-suites/releases/download/2026.1/handheld-multi-modal.zip
 ```
 
 Decompress the downloaded file:
@@ -116,8 +116,9 @@ This composite application exposes multiple endpoints through the NGINX TLS reve
 Since the intended use is on handheld devices, the applications do not provide authentication or authorization.
 
 > **Notice**:
-> A browser warning about the self-signed certificate is expected — the NGINX reverse proxy uses one to provide TLS on the localhost-bound addresses.
-> HTTPS is required by modern browsers to enable the microphone input used by Open WebUI and Speech To Text services.
+> A browser warning about the use of a self-signed certificate is an expected behavior.
+> Modern browsers require HTTPS to enable microphone input used by Open WebUI and Speech To Text services,
+> therefore, the NGINX reverse proxy uses the certificate to ensure TLS transport on the `localhost` bound addresses.
 
 | Service | URL | Notes |
 |---------|-----|-------|
@@ -129,5 +130,5 @@ Since the intended use is on handheld devices, the applications do not provide a
 
 
 <!--
-Source: [Endpoints](https://github.com/open-edge-platform/edge-ai-suites/blob/main/federal-aerospace/apps/handheld-multi-modal/README.md#endpoints)
+Source: [Endpoints](https://github.com/open-edge-platform/edge-ai-suites/blob/release-2026.1.0/federal-aerospace/apps/handheld-multi-modal/README.md#endpoints)
 -->
